@@ -1,0 +1,13 @@
+{
+  "metadata": {
+    "game": "Starfield",
+    "dataset": "planets",
+    "version": 1,
+    "generatedAt": "2026-04-17",
+    "notes": [
+      "Arquivo criado para manter a estrutura do projeto.",
+      "Ainda nao foi populado porque o ideal aqui e cruzar recursos por planeta e por bioma, nao so por corpo celeste."
+    ]
+  },
+  "items": []
+}

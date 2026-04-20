@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "game": "Starfield",
+    "dataset": "profit_simulations",
+    "version": 1,
+    "generatedAt": "2026-04-17",
+    "notes": [
+      "Este arquivo pode ficar vazio no MVP e ser calculado em runtime no frontend."
+    ]
+  },
+  "items": []
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rankings de Naves | Starfield Outpost Ledger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero-panel ranking-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Fleet Intelligence</p>
+          <h1>Top 50 Naves</h1>
+          <p class="hero-text">
+            Rankings calculados com base nos stats da INARA usando três perfis:
+            exploração + combate, foco em exploração e foco em combate.
+          </p>
+        </div>
+
+        <div class="hero-stats">
+          <article class="hero-card">
+            <span class="hero-label">Base</span>
+            <strong id="ships-count">--</strong>
+            <span>naves no dataset</span>
+          </article>
+          <article class="hero-card">
+            <span class="hero-label">Origem</span>
+            <strong>INARA</strong>
+            <span>stats base sem bônus de skills</span>
+          </article>
+          <article class="hero-card">
+            <span class="hero-label">Voltar</span>
+            <strong><a class="hero-link" href="./index.html">Dashboard</a></strong>
+            <span>catálogo e calculadoras</span>
+          </article>
+        </div>
+      </header>
+
+      <main class="rankings-page">
+        <section class="ranking-picker panel" aria-labelledby="ranking-picker-title">
+          <div>
+            <p class="panel-kicker">Ranking ativo</p>
+            <h2 id="ranking-picker-title">Escolhe a lista que queres analisar</h2>
+            <p class="ranking-picker-copy">
+              A pagina mostra apenas um top por vez para ficar mais limpa e rapida de comparar.
+            </p>
+          </div>
+
+          <label class="ranking-select-wrap" for="ranking-select">
+            <span>Mostrar ranking</span>
+            <select id="ranking-select" aria-describedby="ranking-picker-title">
+              <option value="">A carregar rankings...</option>
+            </select>
+          </label>
+        </section>
+        <nav class="ranking-nav panel">
+          <a href="#balanced">Exploração + Combate</a>
+          <a href="#exploration">Foco em Exploração</a>
+          <a href="#combat">Foco em Combate</a>
+          <a href="#class-a">Class A</a>
+          <a href="#class-b">Class B</a>
+          <a href="#class-c">Class C</a>
+          <a href="#purchasable">Compráveis</a>
+          <a href="#free-quest">Grátis / Quest</a>
+          <a href="#midgame">Midgame</a>
+        </nav>
+
+        <div id="rankings-root" class="ship-ranking-full-stack">
+          <section class="panel empty-state">A carregar rankings...</section>
+        </div>
+      </main>
+    </div>
+
+    <script src="./ship-rankings.js"></script>
+  </body>
+</html>

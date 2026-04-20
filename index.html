@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starfield Outpost Ledger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Outpost Commerce Dashboard</p>
+          <h1>Starfield Outpost Ledger</h1>
+          <p class="hero-text">
+            Catalogue recursos, simule extratores, estime lucro e descubra os
+            melhores hubs para vender minerais e componentes manufaturados.
+          </p>
+        </div>
+
+        <div class="hero-stats" id="hero-stats">
+          <article class="hero-card">
+            <span class="hero-label">Melhor Resource</span>
+            <strong id="best-resource-name">A carregar...</strong>
+            <span id="best-resource-meta">--</span>
+          </article>
+          <article class="hero-card">
+            <span class="hero-label">Melhor Manufactured</span>
+            <strong id="best-manufactured-name">A carregar...</strong>
+            <span id="best-manufactured-meta">--</span>
+          </article>
+          <article class="hero-card">
+            <span class="hero-label">Melhor Hub De Venda</span>
+            <strong id="best-hub-name">A carregar...</strong>
+            <span id="best-hub-meta">--</span>
+          </article>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <aside class="side-panel">
+          <section class="panel">
+            <div class="panel-heading">
+              <p class="panel-kicker">Control Deck</p>
+              <h2>Filtros</h2>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Pesquisa</span>
+                <input id="search-input" type="search" placeholder="Aluminum, Adaptive Frame..." />
+              </label>
+
+              <label class="field">
+                <span>Categoria</span>
+                <select id="category-filter">
+                  <option value="all">Todas</option>
+                  <option value="resources">Resources</option>
+                  <option value="manufactured_items">Manufactured Items</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Subtipo</span>
+                <select id="subtype-filter">
+                  <option value="all">Todos</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Raridade</span>
+                <select id="rarity-filter">
+                  <option value="all">Todas</option>
+                  <option value="common">Common</option>
+                  <option value="uncommon">Uncommon</option>
+                  <option value="rare">Rare</option>
+                  <option value="exotic">Exotic</option>
+                  <option value="unique">Unique</option>
+                </select>
+              </label>
+
+              <label class="field checkbox-field">
+                <input id="mineable-filter" type="checkbox" />
+                <span>Mostrar apenas itens mineráveis</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <p class="panel-kicker">Market Summary</p>
+              <h2>Resumo</h2>
+            </div>
+
+            <div class="summary-list">
+              <article class="summary-card">
+                <span>Items Carregados</span>
+                <strong id="summary-total-items">0</strong>
+              </article>
+              <article class="summary-card">
+                <span>Receitas Verificadas</span>
+                <strong id="summary-total-recipes">0</strong>
+              </article>
+              <article class="summary-card">
+                <span>Vendors Mapeados</span>
+                <strong id="summary-total-vendors">0</strong>
+              </article>
+              <article class="summary-card">
+                <span>Hubs Rankeados</span>
+                <strong id="summary-total-hubs">0</strong>
+              </article>
+            </div>
+          </section>
+        </aside>
+
+        <section class="main-stack">
+          <section class="panel">
+            <div class="panel-heading split-heading">
+              <div>
+                <p class="panel-kicker">Cargo Registry</p>
+                <h2>Catálogo</h2>
+              </div>
+              <div class="table-caption">
+                <span id="table-results-count">0 resultados</span>
+              </div>
+            </div>
+
+            <div class="table-shell">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Raridade</th>
+                    <th>Valor</th>
+                    <th>Massa</th>
+                    <th>Detalhe</th>
+                  </tr>
+                </thead>
+                <tbody id="catalog-table-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel calculator-panel">
+            <div class="panel-heading">
+              <p class="panel-kicker">Yield Simulator</p>
+              <h2>Calculadora</h2>
+            </div>
+
+            <div class="calculator-grid">
+              <div class="calculator-form">
+                <label class="field">
+                  <span>Item selecionado</span>
+                  <input id="selected-item-name" type="text" readonly placeholder="Escolha um item no catálogo" />
+                </label>
+
+                <label class="field">
+                  <span>Extratores / máquinas</span>
+                  <input id="extractor-count" type="number" min="1" value="1" />
+                </label>
+
+                <label class="field">
+                  <span>Produção por minuto</span>
+                  <input id="production-rate" type="number" min="0" step="0.1" value="1" />
+                </label>
+
+                <label class="field">
+                  <span>Horas simuladas</span>
+                  <input id="period-hours" type="number" min="1" step="1" value="24" />
+                </label>
+
+                <label class="field">
+                  <span>Custo operacional total</span>
+                  <input id="operational-cost" type="number" min="0" step="1" value="0" />
+                </label>
+
+                <button id="calculate-button" class="action-button" type="button">
+                  Calcular lucro
+                </button>
+              </div>
+
+              <div class="calculator-results">
+                <article class="metric-card accent-card">
+                  <span>Produção total</span>
+                  <strong id="result-total-output">--</strong>
+                  <small>unidades no período</small>
+                </article>
+                <article class="metric-card">
+                  <span>Receita bruta</span>
+                  <strong id="result-gross-revenue">--</strong>
+                  <small>baseada no valor do item</small>
+                </article>
+                <article class="metric-card">
+                  <span>Lucro líquido</span>
+                  <strong id="result-net-profit">--</strong>
+                  <small>receita menos custo operacional</small>
+                </article>
+                <article class="metric-card">
+                  <span>Lucro por hora</span>
+                  <strong id="result-profit-hour">--</strong>
+                  <small>estimativa média por hora</small>
+                </article>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <aside class="detail-stack">
+          <section class="panel ranking-panel ship-rankings-panel">
+            <div class="panel-heading">
+              <p class="panel-kicker">Fleet Intel</p>
+              <h2>Ranking De Naves</h2>
+            </div>
+
+            <div id="ship-ranking-preview" class="ship-preview-stack empty-state">
+              A carregar rankings de naves...
+            </div>
+          </section>
+
+          <section class="panel detail-panel">
+            <div class="panel-heading">
+              <p class="panel-kicker">Selected Item</p>
+              <h2>Detalhe</h2>
+            </div>
+
+            <div id="item-detail" class="detail-content empty-state">
+              Selecione um item na tabela para ver valor, categoria, fontes e
+              receita relacionada.
+            </div>
+          </section>
+
+          <section class="panel ranking-panel">
+            <div class="panel-heading">
+              <p class="panel-kicker">Sell Routes</p>
+              <h2>Melhores Vendors</h2>
+            </div>
+
+            <div id="vendor-ranking" class="ranking-list empty-state">
+              Escolha um item para rankear vendors.
+            </div>
+          </section>
+
+          <section class="panel ranking-panel">
+            <div class="panel-heading">
+              <p class="panel-kicker">Hub Strategy</p>
+              <h2>Melhores Hubs</h2>
+            </div>
+
+            <div id="hub-ranking" class="ranking-list empty-state">
+              Escolha um item para rankear hubs.
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <template id="tag-template">
+      <span class="tag"></span>
+    </template>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

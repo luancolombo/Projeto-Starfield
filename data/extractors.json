@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "game": "Starfield",
+    "dataset": "extractors",
+    "version": 1,
+    "generatedAt": "2026-04-17",
+    "notes": [
+      "Estrutura inicial para o simulador.",
+      "A taxa productionPerMinute ainda precisa ser validada in-game antes de usar como numero final."
+    ]
+  },
+  "items": [
+    {
+      "id": "extractor-solid-basic",
+      "name": "Solid Extractor",
+      "resourceCategory": "inorganic",
+      "supportedSourceType": "extractor",
+      "productionPerMinute": null,
+      "powerConsumption": null
+    },
+    {
+      "id": "extractor-gas-basic",
+      "name": "Gas Extractor",
+      "resourceCategory": "inorganic",
+      "supportedSourceType": "extractor",
+      "productionPerMinute": null,
+      "powerConsumption": null
+    },
+    {
+      "id": "extractor-liquid-basic",
+      "name": "Liquid Extractor",
+      "resourceCategory": "inorganic",
+      "supportedSourceType": "extractor",
+      "productionPerMinute": null,
+      "powerConsumption": null
+    },
+    {
+      "id": "extractor-greenhouse",
+      "name": "Greenhouse",
+      "resourceCategory": "organic",
+      "supportedSourceType": "greenhouse",
+      "productionPerMinute": null,
+      "powerConsumption": null
+    },
+    {
+      "id": "extractor-animal-husbandry",
+      "name": "Animal Husbandry Facility",
+      "resourceCategory": "organic",
+      "supportedSourceType": "animal_husbandry",
+      "productionPerMinute": null,
+      "powerConsumption": null
+    }
+  ]
+}

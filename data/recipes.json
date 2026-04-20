@@ -1,0 +1,467 @@
+{
+  "metadata": {
+    "game": "Starfield",
+    "dataset": "recipes",
+    "version": 1,
+    "generatedAt": "2026-04-17",
+    "notes": [
+      "Receitas verificadas em paginas individuais de recursos na INARA.",
+      "Quando a pagina mencionou rank de Special Projects, isso foi salvo em unlockCondition.",
+      "Craft time ainda nao foi validado no jogo e ficou como null."
+    ],
+    "sources": [
+      "https://inara.cz/starfield/resource/188/",
+      "https://inara.cz/starfield/resource/264/",
+      "https://inara.cz/starfield/resource/263/",
+      "https://inara.cz/starfield/resource/272/",
+      "https://inara.cz/starfield/resource/265/",
+      "https://inara.cz/starfield/resource/266/",
+      "https://inara.cz/starfield/resource/267/",
+      "https://inara.cz/starfield/resource/269/",
+      "https://inara.cz/starfield/resource/271/",
+      "https://inara.cz/starfield/resource/268/",
+      "https://inara.cz/starfield/resource/270/",
+      "https://inara.cz/starfield/resource/276/",
+      "https://inara.cz/starfield/resource/286/",
+      "https://inara.cz/starfield/resource/281/",
+      "https://inara.cz/starfield/resource/283/",
+      "https://inara.cz/starfield/resource/278/",
+      "https://inara.cz/starfield/resource/280/",
+      "https://inara.cz/starfield/resource/287/",
+      "https://inara.cz/starfield/resource/274/",
+      "https://inara.cz/starfield/resource/293/",
+      "https://inara.cz/starfield/resource/296/",
+      "https://inara.cz/starfield/resource/279/",
+      "https://inara.cz/starfield/resource/284/",
+      "https://inara.cz/starfield/resource/292/",
+      "https://inara.cz/starfield/resource/288/",
+      "https://inara.cz/starfield/resource/298/",
+      "https://inara.cz/starfield/resource/300/",
+      "https://inara.cz/starfield/resource/301/",
+      "https://inara.cz/starfield/resource/304/",
+      "https://inara.cz/starfield/resource/305/"
+    ]
+  },
+  "items": [
+    {
+      "id": "recipe-adaptive-frame",
+      "outputItemId": "item-adaptive-frame",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-aluminum", "quantity": 1 },
+        { "itemId": "resource-iron", "quantity": 1 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-reactive-gauge",
+      "outputItemId": "item-reactive-gauge",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-aluminum", "quantity": 2 },
+        { "itemId": "resource-copper", "quantity": 1 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-isocentered-magnet",
+      "outputItemId": "item-isocentered-magnet",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-cobalt", "quantity": 1 },
+        { "itemId": "resource-nickel", "quantity": 1 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-tau-grade-rheostat",
+      "outputItemId": "item-tau-grade-rheostat",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-beryllium", "quantity": 1 },
+        { "itemId": "resource-copper", "quantity": 1 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-zero-wire",
+      "outputItemId": "item-zero-wire",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-copper", "quantity": 1 },
+        { "itemId": "resource-silver", "quantity": 1 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-austenitic-manifold",
+      "outputItemId": "item-austenitic-manifold",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-iron", "quantity": 2 },
+        { "itemId": "resource-nickel", "quantity": 2 },
+        { "itemId": "item-reactive-gauge", "quantity": 1 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-comm-relay",
+      "outputItemId": "item-comm-relay",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "item-isocentered-magnet", "quantity": 1 },
+        { "itemId": "item-tau-grade-rheostat", "quantity": 1 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-mag-pressure-tank",
+      "outputItemId": "item-mag-pressure-tank",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-aluminum", "quantity": 2 },
+        { "itemId": "resource-nickel", "quantity": 1 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-polytextile",
+      "outputItemId": "item-polytextile",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-cosmetic", "quantity": 1 },
+        { "itemId": "resource-fiber", "quantity": 2 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-isotopic-coolant",
+      "outputItemId": "item-isotopic-coolant",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-ionic-liquids", "quantity": 1 },
+        { "itemId": "resource-tetrafluorides", "quantity": 1 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-monopropellant",
+      "outputItemId": "item-monopropellant",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "simple_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-alkanes", "quantity": 2 },
+        { "itemId": "item-mag-pressure-tank", "quantity": 1 },
+        { "itemId": "item-reactive-gauge", "quantity": 1 }
+      ],
+      "unlockCondition": null
+    },
+    {
+      "id": "recipe-drilling-rig",
+      "outputItemId": "item-drilling-rig",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "compound_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-lubricant", "quantity": 2 },
+        { "itemId": "item-reactive-gauge", "quantity": 1 },
+        { "itemId": "resource-tungsten", "quantity": 3 }
+      ],
+      "unlockCondition": "special_projects_rank_2"
+    },
+    {
+      "id": "recipe-supercooled-magnet",
+      "outputItemId": "item-supercooled-magnet",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "compound_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "item-isocentered-magnet", "quantity": 1 },
+        { "itemId": "item-isotopic-coolant", "quantity": 1 },
+        { "itemId": "resource-neodymium", "quantity": 3 }
+      ],
+      "unlockCondition": "special_projects_rank_2"
+    },
+    {
+      "id": "recipe-positron-battery",
+      "outputItemId": "item-positron-battery",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "compound_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-antimony", "quantity": 2 },
+        { "itemId": "item-tau-grade-rheostat", "quantity": 1 },
+        { "itemId": "resource-vanadium", "quantity": 2 }
+      ],
+      "unlockCondition": "special_projects_rank_2"
+    },
+    {
+      "id": "recipe-semimetal-wafer",
+      "outputItemId": "item-semimetal-wafer",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "compound_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-antimony", "quantity": 2 },
+        { "itemId": "resource-gold", "quantity": 2 },
+        { "itemId": "item-zero-wire", "quantity": 1 }
+      ],
+      "unlockCondition": "special_projects_rank_2"
+    },
+    {
+      "id": "recipe-molecular-sieve",
+      "outputItemId": "item-molecular-sieve",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "compound_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-ionic-liquids", "quantity": 2 },
+        { "itemId": "item-mag-pressure-tank", "quantity": 1 },
+        { "itemId": "resource-membrane", "quantity": 2 }
+      ],
+      "unlockCondition": "special_projects_rank_2"
+    },
+    {
+      "id": "recipe-paramagnon-conductor",
+      "outputItemId": "item-paramagnon-conductor",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "compound_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-gold", "quantity": 1 },
+        { "itemId": "resource-neodymium", "quantity": 1 },
+        { "itemId": "item-zero-wire", "quantity": 3 }
+      ],
+      "unlockCondition": "special_projects_rank_2"
+    },
+    {
+      "id": "recipe-zero-g-gimbal",
+      "outputItemId": "item-zero-g-gimbal",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "compound_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "item-isocentered-magnet", "quantity": 1 },
+        { "itemId": "resource-lubricant", "quantity": 2 },
+        { "itemId": "resource-tantalum", "quantity": 2 }
+      ],
+      "unlockCondition": "special_projects_rank_2"
+    },
+    {
+      "id": "recipe-control-rod",
+      "outputItemId": "item-control-rod",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "compound_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "item-austenitic-manifold", "quantity": 1 },
+        { "itemId": "resource-dysprosium", "quantity": 3 },
+        { "itemId": "item-isotopic-coolant", "quantity": 1 }
+      ],
+      "unlockCondition": "special_projects_rank_3"
+    },
+    {
+      "id": "recipe-microsecond-regulator",
+      "outputItemId": "item-microsecond-regulator",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "multiplex_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-europium", "quantity": 4 },
+        { "itemId": "resource-lithium", "quantity": 2 },
+        { "itemId": "item-supercooled-magnet", "quantity": 1 },
+        { "itemId": "item-tau-grade-rheostat", "quantity": 1 }
+      ],
+      "unlockCondition": "special_projects_rank_3"
+    },
+    {
+      "id": "recipe-power-circuit",
+      "outputItemId": "item-power-circuit",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "multiplex_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-palladium", "quantity": 4 },
+        { "itemId": "item-paramagnon-conductor", "quantity": 1 },
+        { "itemId": "resource-polymer", "quantity": 2 },
+        { "itemId": "item-positron-battery", "quantity": 1 }
+      ],
+      "unlockCondition": "special_projects_rank_3"
+    },
+    {
+      "id": "recipe-nuclear-fuel-rod",
+      "outputItemId": "item-nuclear-fuel-rod",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "compound_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "item-semimetal-wafer", "quantity": 1 },
+        { "itemId": "resource-solvent", "quantity": 2 },
+        { "itemId": "resource-uranium", "quantity": 3 }
+      ],
+      "unlockCondition": "special_projects_rank_3"
+    },
+    {
+      "id": "recipe-sterile-nanotubes",
+      "outputItemId": "item-sterile-nanotubes",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "compound_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "item-molecular-sieve", "quantity": 1 },
+        { "itemId": "resource-solvent", "quantity": 2 },
+        { "itemId": "resource-vanadium", "quantity": 2 }
+      ],
+      "unlockCondition": "special_projects_rank_3"
+    },
+    {
+      "id": "recipe-indicite-wafer",
+      "outputItemId": "item-indicite-wafer",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "multiplex_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-caesium", "quantity": 2 },
+        { "itemId": "resource-indicite", "quantity": 4 },
+        { "itemId": "item-semimetal-wafer", "quantity": 1 },
+        { "itemId": "resource-solvent", "quantity": 2 }
+      ],
+      "unlockCondition": "special_projects_rank_4"
+    },
+    {
+      "id": "recipe-aldumite-drilling-rig",
+      "outputItemId": "item-aldumite-drilling-rig",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "multiplex_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-aldumite", "quantity": 4 },
+        { "itemId": "resource-caesium", "quantity": 2 },
+        { "itemId": "item-drilling-rig", "quantity": 1 },
+        { "itemId": "item-microsecond-regulator", "quantity": 1 }
+      ],
+      "unlockCondition": "special_projects_rank_4"
+    },
+    {
+      "id": "recipe-rothicite-magnet",
+      "outputItemId": "item-rothicite-magnet",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "multiplex_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-lithium", "quantity": 2 },
+        { "itemId": "resource-rothicite", "quantity": 4 },
+        { "itemId": "item-semimetal-wafer", "quantity": 1 },
+        { "itemId": "item-supercooled-magnet", "quantity": 1 }
+      ],
+      "unlockCondition": "special_projects_rank_4"
+    },
+    {
+      "id": "recipe-substrate-molecule-sieve",
+      "outputItemId": "item-substrate-molecule-sieve",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "multiplex_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-biosuppressant", "quantity": 2 },
+        { "itemId": "resource-memory-substrate", "quantity": 3 },
+        { "itemId": "item-molecular-sieve", "quantity": 1 },
+        { "itemId": "item-sterile-nanotubes", "quantity": 2 }
+      ],
+      "unlockCondition": "special_projects_rank_4"
+    },
+    {
+      "id": "recipe-tasine-superconductor",
+      "outputItemId": "item-tasine-superconductor",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "multiplex_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "resource-palladium", "quantity": 2 },
+        { "itemId": "item-paramagnon-conductor", "quantity": 1 },
+        { "itemId": "resource-polymer", "quantity": 2 },
+        { "itemId": "resource-tasine", "quantity": 4 }
+      ],
+      "unlockCondition": "special_projects_rank_4"
+    },
+    {
+      "id": "recipe-veryl-treated-manifold",
+      "outputItemId": "item-veryl-treated-manifold",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "multiplex_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "item-austenitic-manifold", "quantity": 1 },
+        { "itemId": "resource-lubricant", "quantity": 2 },
+        { "itemId": "resource-veryl", "quantity": 4 },
+        { "itemId": "resource-ytterbium", "quantity": 2 }
+      ],
+      "unlockCondition": "special_projects_rank_4"
+    },
+    {
+      "id": "recipe-vytinium-fuel-rod",
+      "outputItemId": "item-vytinium-fuel-rod",
+      "outputQuantity": 1,
+      "stationType": "industrial_workbench",
+      "fabricatorTier": "multiplex_fabricator",
+      "craftTimeSeconds": null,
+      "inputs": [
+        { "itemId": "item-indicite-wafer", "quantity": 1 },
+        { "itemId": "item-nuclear-fuel-rod", "quantity": 1 },
+        { "itemId": "resource-plutonium", "quantity": 2 },
+        { "itemId": "resource-vytinium", "quantity": 4 }
+      ],
+      "unlockCondition": "special_projects_rank_4"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "game": "Starfield",
+    "dataset": "manufactured_items",
+    "version": 1,
+    "generatedAt": "2026-04-17",
+    "notes": [
+      "Valores, massa e raridade vieram principalmente da tabela All resources da INARA.",
+      "Itens com receita confirmada aparecem no arquivo recipes.json.",
+      "Alguns componentes como primers, diodes premium, plasma igniter e X-Tech ainda nao tiveram a receita validada nesta primeira versao."
+    ],
+    "sources": [
+      "https://inara.cz/starfield/resources/"
+    ]
+  },
+  "items": [
+    { "id": "item-adaptive-frame", "name": "Adaptive Frame", "rarity": "common", "category": "component", "baseValue": 24, "mass": 2 },
+    { "id": "item-aldumite-drilling-rig", "name": "Aldumite Drilling Rig", "rarity": "unique", "category": "component", "baseValue": 421, "mass": 7 },
+    { "id": "item-austenitic-manifold", "name": "Austenitic Manifold", "rarity": "uncommon", "category": "component", "baseValue": 79, "mass": 4 },
+    { "id": "item-charged-diodes", "name": "Charged Diodes", "rarity": "common", "category": "component", "baseValue": 125, "mass": 1 },
+    { "id": "item-comm-relay", "name": "Comm Relay", "rarity": "uncommon", "category": "component", "baseValue": 117, "mass": 4 },
+    { "id": "item-control-rod", "name": "Control Rod", "rarity": "exotic", "category": "component", "baseValue": 180, "mass": 5 },
+    { "id": "item-drilling-rig", "name": "Drilling Rig", "rarity": "rare", "category": "component", "baseValue": 143, "mass": 5 },
+    { "id": "item-indicite-wafer", "name": "Indicite Wafer", "rarity": "unique", "category": "component", "baseValue": 243, "mass": 4 },
+    { "id": "item-isocentered-magnet", "name": "Isocentered Magnet", "rarity": "common", "category": "component", "baseValue": 36, "mass": 2 },
+    { "id": "item-isotopic-coolant", "name": "Isotopic Coolant", "rarity": "common", "category": "component", "baseValue": 25, "mass": 1 },
+    { "id": "item-large-round-primer", "name": "Large Round Primer", "rarity": "common", "category": "component", "baseValue": 125, "mass": 1 },
+    { "id": "item-mag-pressure-tank", "name": "Mag Pressure Tank", "rarity": "uncommon", "category": "component", "baseValue": 25, "mass": 2 },
+    { "id": "item-magnetic-diodes", "name": "Magnetic Diodes", "rarity": "common", "category": "component", "baseValue": 125, "mass": 1 },
+    { "id": "item-microsecond-regulator", "name": "Microsecond Regulator", "rarity": "exotic", "category": "component", "baseValue": 212, "mass": 4 },
+    { "id": "item-molecular-sieve", "name": "Molecular Sieve", "rarity": "rare", "category": "component", "baseValue": 91, "mass": 3 },
+    { "id": "item-monopropellant", "name": "Monopropellant", "rarity": "uncommon", "category": "component", "baseValue": 76, "mass": 4 },
+    { "id": "item-nuclear-fuel-rod", "name": "Nuclear Fuel Rod", "rarity": "exotic", "category": "component", "baseValue": 225, "mass": 5 },
+    { "id": "item-paramagnon-conductor", "name": "Paramagnon Conductor", "rarity": "rare", "category": "component", "baseValue": 153, "mass": 4 },
+    { "id": "item-plasma-igniter", "name": "Plasma Igniter", "rarity": "rare", "category": "component", "baseValue": 0, "mass": 0 },
+    { "id": "item-polytextile", "name": "Polytextile", "rarity": "uncommon", "category": "component", "baseValue": 25, "mass": 2 },
+    { "id": "item-positron-battery", "name": "Positron Battery", "rarity": "rare", "category": "component", "baseValue": 133, "mass": 3 },
+    { "id": "item-power-circuit", "name": "Power Circuit", "rarity": "exotic", "category": "component", "baseValue": 195, "mass": 4 },
+    { "id": "item-reactive-gauge", "name": "Reactive Gauge", "rarity": "common", "category": "component", "baseValue": 25, "mass": 2 },
+    { "id": "item-rothicite-magnet", "name": "Rothicite Magnet", "rarity": "unique", "category": "component", "baseValue": 295, "mass": 5 },
+    { "id": "item-semimetal-wafer", "name": "Semimetal Wafer", "rarity": "rare", "category": "component", "baseValue": 149, "mass": 4 },
+    { "id": "item-small-round-primer", "name": "Small Round Primer", "rarity": "common", "category": "component", "baseValue": 100, "mass": 1 },
+    { "id": "item-sterile-nanotubes", "name": "Sterile Nanotubes", "rarity": "exotic", "category": "component", "baseValue": 130, "mass": 3 },
+    { "id": "item-substrate-molecule-sieve", "name": "Substrate Molecule Sieve", "rarity": "unique", "category": "component", "baseValue": 274, "mass": 5 },
+    { "id": "item-supercooled-magnet", "name": "Supercooled Magnet", "rarity": "rare", "category": "component", "baseValue": 111, "mass": 3 },
+    { "id": "item-tasine-superconductor", "name": "Tasine Superconductor", "rarity": "unique", "category": "component", "baseValue": 299, "mass": 5 },
+    { "id": "item-tau-grade-rheostat", "name": "Tau Grade Rheostat", "rarity": "uncommon", "category": "component", "baseValue": 82, "mass": 3 },
+    { "id": "item-veryl-treated-manifold", "name": "Veryl-Treated Manifold", "rarity": "unique", "category": "component", "baseValue": 295, "mass": 5 },
+    { "id": "item-vytinium-fuel-rod", "name": "Vytinium Fuel Rod", "rarity": "unique", "category": "component", "baseValue": 836, "mass": 11 },
+    { "id": "item-x-tech", "name": "X-Tech", "rarity": "unique", "category": "component", "baseValue": 5000, "mass": 1 },
+    { "id": "item-zero-wire", "name": "Zero Wire", "rarity": "common", "category": "component", "baseValue": 52, "mass": 2 },
+    { "id": "item-zero-g-gimbal", "name": "Zero-G Gimbal", "rarity": "rare", "category": "component", "baseValue": 93, "mass": 3 }
+  ]
+}

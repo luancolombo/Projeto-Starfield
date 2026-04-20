@@ -1,0 +1,475 @@
+{
+  "metadata": {
+    "game": "Starfield",
+    "dataset": "vendors",
+    "version": 1,
+    "generatedAt": "2026-04-17",
+    "notes": [
+      "Este arquivo foi pensado para ranquear os melhores NPCs/lojas para vender resources e manufactured items.",
+      "Em Starfield, a economia e tratada como fixa e o valor de compra/venda muda mais por skills do jogador do que por um NPC pagar melhor.",
+      "Por isso, o ranking abaixo prioriza conveniencia, acesso, densidade de lojas e se o vendedor aceita praticamente qualquer item.",
+      "Campos como vendorCredits foram deixados como null nesta versao porque variam por contexto e nao foram validados de forma consistente nesta coleta."
+    ],
+    "sources": [
+      "https://game8.co/games/Starfield/archives/420194",
+      "https://game8.co/games/Starfield/archives/423683",
+      "https://game8.co/games/Starfield/archives/420581",
+      "https://game8.co/games/Starfield/archives/423652",
+      "https://game8.co/games/Starfield/archives/423677",
+      "https://game8.co/games/Starfield/archives/423942"
+    ]
+  },
+  "items": [
+    {
+      "id": "vendor-marcel-duris",
+      "name": "Marcel Duris",
+      "shopName": "Trade Authority",
+      "vendorType": "trade_authority",
+      "location": {
+        "city": "The Den",
+        "planetOrMoon": "Chthonia orbit",
+        "system": "Wolf"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc", "gear", "contraband", "stolen_goods"],
+      "recommendedFor": ["resources", "manufactured_items", "contraband"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Sem scan ao entrar no sistema Wolf",
+        "Excelente para vender qualquer tipo de item",
+        "Melhor hub individual para escoamento rapido"
+      ],
+      "advantages": ["no_scan", "buys_anything", "easy_access", "good_for_bulk_sales"],
+      "convenienceScore": 10,
+      "tradeScore": 10,
+      "resourceScore": 9,
+      "manufacturedScore": 9,
+      "contrabandScore": 10
+    },
+    {
+      "id": "vendor-zoe-kaminski",
+      "name": "Zoe Kaminski",
+      "shopName": "Trade Authority",
+      "vendorType": "trade_authority",
+      "location": {
+        "city": "The Well, New Atlantis",
+        "planetOrMoon": "Jemison",
+        "system": "Alpha Centauri"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc", "gear", "contraband", "stolen_goods"],
+      "recommendedFor": ["resources", "manufactured_items", "contraband"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Uma das primeiras Trade Authority que o jogador pode usar",
+        "Boa para rotas combinadas com New Atlantis",
+        "Fica em The Well, nao no percurso mais curto da cidade"
+      ],
+      "advantages": ["buys_anything", "major_city", "good_for_bulk_sales"],
+      "convenienceScore": 8,
+      "tradeScore": 9,
+      "resourceScore": 8,
+      "manufacturedScore": 8,
+      "contrabandScore": 9
+    },
+    {
+      "id": "vendor-new-atlantis-spaceport-kiosk",
+      "name": "Trade Authority Kiosk",
+      "shopName": "Trade Authority",
+      "vendorType": "trade_authority_kiosk",
+      "location": {
+        "city": "New Atlantis Spaceport",
+        "planetOrMoon": "Jemison",
+        "system": "Alpha Centauri"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc", "gear"],
+      "recommendedFor": ["resources", "manufactured_items"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Muito pratico porque fica perto do Ship Technician",
+        "Bom para descarregar logo ao aterrar"
+      ],
+      "advantages": ["easy_access", "spaceport", "good_for_bulk_sales"],
+      "convenienceScore": 8,
+      "tradeScore": 8,
+      "resourceScore": 8,
+      "manufacturedScore": 8,
+      "contrabandScore": 5
+    },
+    {
+      "id": "vendor-neon-trade-authority",
+      "name": "Trade Authority Vendor",
+      "shopName": "Trade Authority",
+      "vendorType": "trade_authority",
+      "location": {
+        "city": "Neon",
+        "planetOrMoon": "Volii Alpha",
+        "system": "Volii"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc", "gear", "contraband", "stolen_goods"],
+      "recommendedFor": ["resources", "manufactured_items", "contraband"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "A Game8 destaca Neon como a Trade Authority mais facil de acessar na cidade",
+        "Excelente hub por concentrar varias outras lojas proximas"
+      ],
+      "advantages": ["buys_anything", "easy_access", "vendor_cluster", "major_city"],
+      "convenienceScore": 9,
+      "tradeScore": 9,
+      "resourceScore": 9,
+      "manufacturedScore": 9,
+      "contrabandScore": 9
+    },
+    {
+      "id": "vendor-siegharts-outfitters",
+      "name": "Dietrich Sieghart",
+      "shopName": "Sieghart's Outfitters",
+      "vendorType": "general_store",
+      "location": {
+        "city": "Neon",
+        "planetOrMoon": "Volii Alpha",
+        "system": "Volii"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc", "armor"],
+      "recommendedFor": ["resources", "manufactured_items"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Loja forte para complementar a rota de venda em Neon",
+        "Tambem aparece como bom ponto para comprar e vender resources"
+      ],
+      "advantages": ["vendor_cluster", "resource_friendly", "major_city"],
+      "convenienceScore": 8,
+      "tradeScore": 8,
+      "resourceScore": 9,
+      "manufacturedScore": 8,
+      "contrabandScore": 3
+    },
+    {
+      "id": "vendor-mining-league",
+      "name": "Mining League Vendor",
+      "shopName": "Mining League",
+      "vendorType": "resource_vendor",
+      "location": {
+        "city": "Neon",
+        "planetOrMoon": "Volii Alpha",
+        "system": "Volii"
+      },
+      "buysCategories": ["resources", "manufactured_items", "mining_supplies"],
+      "recommendedFor": ["resources"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Loja tematica para recursos minerais e suprimentos de mineracao",
+        "Boa como parte da rota de venda em Neon"
+      ],
+      "advantages": ["vendor_cluster", "resource_specialist"],
+      "convenienceScore": 7,
+      "tradeScore": 7,
+      "resourceScore": 9,
+      "manufacturedScore": 6,
+      "contrabandScore": 0
+    },
+    {
+      "id": "vendor-frankies-grab-and-go",
+      "name": "Frankie's Grab and Go Vendor",
+      "shopName": "Frankie's Grab and Go",
+      "vendorType": "mixed_goods",
+      "location": {
+        "city": "Neon",
+        "planetOrMoon": "Volii Alpha",
+        "system": "Volii"
+      },
+      "buysCategories": ["resources", "manufactured_items", "weapons", "ammo", "aid"],
+      "recommendedFor": ["resources", "manufactured_items"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Loja mista que ajuda a drenar inventario em Neon",
+        "Boa para fechar a rota depois da Trade Authority"
+      ],
+      "advantages": ["vendor_cluster", "mixed_inventory"],
+      "convenienceScore": 7,
+      "tradeScore": 7,
+      "resourceScore": 7,
+      "manufacturedScore": 7,
+      "contrabandScore": 0
+    },
+    {
+      "id": "vendor-jemison-mercantile",
+      "name": "Jemison Mercantile Vendor",
+      "shopName": "Jemison Mercantile",
+      "vendorType": "general_store",
+      "location": {
+        "city": "New Atlantis Spaceport",
+        "planetOrMoon": "Jemison",
+        "system": "Alpha Centauri"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc", "gear"],
+      "recommendedFor": ["resources", "manufactured_items"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Muito cedo no jogo e muito facil de acessar",
+        "Excelente ponto de venda para MVP de rota"
+      ],
+      "advantages": ["early_game", "easy_access", "spaceport"],
+      "convenienceScore": 8,
+      "tradeScore": 7,
+      "resourceScore": 7,
+      "manufacturedScore": 7,
+      "contrabandScore": 0
+    },
+    {
+      "id": "vendor-apex-electronics",
+      "name": "Apex Electronics Vendor",
+      "shopName": "Apex Electronics",
+      "vendorType": "resource_vendor",
+      "location": {
+        "city": "New Atlantis",
+        "planetOrMoon": "Jemison",
+        "system": "Alpha Centauri"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc"],
+      "recommendedFor": ["resources", "manufactured_items"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "No mapa de New Atlantis aparece como loja de Resources e Miscellaneous Items",
+        "Boa loja complementar na mesma cidade"
+      ],
+      "advantages": ["resource_friendly", "major_city", "vendor_cluster"],
+      "convenienceScore": 7,
+      "tradeScore": 7,
+      "resourceScore": 8,
+      "manufacturedScore": 7,
+      "contrabandScore": 0
+    },
+    {
+      "id": "vendor-midtown-minerals",
+      "name": "Midtown Minerals Vendor",
+      "shopName": "Midtown Minerals",
+      "vendorType": "resource_vendor",
+      "location": {
+        "city": "Akila City",
+        "planetOrMoon": "Akila",
+        "system": "Cheyenne"
+      },
+      "buysCategories": ["resources", "manufactured_items", "mineral_resources"],
+      "recommendedFor": ["resources"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Loja especializada em Mineral Resources",
+        "Muito boa para o tema de mineracao do seu site"
+      ],
+      "advantages": ["resource_specialist", "major_city"],
+      "convenienceScore": 7,
+      "tradeScore": 7,
+      "resourceScore": 9,
+      "manufacturedScore": 6,
+      "contrabandScore": 0
+    },
+    {
+      "id": "vendor-shepherds-general-store",
+      "name": "Emerson Shepherd",
+      "shopName": "Shepherd's General Store",
+      "vendorType": "general_store",
+      "location": {
+        "city": "Akila City",
+        "planetOrMoon": "Akila",
+        "system": "Cheyenne"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc", "gear"],
+      "recommendedFor": ["resources", "manufactured_items"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Boa loja geral para complementar Midtown Minerals e Trade Authority",
+        "Akila vira uma rota util quando voce quer girar varios vendors em sequencia"
+      ],
+      "advantages": ["major_city", "mixed_inventory"],
+      "convenienceScore": 7,
+      "tradeScore": 7,
+      "resourceScore": 7,
+      "manufacturedScore": 7,
+      "contrabandScore": 0
+    },
+    {
+      "id": "vendor-akila-trade-authority",
+      "name": "Trade Authority Vendor",
+      "shopName": "Trade Authority",
+      "vendorType": "trade_authority",
+      "location": {
+        "city": "Akila City",
+        "planetOrMoon": "Akila",
+        "system": "Cheyenne"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc", "gear", "contraband", "stolen_goods"],
+      "recommendedFor": ["resources", "manufactured_items", "contraband"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Fica atras do GalBank segundo a Game8",
+        "Boa opcao para fechar a rota de Akila"
+      ],
+      "advantages": ["buys_anything", "major_city"],
+      "convenienceScore": 7,
+      "tradeScore": 8,
+      "resourceScore": 7,
+      "manufacturedScore": 7,
+      "contrabandScore": 8
+    },
+    {
+      "id": "vendor-general-goods-key",
+      "name": "General Goods Vendor",
+      "shopName": "General Goods",
+      "vendorType": "resource_vendor",
+      "location": {
+        "city": "The Key",
+        "planetOrMoon": "Suvorov orbit",
+        "system": "Kryx"
+      },
+      "buysCategories": ["resources", "manufactured_items", "aid"],
+      "recommendedFor": ["resources", "manufactured_items"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "No mapa de The Key aparece como loja de Aid e Resources",
+        "Forte para complementar a rota da estacao"
+      ],
+      "advantages": ["vendor_cluster", "resource_friendly", "late_game_hub"],
+      "convenienceScore": 8,
+      "tradeScore": 7,
+      "resourceScore": 8,
+      "manufacturedScore": 7,
+      "contrabandScore": 0,
+      "requirements": ["crimson_fleet_access"]
+    },
+    {
+      "id": "vendor-zuris-essentials",
+      "name": "Zuri Abara",
+      "shopName": "Zuri's Essentials",
+      "vendorType": "mixed_goods",
+      "location": {
+        "city": "The Key",
+        "planetOrMoon": "Suvorov orbit",
+        "system": "Kryx"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc", "weapons", "armor"],
+      "recommendedFor": ["manufactured_items", "resources"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "Boa loja adicional para itens valiosos e componentes",
+        "Zuri aparece bastante nas paginas da INARA como vendedora de componentes raros"
+      ],
+      "advantages": ["vendor_cluster", "late_game_hub", "mixed_inventory"],
+      "convenienceScore": 8,
+      "tradeScore": 8,
+      "resourceScore": 7,
+      "manufacturedScore": 8,
+      "contrabandScore": 0,
+      "requirements": ["crimson_fleet_access"]
+    },
+    {
+      "id": "vendor-key-trade-authority",
+      "name": "Trade Authority Vendor",
+      "shopName": "Trade Authority",
+      "vendorType": "trade_authority",
+      "location": {
+        "city": "The Key",
+        "planetOrMoon": "Suvorov orbit",
+        "system": "Kryx"
+      },
+      "buysCategories": ["resources", "manufactured_items", "misc", "gear", "contraband", "stolen_goods"],
+      "recommendedFor": ["resources", "manufactured_items", "contraband"],
+      "vendorCredits": null,
+      "accessNotes": [
+        "The Key e um dos melhores hubs de venda quando desbloqueado",
+        "Concentra varias lojas perto da Trade Authority"
+      ],
+      "advantages": ["buys_anything", "vendor_cluster", "late_game_hub"],
+      "convenienceScore": 9,
+      "tradeScore": 9,
+      "resourceScore": 8,
+      "manufacturedScore": 8,
+      "contrabandScore": 9,
+      "requirements": ["crimson_fleet_access"]
+    }
+  ],
+  "sellHubs": [
+    {
+      "id": "hub-the-den",
+      "name": "The Den",
+      "system": "Wolf",
+      "bestFor": ["all_items", "resources", "manufactured_items", "contraband"],
+      "topVendorIds": ["vendor-marcel-duris"],
+      "hubScore": 10,
+      "reasons": [
+        "Sem scan",
+        "Trade Authority acessivel",
+        "Melhor hub unitario para vender tudo"
+      ]
+    },
+    {
+      "id": "hub-neon",
+      "name": "Neon",
+      "system": "Volii",
+      "bestFor": ["resources", "manufactured_items", "bulk_selling"],
+      "topVendorIds": [
+        "vendor-neon-trade-authority",
+        "vendor-siegharts-outfitters",
+        "vendor-mining-league",
+        "vendor-frankies-grab-and-go"
+      ],
+      "hubScore": 9,
+      "reasons": [
+        "Alta densidade de lojas",
+        "Trade Authority muito pratica",
+        "Boa mistura de resource vendors e general stores"
+      ]
+    },
+    {
+      "id": "hub-new-atlantis",
+      "name": "New Atlantis",
+      "system": "Alpha Centauri",
+      "bestFor": ["resources", "manufactured_items", "early_game_selling"],
+      "topVendorIds": [
+        "vendor-zoe-kaminski",
+        "vendor-new-atlantis-spaceport-kiosk",
+        "vendor-jemison-mercantile",
+        "vendor-apex-electronics"
+      ],
+      "hubScore": 8,
+      "reasons": [
+        "Otimo no comeco do jogo",
+        "Varios pontos de venda",
+        "Boa rota entre spaceport, The Well e Commercial District"
+      ]
+    },
+    {
+      "id": "hub-akila-city",
+      "name": "Akila City",
+      "system": "Cheyenne",
+      "bestFor": ["resources", "manufactured_items", "mineral_selling"],
+      "topVendorIds": [
+        "vendor-akila-trade-authority",
+        "vendor-midtown-minerals",
+        "vendor-shepherds-general-store"
+      ],
+      "hubScore": 8,
+      "reasons": [
+        "Boa rota de venda",
+        "Midtown Minerals ajuda no foco mineral",
+        "Trade Authority fecha venda geral"
+      ]
+    },
+    {
+      "id": "hub-the-key",
+      "name": "The Key",
+      "system": "Kryx",
+      "bestFor": ["resources", "manufactured_items", "contraband", "late_game_selling"],
+      "topVendorIds": [
+        "vendor-key-trade-authority",
+        "vendor-general-goods-key",
+        "vendor-zuris-essentials"
+      ],
+      "hubScore": 9,
+      "reasons": [
+        "Hub muito forte quando desbloqueado",
+        "Muitas lojas proximas",
+        "Excelente para limpar inventario grande"
+      ],
+      "requirements": ["crimson_fleet_access"]
+    }
+  ]
+}
