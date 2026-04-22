@@ -1,29 +1,31 @@
 # Starfield Outpost Ledger
 
-Projeto de estudo feito para explorar uma ideia simples: criar um site estático que ajude a comparar recursos, itens manufaturados, lucro de entrepostos e rankings de naves no Starfield.
+Projeto de estudo feito para testar uma ideia simples: criar um site estatico para ajudar com entrepostos, recursos, manufatura, lucro e comparacao de naves no Starfield.
 
-Minha stack principal é Java, então este projeto foi criado justamente para praticar um pouco de HTML, CSS e JavaScript sem depender de backend, framework ou banco de dados.
+Minha stack principal e Java, entao este projeto nasceu justamente para praticar HTML, CSS e JavaScript de um jeito mais leve, sem backend, framework ou banco de dados.
 
 ## O que o projeto faz
 
-- Lista recursos e itens manufaturados do jogo usando arquivos JSON locais.
-- Mostra informações de vendors para recursos, itens e naves.
-- Calcula estimativas simples de lucro para mineração e manufatura.
-- Exibe rankings de naves por diferentes contextos, como exploração, combate, compráveis, classes e midgame.
-- Permite abrir a página de rankings e escolher qual ranking visualizar por um menu.
+- Lista resources e manufactured items a partir de arquivos JSON locais.
+- Mostra detalhe do item selecionado com valor, categoria, receita e fontes.
+- Exibe melhores vendors e melhores hubs de venda para o item pesquisado.
+- Calcula uma estimativa simples de producao e lucro para entrepostos.
+- Traz comparador de naves lado a lado com stats e pontuacoes do site.
+- Mostra rankings de naves na home e uma pagina separada com top 50 por contexto.
+- Usa autocomplete na busca de itens e na busca de naves.
 
 ## Por que fiz esse projeto
 
-A ideia nasceu como um estudo para entender se seria possível montar uma ferramenta útil para entrepostos do Starfield usando apenas front-end básico.
+A ideia foi estudar se daria para montar uma ferramenta util para Starfield usando so front-end basico e arquivos JSON.
 
-O foco não foi criar algo perfeito ou comercial. Foi praticar:
+O foco nunca foi fazer algo comercial ou super robusto. Foi praticar:
 
-- organização de dados em JSON;
+- organizacao de dados em JSON;
 - consumo de JSON com JavaScript;
-- manipulação de DOM;
-- criação de filtros, rankings e tabelas;
-- estruturação de um projeto simples para GitHub;
-- um pouco de design visual com CSS puro.
+- manipulacao de DOM;
+- filtros, comparadores e rankings;
+- layout responsivo com CSS puro;
+- estrutura de projeto simples para GitHub.
 
 ## Stack usada
 
@@ -31,22 +33,20 @@ O foco não foi criar algo perfeito ou comercial. Foi praticar:
 - CSS
 - JavaScript
 - JSON
-- PowerShell para alguns scripts de geração/organização dos dados
+- PowerShell para gerar e organizar parte dos dados
 
-Não existe backend neste momento. O site lê os arquivos dentro da pasta `data` diretamente pelo navegador.
+Hoje o projeto continua sem backend. O site le os arquivos da pasta `data` diretamente no navegador.
 
 ## Como rodar localmente
 
-Como o projeto carrega arquivos JSON com `fetch`, o ideal é rodar com um servidor local simples.
+Como o projeto usa `fetch` para carregar JSON, o ideal e abrir com um servidor local simples.
 
-Se você usa VS Code:
+Se voce usa VS Code:
 
-1. Instale a extensão `Live Server`.
+1. Instale a extensao `Live Server`.
 2. Abra a pasta do projeto no VS Code.
-3. Clique com o botão direito no `index.html`.
+3. Clique com o botao direito em `index.html`.
 4. Escolha `Open with Live Server`.
-
-Depois disso, o navegador deve abrir o site localmente.
 
 ## Estrutura principal
 
@@ -57,49 +57,77 @@ Depois disso, o navegador deve abrir o site localmente.
 |-- styles.css
 |-- script.js
 |-- ship-rankings.js
+|-- README.md
 |-- data/
 |   |-- resources.json
 |   |-- manufactured-items.json
 |   |-- recipes.json
 |   |-- vendors.json
 |   |-- ships.json
-|   `-- ship-rankings.json
+|   |-- ship-rankings.json
+|   |-- ship-acquisition-backlog.json
+|   |-- extractors.json
+|   |-- planets.json
+|   `-- profit-simulations.json
 |-- tools/
+|   |-- build-ship-data.ps1
+|   |-- build-ship-acquisition-backlog.ps1
+|   `-- fetch-inara-ship-page.ps1
 `-- lib/
 ```
 
 ## Sobre os dados
 
-Os dados foram organizados em arquivos JSON para estudo e prototipagem. Algumas informações foram catalogadas manualmente com base em consulta pública e conferência dentro do contexto do jogo.
+Os dados foram organizados em JSON para estudo e prototipagem. A parte de naves, vendors e aquisicao foi sendo catalogada com base em consulta publica, principalmente usando a INARA como referencia.
 
-O layout, a estrutura do site e a lógica do projeto foram criados do zero para este estudo. A intenção não foi copiar nenhuma página existente.
+O layout, a estrutura do site e a logica do projeto foram montados do zero para este estudo. A intencao nao foi copiar nenhuma pagina existente.
 
-Este projeto não é oficial, não tem ligação com a Bethesda e pode conter informações incompletas ou que mudem com atualizações, DLCs ou diferenças no jogo.
+Este projeto nao e oficial, nao tem ligacao com a Bethesda e pode conter pontos que ainda merecem revisao.
 
 ## Status atual
 
-O projeto já tem:
+Hoje o projeto ja tem:
 
-- catálogo de recursos;
-- catálogo de itens manufaturados;
-- receitas;
-- vendors;
-- rankings de naves;
-- dados de aquisição de várias naves;
-- ranking midgame com vendors preenchidos;
-- ranking principal de exploração/combate com dados de aquisição preenchidos.
+- catalogo de resources;
+- catalogo de manufactured items;
+- receitas em JSON;
+- vendors e hubs de venda;
+- calculadora de lucro/saida para entrepostos;
+- comparador de naves;
+- rankings de naves com pagina dedicada;
+- top 3 rankings principais destacados na home;
+- autocomplete na busca de itens e naves;
+- foco automatico na area de detalhe/calculadora quando um item valido e pesquisado;
+- catalogo de naves com aquisicao preenchida;
+- backlog de aquisicao de naves zerado;
+- vendors de todas as naves restantes preenchidos no dataset atual.
 
-Ainda existem dados que podem ser melhorados ou completados, principalmente no catálogo completo de naves.
+## O que foi atualizado mais recentemente
+
+As atualizacoes mais recentes do projeto foram:
+
+- fechamento do catalogo de aquisicao/vendors das naves restantes;
+- geracao final de `ships.json` sem entradas `not_collected`;
+- `ship-acquisition-backlog.json` zerado;
+- ajuste da home para mostrar so os 3 rankings principais;
+- mudanca do bloco de detalhe do item para a coluna da esquerda;
+- comparador de naves no lugar do catalogo antigo;
+- autocomplete no buscador de itens;
+- melhoria no scroll automatico para so descer quando o nome digitado bate com um item valido.
 
 ## Ideias para evoluir
 
-- Melhorar os filtros nas tabelas.
-- Criar busca por nome de nave, recurso ou item.
-- Adicionar favoritos.
-- Melhorar a calculadora de lucro com custos e tempo de produção.
-- Separar melhor rankings por tipo de jogador.
-- Futuramente migrar para uma stack com backend, como Java ou Python, se fizer sentido.
+Algumas ideias que ainda acho legais para continuar estudando:
 
-## Observação
+- criar filtro avancado de naves por class, metodo de aquisicao e faixa de level;
+- adicionar pagina individual de nave com historico, vendors e ranking detalhado;
+- mostrar comparacao visual de lucro entre mineracao e manufatura;
+- permitir fixar favoritos para itens e naves;
+- adicionar export simples de comparacoes e rankings em JSON ou CSV;
+- criar um modo "progressao" com sugestoes de naves early, mid e late game;
+- melhorar a calculadora com receita encadeada e custo por insumo;
+- no futuro, testar uma migracao para backend em Java ou Python so como estudo.
 
-Este é um projeto pessoal de aprendizado. O objetivo principal é estudar, testar ideias e praticar front-end usando um tema que eu gosto.
+## Observacao
+
+Este e um projeto pessoal de aprendizado. O objetivo principal e estudar, testar ideias e praticar fora da minha stack principal usando um tema que eu gosto.
