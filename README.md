@@ -1,5 +1,8 @@
 # Starfield Outpost Ledger
 
+Site em funcionamento no GitHub Pages:
+[https://luancolombo.github.io/Projeto-Starfield/](https://luancolombo.github.io/Projeto-Starfield/)
+
 Projeto de estudo feito para testar uma ideia simples: criar um site estatico para ajudar com entrepostos, recursos, manufatura, lucro e comparacao de naves no Starfield.
 
 Minha stack principal e Java, entao este projeto nasceu justamente para praticar HTML, CSS e JavaScript de um jeito mais leve, sem backend, framework ou banco de dados.
