@@ -535,6 +535,167 @@ function New-SettledPassengerList([Nullable[int]]$level = $null) {
   )
 }
 
+function New-CrimsonFleetVendor([Nullable[int]]$level = $null) {
+  return @(
+    (New-Location "Kryx" "Jasmine Durand" $level)
+  )
+}
+
+function New-SolAlphaList([Nullable[int]]$level = $null) {
+  return @(
+    (New-Location "Sol" "Nikau Henderson" $level),
+    (New-Location "Sol" "Ship Services Technician (Cydonia)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" $level),
+    (New-Location "Sol" "Ship Services Technician (New Homestead)" $level)
+  )
+}
+
+function New-AchillesVendorList([Nullable[int]]$level = $null, [bool]$includeDanica = $true) {
+  $locations = @()
+  if ($includeDanica) {
+    $locations += (New-Location "Algorab" "Danica Volkov" $level)
+  }
+  $locations += @(
+    (New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" $level),
+    (New-Location "Cheyenne" "Ship Services Technician (Akila City)" $level),
+    (New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" $level),
+    (New-Location "Porrima" "Lon Anderssen" $level),
+    (New-Location "Porrima" "Ship Services Technician (Paradiso)" $level),
+    (New-Location $null "Shipbuilder (Outpost)" $level),
+    (New-Location "Sol" "Ship Services Technician (Cydonia)" $level),
+    (New-Location "Sol" "Ship Services Technician (New Homestead)" $level),
+    (New-Location "Valo" "Ship Services Technician (HopeTown)" $level),
+    (New-Location "Volii" "Ship Services Technician (Neon)" $level)
+  )
+  return $locations
+}
+
+function New-DanicaHopeTechList([Nullable[int]]$level = $null) {
+  return @(
+    (New-Location "Algorab" "Danica Volkov" $level),
+    (New-Location "Cheyenne" "Ship Services Technician (Akila City)" $level),
+    (New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" $level),
+    (New-Location "Kavnyk" "Dumar Hasadi" $level $true),
+    (New-Location "Porrima" "Lon Anderssen" $level),
+    (New-Location "Porrima" "Ship Services Technician (Paradiso)" $level),
+    (New-Location $null "Shipbuilder (Outpost)" $level),
+    (New-Location "Valo" "Ship Services Technician (HopeTown)" $level),
+    (New-Location "Volii" "Ship Services Technician (Neon)" $level)
+  )
+}
+
+function New-DolphinVendorList([Nullable[int]]$level = $null) {
+  return @(
+    (New-Location "Algorab" "Danica Volkov" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" $level),
+    (New-Location "Porrima" "Ship Services Technician (Paradiso)" $level),
+    (New-Location "Volii" "Ship Services Technician (Neon)" $level),
+    (New-Location "Volii" "Veronica Young" $level)
+  )
+}
+
+function New-CivshuttleVendorList([Nullable[int]]$level = $null) {
+  return @(
+    (New-Location "Algorab" "Danica Volkov" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" $level),
+    (New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" $level),
+    (New-Location "Kavnyk" "Dumar Hasadi" $level $true),
+    (New-Location "Porrima" "Lon Anderssen" $level),
+    (New-Location "Porrima" "Ship Services Technician (Paradiso)" $level),
+    (New-Location $null "Shipbuilder (Outpost)" $level),
+    (New-Location "Sol" "Ship Services Technician (Cydonia)" $level),
+    (New-Location "Sol" "Ship Services Technician (New Homestead)" $level),
+    (New-Location "Volii" "Ship Services Technician (Neon)" $level)
+  )
+}
+
+function New-KfirVendorList([Nullable[int]]$level = $null) {
+  return @(
+    (New-Location "Cheyenne" "Ship Services Technician (Akila City)" $level),
+    (New-Location "Sol" "Ship Services Technician (Cydonia)" $level),
+    (New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" $level),
+    (New-Location "Valo" "Ship Services Technician (HopeTown)" $level),
+    (New-Location "Volii" "Ship Services Technician (Neon)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" $level),
+    (New-Location "Sol" "Ship Services Technician (New Homestead)" $level),
+    (New-Location "Porrima" "Ship Services Technician (Paradiso)" $level)
+  )
+}
+
+function New-RoanokeVendorList([Nullable[int]]$level = $null) {
+  return @(
+    (New-Location "Algorab" "Danica Volkov" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" $level),
+    (New-Location "Cheyenne" "Ship Services Technician (Akila City)" $level),
+    (New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" $level),
+    (New-Location "Narion" "Havershaw" $level),
+    (New-Location "Porrima" "Ship Services Technician (Paradiso)" $level),
+    (New-Location "Sol" "Ship Services Technician (Cydonia)" $level),
+    (New-Location "Sol" "Ship Services Technician (New Homestead)" $level),
+    (New-Location "Valo" "Ship Services Technician (HopeTown)" $level),
+    (New-Location "Volii" "Ship Services Technician (Neon)" $level),
+    (New-Location "Volii" "Stroud-Eklund Ship Kiosk" $level)
+  )
+}
+
+function New-WatchdogVendorList([Nullable[int]]$level = $null) {
+  return @(
+    (New-Location "Cheyenne" "Ship Services Technician (Akila City)" $level),
+    (New-Location "Valo" "Inaya Rehman" $level),
+    (New-Location "Valo" "Ship Services Technician (HopeTown)" $level)
+  )
+}
+
+function New-AsphaltVendorList([Nullable[int]]$level = $null) {
+  return @(
+    (New-Location "Sol" "Ship Services Technician (Cydonia)" $level),
+    (New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" $level),
+    (New-Location "Volii" "Ship Services Technician (Neon)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" $level),
+    (New-Location "Sol" "Ship Services Technician (New Homestead)" $level),
+    (New-Location "Porrima" "Ship Services Technician (Paradiso)" $level),
+    (New-Location $null "Shipbuilder (Outpost)" $level)
+  )
+}
+
+function New-SettledShuttleVendorList([Nullable[int]]$level = $null, [bool]$includeDanica = $false) {
+  $locations = @()
+  if ($includeDanica) { $locations += (New-Location "Algorab" "Danica Volkov" $level) }
+  $locations += @(
+    (New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" $level),
+    (New-Location "Cheyenne" "Ship Services Technician (Akila City)" $level),
+    (New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" $level),
+    (New-Location "Porrima" "Ship Services Technician (Paradiso)" $level),
+    (New-Location $null "Shipbuilder (Outpost)" $level),
+    (New-Location "Sol" "Ship Services Technician (Cydonia)" $level),
+    (New-Location "Sol" "Ship Services Technician (New Homestead)" $level),
+    (New-Location "Valo" "Ship Services Technician (HopeTown)" $level),
+    (New-Location "Volii" "Ship Services Technician (Neon)" $level)
+  )
+  return $locations
+}
+
+function New-SlipstreamVendorList([Nullable[int]]$level = $null) {
+  return @(
+    (New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" $level),
+    (New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" $level),
+    (New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" $level),
+    (New-Location "Porrima" "Lon Anderssen" $level),
+    (New-Location "Porrima" "Ship Services Technician (Paradiso)" $level),
+    (New-Location $null "Shipbuilder (Outpost)" $level),
+    (New-Location "Sol" "Ship Services Technician (Cydonia)" $level),
+    (New-Location "Sol" "Ship Services Technician (New Homestead)" $level),
+    (New-Location "Volii" "Ship Services Technician (Neon)" $level)
+  )
+}
+
 function New-PiracyAcquisition([string]$sourceUrl, [int]$pilotingRank, [Nullable[int]]$level = $null, [string[]]$extraNotes = @()) {
   $notes = @("Not available for purchase; can be acquired through piracy.")
   if ($level) { $notes += "May require player level $level+ to appear." }
@@ -542,14 +703,45 @@ function New-PiracyAcquisition([string]$sourceUrl, [int]$pilotingRank, [Nullable
   return [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement $pilotingRank); locations = @(); sourceUrl = $sourceUrl; notes = $notes }
 }
 
+function New-PiracyAcquisitionNoSkill([string]$sourceUrl, [Nullable[int]]$level = $null, [string[]]$extraNotes = @()) {
+  $notes = @("Not available for purchase; can be acquired through piracy.")
+  if ($level) { $notes += "May require player level $level+ to appear." }
+  $notes += $extraNotes
+  return [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = $sourceUrl; notes = $notes }
+}
+
 $purchaseData = @{
+  "Achilles" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-AchillesVendorList $null $true); sourceUrl = "https://inara.cz/starfield/ship/372/"; notes = @("Vendor stock can be partially random.") }
+  "Achilles II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-AchillesVendorList 20 $true); sourceUrl = "https://inara.cz/starfield/ship/959/"; notes = @("Vendor stock can be partially random.") }
+  "Achilles III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-AchillesVendorList 38 $false); sourceUrl = "https://inara.cz/starfield/ship/2481/"; notes = @("Vendor stock can be partially random.") }
+  "Atlas" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2750/")
+  "Atlas II" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2751/")
+  "Atlas III" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2752/")
   "Autobahn III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = $commonHighTierVendors64; sourceUrl = "https://inara.cz/starfield/ship/1982/"; notes = @("Vendor stock can be partially random.") }
   "Autobahn" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CommonShipTechList $null $false $false $true $true $false $true); sourceUrl = "https://inara.cz/starfield/ship/2484/"; notes = @("Vendor stock can be partially random.") }
   "Autobahn II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CommonShipTechList 46); sourceUrl = "https://inara.cz/starfield/ship/2003/"; notes = @("Vendor stock can be partially random.") }
-  "Babylon II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-HopeTechList 54); sourceUrl = "https://inara.cz/starfield/ship/2486/"; notes = @("Vendor stock can be partially random.") }
+  "Babylon" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-DanicaHopeTechList $null); sourceUrl = "https://inara.cz/starfield/ship/2485/"; notes = @("Vendor stock can be partially random.") }
+  "Babylon II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-DanicaHopeTechList 54); sourceUrl = "https://inara.cz/starfield/ship/2486/"; notes = @("Vendor stock can be partially random.") }
   "Blackhawk III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Porrima" "Lon Anderssen" 60),(New-Location "Cheyenne" "Ship Services Technician (Akila City)" 60),(New-Location "Sol" "Ship Services Technician (Cydonia)" 60),(New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" 60),(New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" 60),(New-Location "Valo" "Ship Services Technician (HopeTown)" 60),(New-Location "Volii" "Ship Services Technician (Neon)" 60),(New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" 60),(New-Location "Sol" "Ship Services Technician (New Homestead)" 60),(New-Location "Porrima" "Ship Services Technician (Paradiso)" 60)); sourceUrl = "https://inara.cz/starfield/ship/2491/"; notes = @("Vendor stock can be partially random.") }
+  "Caravan" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DanicaHopeTechList $null); sourceUrl = "https://inara.cz/starfield/ship/993/"; notes = @("Vendor stock can be partially random.") }
+  "Caravan II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DanicaHopeTechList 38); sourceUrl = "https://inara.cz/starfield/ship/2492/"; notes = @("Vendor stock can be partially random.") }
+  "Caravan III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DanicaHopeTechList 60); sourceUrl = "https://inara.cz/starfield/ship/2493/"; notes = @("Vendor stock can be partially random.") }
   "Carry ALL III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CommonShipTechList 62); sourceUrl = "https://inara.cz/starfield/ship/2495/"; notes = @("Vendor stock can be partially random.") }
+  "Celestial" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-SolAlphaList $null); sourceUrl = "https://inara.cz/starfield/ship/2496/"; notes = @("Vendor stock can be partially random.") }
+  "Celestial II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-SolAlphaList 60); sourceUrl = "https://inara.cz/starfield/ship/109/"; notes = @("Vendor stock can be partially random.") }
+  "Civshuttle" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CivshuttleVendorList $null); sourceUrl = "https://inara.cz/starfield/ship/2497/"; notes = @("Vendor stock can be partially random.") }
+  "Civshuttle II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CivshuttleVendorList 34); sourceUrl = "https://inara.cz/starfield/ship/1007/"; notes = @("Vendor stock can be partially random.") }
+  "Civshuttle III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CivshuttleVendorList 54); sourceUrl = "https://inara.cz/starfield/ship/1983/"; notes = @("Vendor stock can be partially random.") }
   "Crossbow III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = $commonHighTierVendors72; sourceUrl = "https://inara.cz/starfield/ship/1984/"; notes = @("Vendor stock can be partially random.") }
+  "Dagger" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2756/")
+  "Dagger II" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2757/")
+  "Dagger III" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2758/")
+  "Dagger IV" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2759/")
+  "Dolphin" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DolphinVendorList $null); sourceUrl = "https://inara.cz/starfield/ship/2519/"; notes = @("Vendor stock can be partially random.") }
+  "Dolphin II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DolphinVendorList 60); sourceUrl = "https://inara.cz/starfield/ship/1995/"; notes = @("Vendor stock can be partially random.") }
+  "Endeavor" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-ZumwaltList $null); sourceUrl = "https://inara.cz/starfield/ship/2523/"; notes = @("Vendor stock can be partially random.") }
+  "Endeavor II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-ZumwaltList 32); sourceUrl = "https://inara.cz/starfield/ship/2524/"; notes = @("Vendor stock can be partially random.") }
+  "Endeavor III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-ZumwaltList 46); sourceUrl = "https://inara.cz/starfield/ship/2525/"; notes = @("Vendor stock can be partially random.") }
   "Voyager III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = $commonHighTierVendors72; sourceUrl = "https://inara.cz/starfield/ship/112/"; notes = @("Vendor stock can be partially random.") }
   "Vanquisher" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-VanquisherList $null); sourceUrl = "https://inara.cz/starfield/ship/2592/"; notes = @("Vendor stock can be partially random.") }
   "Vanquisher II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-VanquisherList 44); sourceUrl = "https://inara.cz/starfield/ship/2593/"; notes = @("Vendor stock can be partially random.") }
@@ -562,32 +754,103 @@ $purchaseData = @{
   "Orca III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" 64),(New-Location "Porrima" "Ship Services Technician (Paradiso)" 64),(New-Location "Volii" "Ship Services Technician (Neon)" 64),(New-Location "Volii" "Veronica Young" 64)); sourceUrl = "https://inara.cz/starfield/ship/1989/"; notes = @("Vendor stock can be partially random.") }
   "Orca" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-OrcaReefList $null); sourceUrl = "https://inara.cz/starfield/ship/1002/"; notes = @("Vendor stock can be partially random.") }
   "Orca II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-OrcaReefList 46); sourceUrl = "https://inara.cz/starfield/ship/2550/"; notes = @("Vendor stock can be partially random.") }
-  "Crimson Fleet Wight III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Kryx" "Jasmine Durand" 72)); sourceUrl = "https://inara.cz/starfield/ship/2515/"; notes = @("Vendor stock can be partially random.") }
-  "Crimson Fleet Wraith III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Kryx" "Jasmine Durand" 64)); sourceUrl = "https://inara.cz/starfield/ship/2517/"; notes = @("Vendor stock can be partially random.") }
-  "Crimson Fleet Wraith" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Kryx" "Jasmine Durand")); sourceUrl = "https://inara.cz/starfield/ship/1003/"; notes = @("Vendor stock can be partially random.") }
-  "Crimson Fleet Wraith II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Kryx" "Jasmine Durand" 46)); sourceUrl = "https://inara.cz/starfield/ship/2516/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Banshee" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CrimsonFleetVendor $null); sourceUrl = "https://inara.cz/starfield/ship/1000/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Banshee II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CrimsonFleetVendor 38); sourceUrl = "https://inara.cz/starfield/ship/2499/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Banshee III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CrimsonFleetVendor 62); sourceUrl = "https://inara.cz/starfield/ship/2500/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Ghost" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor $null); sourceUrl = "https://inara.cz/starfield/ship/2501/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Ghost II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor 14); sourceUrl = "https://inara.cz/starfield/ship/2502/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Ghost III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor 32); sourceUrl = "https://inara.cz/starfield/ship/987/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Ghost IV" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor 58); sourceUrl = "https://inara.cz/starfield/ship/2503/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Haunt" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor $null); sourceUrl = "https://inara.cz/starfield/ship/2504/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Haunt II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor 28); sourceUrl = "https://inara.cz/starfield/ship/967/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Haunt III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor 46); sourceUrl = "https://inara.cz/starfield/ship/2505/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Phantom" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor $null); sourceUrl = "https://inara.cz/starfield/ship/2506/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Phantom II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor 20); sourceUrl = "https://inara.cz/starfield/ship/961/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Phantom III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor 38); sourceUrl = "https://inara.cz/starfield/ship/2507/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Reaper" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CrimsonFleetVendor $null); sourceUrl = "https://inara.cz/starfield/ship/2508/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Reaper II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CrimsonFleetVendor 32); sourceUrl = "https://inara.cz/starfield/ship/2509/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Reaper III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CrimsonFleetVendor 56); sourceUrl = "https://inara.cz/starfield/ship/2510/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Specter" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CrimsonFleetVendor $null); sourceUrl = "https://inara.cz/starfield/ship/2511/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Specter II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CrimsonFleetVendor 24); sourceUrl = "https://inara.cz/starfield/ship/990/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Specter III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CrimsonFleetVendor 48); sourceUrl = "https://inara.cz/starfield/ship/2512/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Specter IV" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CrimsonFleetVendor 76); sourceUrl = "https://inara.cz/starfield/ship/2513/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Wight" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CrimsonFleetVendor $null); sourceUrl = "https://inara.cz/starfield/ship/1012/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Wight II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CrimsonFleetVendor 38); sourceUrl = "https://inara.cz/starfield/ship/2514/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Wight III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CrimsonFleetVendor 72); sourceUrl = "https://inara.cz/starfield/ship/2515/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Wraith III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CrimsonFleetVendor 64); sourceUrl = "https://inara.cz/starfield/ship/2517/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Wraith" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CrimsonFleetVendor $null); sourceUrl = "https://inara.cz/starfield/ship/1003/"; notes = @("Vendor stock can be partially random.") }
+  "Crimson Fleet Wraith II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CrimsonFleetVendor 46); sourceUrl = "https://inara.cz/starfield/ship/2516/"; notes = @("Vendor stock can be partially random.") }
   "Va'ruun Prophecy" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Kavnyk" "Dumar Hasadi" $null $true)); sourceUrl = "https://inara.cz/starfield/ship/2665/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
   "Va'ruun Prophecy II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 44 $true)); sourceUrl = "https://inara.cz/starfield/ship/2666/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
   "Va'ruun Prophecy III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 64 $true)); sourceUrl = "https://inara.cz/starfield/ship/2667/"; notes = @("Requires DLC vendor according to INARA.") }
+  "Va'ruun Dirge" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Kavnyk" "Dumar Hasadi" 18 $true)); sourceUrl = "https://inara.cz/starfield/ship/2655/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Va'ruun Dirge II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Kavnyk" "Dumar Hasadi" 32 $true)); sourceUrl = "https://inara.cz/starfield/ship/2656/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Va'ruun Dirge III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Kavnyk" "Dumar Hasadi" 54 $true)); sourceUrl = "https://inara.cz/starfield/ship/2657/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Va'ruun Eulogy II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 32 $true)); sourceUrl = "https://inara.cz/starfield/ship/2659/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Va'ruun Eulogy III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 56 $true)); sourceUrl = "https://inara.cz/starfield/ship/2660/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Va'ruun Hymn" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Kavnyk" "Dumar Hasadi" $null $true)); sourceUrl = "https://inara.cz/starfield/ship/2661/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Va'ruun Hymn II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Kavnyk" "Dumar Hasadi" 26 $true)); sourceUrl = "https://inara.cz/starfield/ship/2662/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Va'ruun Litany" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2664/" $null @("Requires Terran Armada/Shattered Space-related DLC content according to INARA."))
+  "Va'ruun Revelation" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 38 $true)); sourceUrl = "https://inara.cz/starfield/ship/2668/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Va'ruun Vigil" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 20 $true)); sourceUrl = "https://inara.cz/starfield/ship/2671/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Va'ruun Vigil II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 32 $true)); sourceUrl = "https://inara.cz/starfield/ship/2672/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Va'ruun Vigil III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 52 $true)); sourceUrl = "https://inara.cz/starfield/ship/2673/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
   "Va'ruun Revelation II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 54 $true)); sourceUrl = "https://inara.cz/starfield/ship/2669/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
   "Silent Runner" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Valo" "Inaya Rehman")); sourceUrl = "https://inara.cz/starfield/ship/1015/"; notes = @("Vendor stock can be partially random.") }
   "Narwhal" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Volii" "Veronica Young")); sourceUrl = "https://inara.cz/starfield/ship/1017/"; notes = @("Vendor stock can be partially random.") }
   "Abyss Trekker" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @((New-Location "Porrima" "Ship Services Technician (Paradiso)")); sourceUrl = "https://inara.cz/starfield/ship/1014/"; notes = @("Vendor stock can be partially random.") }
+  "Discovery" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Sol" "Ship Services Technician (Cydonia)"),(New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)"),(New-Location "Sol" "Ship Services Technician (New Homestead)")); sourceUrl = "https://inara.cz/starfield/ship/558/"; notes = @("Vendor stock can be partially random.") }
+  "Frontier" = [ordered]@{ method = "quest_reward"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/108/"; notes = @("Main quest reward from One Small Step.") }
   "Shieldbreaker" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)")); sourceUrl = "https://inara.cz/starfield/ship/373/"; notes = @("Vendor stock can be partially random.") }
   "Kepler R" = [ordered]@{ method = "quest_reward"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/1346/"; notes = @("Reward from the side quest Overdesigned.") }
   "Kepler S" = [ordered]@{ method = "quest_reward"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/1347/"; notes = @("Reward from the side quest Overdesigned.") }
   "Razorleaf" = [ordered]@{ method = "quest_reward"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/946/"; notes = @("Obtained during the Mantis side quest.") }
   "Star Eagle" = [ordered]@{ method = "quest_reward"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/947/"; notes = @("Reward from the Freestar Rangers quest The Hammer Falls.") }
+  "UC Prison Shuttle" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/1345/")
+  "Wanderwell" = [ordered]@{ method = "quest_reward"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/2644/"; notes = @("Free ship obtained by choosing the Kid Stuff trait.") }
   "Terran Saladin II" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4671/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Boudica" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4667/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Boudica II" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4668/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
   "Terran Boudica III" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4669/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Cyrus" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4659/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Cyrus II" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4660/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Cyrus III" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4661/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Scipio" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4653/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Scipio II" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4654/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Scipio III" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4655/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Shaka" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4656/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Shaka II" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4657/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Shaka III" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4658/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
   "Terran Saladin III" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4672/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
   "Terran Saladin" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4670/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Tomyris" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4662/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Tomyris II" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4663/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Trajan" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4664/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Trajan II" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4665/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
+  "Terran Trajan III" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/4666/"; notes = @("Not available for purchase; can be acquired through piracy.", "Requires Terran Armada expansion.") }
   "Ecliptic Claymore III" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/2646/"; notes = @("Not available for purchase; can be acquired through piracy.", "May require player level 62+ to appear.") }
   "Ecliptic Claymore" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/138/" 4)
   "Ecliptic Claymore II" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2645/" 4 44)
+  "Ecliptic Bayonet" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2686/")
+  "Ecliptic Cutlass" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2632/" 3 22)
+  "Ecliptic Falcata" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2633/" 18)
+  "Ecliptic Falcata II" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2648/" 26)
+  "Ecliptic Falcata III" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2649/" 38)
+  "Ecliptic Rapier" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2634/" 3)
   "Ecliptic Rapier III" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2651/" 3 52)
+  "Ecliptic Scimitar" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2635/" 3 36)
   "Ecliptic Scimitar III" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2653/" 3 60)
+  "Ecliptic Stiletto" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2636/")
+  "Ecliptic Stiletto II" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/139/" 24)
+  "Ecliptic Stiletto III" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2654/" 32)
   "Spacer Hyena III" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/2675/"; notes = @("Not available for purchase; can be acquired through piracy.", "May require player level 72+ to appear.") }
+  "Spacer Coyote III" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/136/" 3 66)
+  "Spacer Hyena" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2640/" 4)
+  "Spacer Hyena II" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2674/" 4 38)
+  "Spacer Jackal" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2639/" 3 16)
+  "Spacer Jackal II" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2676/" 3 46)
+  "Spacer Raccoon" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2017/" 12)
+  "Spacer Raccoon II" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2677/" 32)
   "Spacer Vulture II" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2683/" 3 56)
   "Chimera III" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = @(); sourceUrl = "https://inara.cz/starfield/ship/3931/"; notes = @("Not available for purchase; can be acquired through piracy.") }
   "Dragonfire" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CommonShipTechList $null $false $false $false $true $false $true); sourceUrl = "https://inara.cz/starfield/ship/1011/"; notes = @("Vendor stock can be partially random.") }
@@ -609,51 +872,180 @@ $purchaseData = @{
   "Vista III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CommonShipTechList 76 $false $false $false $false $false $true); sourceUrl = "https://inara.cz/starfield/ship/1991/"; notes = @("Vendor stock can be partially random.") }
   "Zumwalt III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-ZumwaltList 52); sourceUrl = "https://inara.cz/starfield/ship/2605/"; notes = @("Vendor stock can be partially random.") }
   "Aegis" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Sol" "Nikau Henderson")); sourceUrl = "https://inara.cz/starfield/ship/1183/"; notes = @("Vendor stock can be partially random.") }
-  "Asphalt CB II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CommonShipTechList 32 $false $false $true $true $false $false); sourceUrl = "https://inara.cz/starfield/ship/2482/"; notes = @("Vendor stock can be partially random.") }
+  "Asphalt CB II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-AsphaltVendorList 32); sourceUrl = "https://inara.cz/starfield/ship/2482/"; notes = @("Vendor stock can be partially random.") }
   "Bireme II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DeimosPolisList 40); sourceUrl = "https://inara.cz/starfield/ship/2488/"; notes = @("Vendor stock can be partially random.") }
   "Blackhawk II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-ZumwaltList 46); sourceUrl = "https://inara.cz/starfield/ship/2490/"; notes = @("Vendor stock can be partially random.") }
   "Carry ALL" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CommonShipTechList $null $false $false $true $true $true $true); sourceUrl = "https://inara.cz/starfield/ship/979/"; notes = @("Vendor stock can be partially random.") }
   "Carry ALL II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CommonShipTechList 38 $false $false $true $true $true $true); sourceUrl = "https://inara.cz/starfield/ship/2494/"; notes = @("Vendor stock can be partially random.") }
   "Conquerer" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-BroadShipTechList $null $true $true); sourceUrl = "https://inara.cz/starfield/ship/1008/"; notes = @("Vendor stock can be partially random.") }
-  "Crimson Fleet Ghost III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Kryx" "Jasmine Durand" 32)); sourceUrl = "https://inara.cz/starfield/ship/987/"; notes = @("Vendor stock can be partially random.") }
-  "Crimson Fleet Specter II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kryx" "Jasmine Durand" 24)); sourceUrl = "https://inara.cz/starfield/ship/990/"; notes = @("Vendor stock can be partially random.") }
-  "Crimson Fleet Specter III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kryx" "Jasmine Durand" 48)); sourceUrl = "https://inara.cz/starfield/ship/2512/"; notes = @("Vendor stock can be partially random.") }
+  "Conquerer II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-BroadShipTechList 32 $false $false); sourceUrl = "https://inara.cz/starfield/ship/2498/"; notes = @("Vendor stock can be partially random.") }
+  "Conquerer III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-BroadShipTechList 56 $false $false); sourceUrl = "https://inara.cz/starfield/ship/1994/"; notes = @("Vendor stock can be partially random.") }
   "Ecliptic Cutlass II" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2647/" 3 40)
   "Ecliptic Rapier II" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2650/" 3 32)
   "Ecliptic Scimitar II" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2652/" 3 46)
   "Falcon II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-TaiyoVendorList 24 $true); sourceUrl = "https://inara.cz/starfield/ship/989/"; notes = @("Vendor stock can be partially random.") }
   "Falcon III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-TaiyoVendorList 48 $false); sourceUrl = "https://inara.cz/starfield/ship/2526/"; notes = @("Vendor stock can be partially random.") }
   "Galileo III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-BroadShipTechList 38 $true $true); sourceUrl = "https://inara.cz/starfield/ship/1986/"; notes = @("Vendor stock can be partially random.") }
+  "Gladius" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SolAlphaList $null); sourceUrl = "https://inara.cz/starfield/ship/559/"; notes = @("Vendor stock can be partially random.") }
+  "Gladius II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SolAlphaList 18); sourceUrl = "https://inara.cz/starfield/ship/2527/"; notes = @("Vendor stock can be partially random.") }
+  "Gladius III" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/3932/" 35)
+  "Gladius IV" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/3933/" 43)
+  "Hammerhead" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-OrcaReefList $null); sourceUrl = "https://inara.cz/starfield/ship/965/"; notes = @("Vendor stock can be partially random.") }
+  "Hammerhead II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-OrcaReefList 32); sourceUrl = "https://inara.cz/starfield/ship/2528/"; notes = @("Vendor stock can be partially random.") }
+  "Hammerhead III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-OrcaReefList 56); sourceUrl = "https://inara.cz/starfield/ship/1987/"; notes = @("Vendor stock can be partially random.") }
   "Hoplite II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DeimosPolisList 22); sourceUrl = "https://inara.cz/starfield/ship/980/"; notes = @("Vendor stock can be partially random.") }
   "Hoplite III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DeimosPolisList 48); sourceUrl = "https://inara.cz/starfield/ship/2533/"; notes = @("Vendor stock can be partially random.") }
+  "Hulker" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2753/")
+  "Hulker II" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2754/")
+  "Hulker III" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2755/")
+  "Kfir" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-KfirVendorList $null); sourceUrl = "https://inara.cz/starfield/ship/557/"; notes = @("Vendor stock can be partially random.") }
+  "Kfir II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-KfirVendorList 18); sourceUrl = "https://inara.cz/starfield/ship/2534/"; notes = @("Vendor stock can be partially random.") }
+  "Kfir III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-KfirVendorList 44); sourceUrl = "https://inara.cz/starfield/ship/2535/"; notes = @("Vendor stock can be partially random.") }
+  "Kfir IV" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-KfirVendorList 58); sourceUrl = "https://inara.cz/starfield/ship/2536/"; notes = @("Vendor stock can be partially random.") }
   "Mako III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-TaiyoVendorList 64 $false); sourceUrl = "https://inara.cz/starfield/ship/2542/"; notes = @("Vendor stock can be partially random.") }
+  "MULE" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Cheyenne" "Ship Services Technician (Akila City)"),(New-Location "Sol" "Ship Services Technician (Cydonia)"),(New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)"),(New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)"),(New-Location "Valo" "Ship Services Technician (HopeTown)"),(New-Location "Volii" "Ship Services Technician (Neon)"),(New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)"),(New-Location "Sol" "Ship Services Technician (New Homestead)"),(New-Location "Porrima" "Ship Services Technician (Paradiso)"),(New-Location $null "Shipbuilder (Outpost)")); sourceUrl = "https://inara.cz/starfield/ship/958/"; notes = @("Vendor stock can be partially random.") }
+  "MULE II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" 30),(New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" 30),(New-Location "Cheyenne" "Ship Services Technician (Akila City)" 30),(New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" 30),(New-Location "Porrima" "Ship Services Technician (Paradiso)" 30),(New-Location $null "Shipbuilder (Outpost)" 30),(New-Location "Sol" "Ship Services Technician (Cydonia)" 30),(New-Location "Sol" "Ship Services Technician (New Homestead)" 30),(New-Location "Valo" "Ship Services Technician (HopeTown)" 30),(New-Location "Volii" "Ship Services Technician (Neon)" 30)); sourceUrl = "https://inara.cz/starfield/ship/2543/"; notes = @("Vendor stock can be partially random.") }
+  "MULE III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Cheyenne" "Ship Services Technician (Akila City)" 48),(New-Location "Sol" "Ship Services Technician (Cydonia)" 48),(New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" 48),(New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)" 48),(New-Location "Valo" "Ship Services Technician (HopeTown)" 48),(New-Location "Volii" "Ship Services Technician (Neon)" 48),(New-Location "Alpha Centauri" "Ship Services Technician (New Atlantis)" 48),(New-Location "Sol" "Ship Services Technician (New Homestead)" 48),(New-Location "Porrima" "Ship Services Technician (Paradiso)" 48),(New-Location $null "Shipbuilder (Outpost)" 48)); sourceUrl = "https://inara.cz/starfield/ship/2544/"; notes = @("Vendor stock can be partially random.") }
   "Murasame" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Alpha Centauri" "Ship Services Technician (Gagarin)")); sourceUrl = "https://inara.cz/starfield/ship/1004/"; notes = @("Vendor stock can be partially random.") }
   "PCH II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-AkilaHopeList 48); sourceUrl = "https://inara.cz/starfield/ship/2005/"; notes = @("Vendor stock can be partially random.") }
+  "Privateer" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-BroadShipTechList $null $false $false); sourceUrl = "https://inara.cz/starfield/ship/975/"; notes = @("Vendor stock can be partially random.") }
+  "Privateer II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-BroadShipTechList 32 $false $false); sourceUrl = "https://inara.cz/starfield/ship/2558/"; notes = @("Vendor stock can be partially random.") }
+  "Privateer III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-BroadShipTechList 52 $false $false); sourceUrl = "https://inara.cz/starfield/ship/1996/"; notes = @("Vendor stock can be partially random.") }
   "Phalanx II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DeimosPolisList 32); sourceUrl = "https://inara.cz/starfield/ship/988/"; notes = @("Vendor stock can be partially random.") }
   "Phalanx III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DeimosPolisList 46); sourceUrl = "https://inara.cz/starfield/ship/2553/"; notes = @("Vendor stock can be partially random.") }
   "Pik Up III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-AkilaHopeList 48); sourceUrl = "https://inara.cz/starfield/ship/2555/"; notes = @("Vendor stock can be partially random.") }
   "Pterosaur II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList 22); sourceUrl = "https://inara.cz/starfield/ship/978/"; notes = @("Vendor stock can be partially random.") }
   "Pterosaur III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList 40); sourceUrl = "https://inara.cz/starfield/ship/2559/"; notes = @("Vendor stock can be partially random.") }
+  "Raptor" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-HopeTechList $null); sourceUrl = "https://inara.cz/starfield/ship/2562/"; notes = @("Vendor stock can be partially random.") }
+  "Raptor II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-HopeTechList 30); sourceUrl = "https://inara.cz/starfield/ship/2563/"; notes = @("Vendor stock can be partially random.") }
+  "Raptor III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-HopeTechList 46); sourceUrl = "https://inara.cz/starfield/ship/2564/"; notes = @("Vendor stock can be partially random.") }
   "Ranger III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-ZumwaltList 46); sourceUrl = "https://inara.cz/starfield/ship/2561/"; notes = @("Vendor stock can be partially random.") }
+  "Roanoke" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-RoanokeVendorList $null); sourceUrl = "https://inara.cz/starfield/ship/986/"; notes = @("Vendor stock can be partially random.") }
+  "Roanoke II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-RoanokeVendorList 38); sourceUrl = "https://inara.cz/starfield/ship/2570/"; notes = @("Vendor stock can be partially random.") }
+  "Roanoke III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-RoanokeVendorList 60); sourceUrl = "https://inara.cz/starfield/ship/1998/"; notes = @("Vendor stock can be partially random.") }
   "Space Ox II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList 40); sourceUrl = "https://inara.cz/starfield/ship/2573/"; notes = @("Vendor stock can be partially random.") }
   "Spacer Coyote" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2637/" 3)
   "Spacer Coyote II" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2638/" 3 32)
   "Spacer Raccoon III" = [ordered]@{ method = "piracy"; status = "verified"; requiredSkill = $null; locations = @(); sourceUrl = "https://inara.cz/starfield/ship/2678/"; notes = @("Not available for purchase; can be acquired through piracy.", "May require player level 64+ to appear.") }
+  "Spacer Raven" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2642/" 10)
+  "Spacer Raven II" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2679/" 30)
+  "Spacer Raven III" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2680/" 52)
+  "Spacer Scarab" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2641/")
+  "Spacer Scarab II" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2681/" 18)
+  "Spacer Scarab III" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2682/" 44)
   "Spacer Vulture" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/2643/" 3 18)
   "Spacetruk" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-AkilaHopeList $null); sourceUrl = "https://inara.cz/starfield/ship/999/"; notes = @("Vendor stock can be partially random.") }
   "Spacetruk II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-AkilaHopeList 36); sourceUrl = "https://inara.cz/starfield/ship/2575/"; notes = @("Vendor stock can be partially random.") }
   "Starhawk" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-StarhawkList $null); sourceUrl = "https://inara.cz/starfield/ship/2577/"; notes = @("Vendor stock can be partially random.") }
+  "Sparrow" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-OrcaReefList $null); sourceUrl = "https://inara.cz/starfield/ship/560/"; notes = @("Vendor stock can be partially random.") }
+  "Sparrow II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-OrcaReefList 28); sourceUrl = "https://inara.cz/starfield/ship/968/"; notes = @("Vendor stock can be partially random.") }
+  "Sparrow III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-OrcaReefList 46); sourceUrl = "https://inara.cz/starfield/ship/1990/"; notes = @("Vendor stock can be partially random.") }
+  "Thresher" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-HopeTechList $null); sourceUrl = "https://inara.cz/starfield/ship/950/"; notes = @("Vendor stock can be partially random.") }
+  "Thresher II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-HopeTechList 16); sourceUrl = "https://inara.cz/starfield/ship/2582/"; notes = @("Vendor stock can be partially random.") }
+  "Thresher III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-HopeTechList 38); sourceUrl = "https://inara.cz/starfield/ship/2583/"; notes = @("Vendor stock can be partially random.") }
+  "Trebuchet" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-BroadShipTechList $null $false $false); sourceUrl = "https://inara.cz/starfield/ship/976/"; notes = @("Vendor stock can be partially random.") }
+  "Trebuchet II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-BroadShipTechList 32 $false $false); sourceUrl = "https://inara.cz/starfield/ship/2591/"; notes = @("Vendor stock can be partially random.") }
+  "Trebuchet III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-BroadShipTechList 54 $false $false); sourceUrl = "https://inara.cz/starfield/ship/1999/"; notes = @("Vendor stock can be partially random.") }
   "Sunsail II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Cheyenne" "Ship Services Technician (Akila City)" 32),(New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)" 32),(New-Location "Porrima" "Ship Services Technician (Paradiso)" 32),(New-Location $null "Shipbuilder (Outpost)" 32),(New-Location "Valo" "Ship Services Technician (HopeTown)" 32),(New-Location "Volii" "Ship Services Technician (Neon)" 32)); sourceUrl = "https://inara.cz/starfield/ship/996/"; notes = @("Vendor stock can be partially random.") }
   "Trader Railstar III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Kavnyk" "Dumar Hasadi" 54 $true),(New-Location "Porrima" "Lon Anderssen" 54)); sourceUrl = "https://inara.cz/starfield/ship/2585/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Trader Railstar" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Kavnyk" "Dumar Hasadi" $null $true),(New-Location "Porrima" "Lon Anderssen")); sourceUrl = "https://inara.cz/starfield/ship/957/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Trader Railstar II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Kavnyk" "Dumar Hasadi" 38 $true),(New-Location "Porrima" "Lon Anderssen" 38)); sourceUrl = "https://inara.cz/starfield/ship/2584/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Trader Wagon Train" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kavnyk" "Dumar Hasadi" $null $true),(New-Location "Porrima" "Lon Anderssen")); sourceUrl = "https://inara.cz/starfield/ship/2586/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
   "Trader Wagon Train II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 32 $true),(New-Location "Porrima" "Lon Anderssen" 32)); sourceUrl = "https://inara.cz/starfield/ship/2587/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Trader Wagon Train III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kavnyk" "Dumar Hasadi" 46 $true),(New-Location "Porrima" "Lon Anderssen" 46)); sourceUrl = "https://inara.cz/starfield/ship/2588/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
   "Transpo III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SettledPassengerList 46); sourceUrl = "https://inara.cz/starfield/ship/2590/"; notes = @("Vendor stock can be partially random.") }
   "Va'ruun Eulogy" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Kavnyk" "Dumar Hasadi" $null $true)); sourceUrl = "https://inara.cz/starfield/ship/2658/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
   "Va'ruun Hymn III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Kavnyk" "Dumar Hasadi" 38 $true)); sourceUrl = "https://inara.cz/starfield/ship/2663/"; notes = @("Requires DLC vendor according to INARA.", "Vendor stock can be partially random.") }
+  "Longsword" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SolAlphaList $null); sourceUrl = "https://inara.cz/starfield/ship/953/"; notes = @("Vendor stock can be partially random.") }
+  "Longsword II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SolAlphaList 30); sourceUrl = "https://inara.cz/starfield/ship/2538/"; notes = @("Vendor stock can be partially random.") }
+  "Longsword III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SolAlphaList 52); sourceUrl = "https://inara.cz/starfield/ship/2539/"; notes = @("Vendor stock can be partially random.") }
+  "Longsword IV" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SolAlphaList 58); sourceUrl = "https://inara.cz/starfield/ship/2540/"; notes = @("Vendor stock can be partially random.") }
+  "Mustang" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-ZumwaltList $null); sourceUrl = "https://inara.cz/starfield/ship/951/"; notes = @("Vendor stock can be partially random.") }
+  "Mustang II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-ZumwaltList 30); sourceUrl = "https://inara.cz/starfield/ship/962/"; notes = @("Vendor stock can be partially random.") }
+  "Mustang III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-ZumwaltList 52); sourceUrl = "https://inara.cz/starfield/ship/1988/"; notes = @("Vendor stock can be partially random.") }
+  "Naginata" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList $null); sourceUrl = "https://inara.cz/starfield/ship/2545/"; notes = @("Vendor stock can be partially random.") }
+  "Naginata II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList 38); sourceUrl = "https://inara.cz/starfield/ship/2546/"; notes = @("Vendor stock can be partially random.") }
+  "Naginata III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList 62); sourceUrl = "https://inara.cz/starfield/ship/2547/"; notes = @("Vendor stock can be partially random.") }
+  "Venture" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-BroadShipTechList $null $false $false); sourceUrl = "https://inara.cz/starfield/ship/2594/"; notes = @("Vendor stock can be partially random.") }
+  "Venture II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-BroadShipTechList 34 $false $false); sourceUrl = "https://inara.cz/starfield/ship/2595/"; notes = @("Vendor stock can be partially random.") }
+  "Venture III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-BroadShipTechList 48 $false $false); sourceUrl = "https://inara.cz/starfield/ship/2001/"; notes = @("Vendor stock can be partially random.") }
+  "Vindicator" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-BroadShipTechList $null $false $false); sourceUrl = "https://inara.cz/starfield/ship/1006/"; notes = @("Vendor stock can be partially random.") }
+  "Vindicator II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-BroadShipTechList 44 $false $false); sourceUrl = "https://inara.cz/starfield/ship/2596/"; notes = @("Vendor stock can be partially random.") }
+  "Vindicator III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-BroadShipTechList 62 $false $false); sourceUrl = "https://inara.cz/starfield/ship/2002/"; notes = @("Vendor stock can be partially random.") }
+  "Wagontrain" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList $null); sourceUrl = "https://inara.cz/starfield/ship/995/"; notes = @("Vendor stock can be partially random.") }
   "Wagontrain II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList 32); sourceUrl = "https://inara.cz/starfield/ship/2600/"; notes = @("Vendor stock can be partially random.") }
+  "Wagontrain III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList 46); sourceUrl = "https://inara.cz/starfield/ship/2601/"; notes = @("Vendor stock can be partially random.") }
   "Warhammer" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CommonShipTechList $null $false $false $true $true $true $true); sourceUrl = "https://inara.cz/starfield/ship/977/"; notes = @("Vendor stock can be partially random.") }
   "Warhammer II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CommonShipTechList 32 $false $false $true $true $true $true); sourceUrl = "https://inara.cz/starfield/ship/997/"; notes = @("Vendor stock can be partially random.") }
+  "Watchdog" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-WatchdogVendorList $null); sourceUrl = "https://inara.cz/starfield/ship/948/"; notes = @("Vendor stock can be partially random.") }
+  "Watchdog II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-WatchdogVendorList 14); sourceUrl = "https://inara.cz/starfield/ship/955/"; notes = @("Vendor stock can be partially random.") }
   "Watchdog III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-AkilaHopeList 32); sourceUrl = "https://inara.cz/starfield/ship/983/"; notes = @("Vendor stock can be partially random.") }
   "Watchdog IV" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-AkilaHopeList 58); sourceUrl = "https://inara.cz/starfield/ship/2006/"; notes = @("Vendor stock can be partially random.") }
+  "Wendigo" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CommonShipTechList $null $false $false $true $true $true $true); sourceUrl = "https://inara.cz/starfield/ship/956/"; notes = @("Vendor stock can be partially random.") }
+  "Wendigo II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CommonShipTechList 24 $false $false $true $true $true $true); sourceUrl = "https://inara.cz/starfield/ship/971/"; notes = @("Vendor stock can be partially random.") }
+  "Asphalt CB" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-AsphaltVendorList $null); sourceUrl = "https://inara.cz/starfield/ship/984/"; notes = @("Vendor stock can be partially random.") }
+  "Asphalt CB III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-AsphaltVendorList 46); sourceUrl = "https://inara.cz/starfield/ship/2483/"; notes = @("Vendor stock can be partially random.") }
+  "Big Rig" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-WatchdogVendorList $null); sourceUrl = "https://inara.cz/starfield/ship/991/"; notes = @("Vendor stock can be partially random.") }
+  "Big Rig II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-WatchdogVendorList 40); sourceUrl = "https://inara.cz/starfield/ship/2007/"; notes = @("Vendor stock can be partially random.") }
+  "Bireme" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DeimosPolisList $null); sourceUrl = "https://inara.cz/starfield/ship/2487/"; notes = @("Vendor stock can be partially random.") }
+  "Blackhawk" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-ZumwaltList $null); sourceUrl = "https://inara.cz/starfield/ship/2489/"; notes = @("Vendor stock can be partially random.") }
+  "Chimera" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/3934/" 4)
+  "Chimera II" = (New-PiracyAcquisition "https://inara.cz/starfield/ship/3930/" 4)
+  "Crossbow" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CommonShipTechList $null $false $false $true $true $true $true); sourceUrl = "https://inara.cz/starfield/ship/1009/"; notes = @("Vendor stock can be partially random.") }
+  "Crossbow II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CommonShipTechList 38 $false $false $true $true $true $true); sourceUrl = "https://inara.cz/starfield/ship/2518/"; notes = @("Vendor stock can be partially random.") }
+  "Dullahan" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-DanicaHopeTechList $null); sourceUrl = "https://inara.cz/starfield/ship/1005/"; notes = @("Vendor stock can be partially random.") }
+  "Dullahan II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-DanicaHopeTechList 44); sourceUrl = "https://inara.cz/starfield/ship/2520/"; notes = @("Vendor stock can be partially random.") }
+  "Econohaul" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-ZumwaltList $null); sourceUrl = "https://inara.cz/starfield/ship/561/"; notes = @("Vendor stock can be partially random.") }
+  "Econohaul II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-ZumwaltList 38); sourceUrl = "https://inara.cz/starfield/ship/2522/"; notes = @("Vendor stock can be partially random.") }
+  "Falcon" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-TaiyoVendorList $null $false); sourceUrl = "https://inara.cz/starfield/ship/969/"; notes = @("Vendor stock can be partially random.") }
+  "Falcon IV" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-TaiyoVendorList 76 $false); sourceUrl = "https://inara.cz/starfield/ship/1985/"; notes = @("Vendor stock can be partially random.") }
+  "Galileo" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-BroadShipTechList $null $true $true); sourceUrl = "https://inara.cz/starfield/ship/371/"; notes = @("Vendor stock can be partially random.") }
+  "Galileo II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-BroadShipTechList 26 $true $true); sourceUrl = "https://inara.cz/starfield/ship/981/"; notes = @("Vendor stock can be partially random.") }
+  "Hellhound" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-CrimsonFleetVendor $null); sourceUrl = "https://inara.cz/starfield/ship/2529/"; notes = @("Vendor stock can be partially random.") }
+  "Hoplite" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DeimosPolisList $null); sourceUrl = "https://inara.cz/starfield/ship/1182/"; notes = @("Vendor stock can be partially random.") }
+  "Lil Muv" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Valo" "Inaya Rehman")); sourceUrl = "https://inara.cz/starfield/ship/2537/"; notes = @("Vendor stock can be partially random.") }
+  "Lil Muv II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Valo" "Inaya Rehman" 24)); sourceUrl = "https://inara.cz/starfield/ship/974/"; notes = @("Vendor stock can be partially random.") }
+  "Mako" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-TaiyoVendorList $null $false); sourceUrl = "https://inara.cz/starfield/ship/952/"; notes = @("Vendor stock can be partially random.") }
+  "Mako II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-TaiyoVendorList 32 $false); sourceUrl = "https://inara.cz/starfield/ship/2541/"; notes = @("Vendor stock can be partially random.") }
+  "Marathon" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Sol" "Ship Services Technician (Cydonia)")); sourceUrl = "https://inara.cz/starfield/ship/113/"; notes = @("Vendor stock can be partially random.") }
+  "Narcissus" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-BroadShipTechList $null $false $false); sourceUrl = "https://inara.cz/starfield/ship/137/"; notes = @("Vendor stock can be partially random.") }
+  "Narcissus II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-BroadShipTechList 30 $false $false); sourceUrl = "https://inara.cz/starfield/ship/994/"; notes = @("Vendor stock can be partially random.") }
+  "Nimitz II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-ZumwaltList 44); sourceUrl = "https://inara.cz/starfield/ship/2548/"; notes = @("Vendor stock can be partially random.") }
+  "PCH" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-AkilaHopeList $null); sourceUrl = "https://inara.cz/starfield/ship/2551/"; notes = @("Vendor stock can be partially random.") }
+  "Pelican" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-OrcaReefList $null); sourceUrl = "https://inara.cz/starfield/ship/992/"; notes = @("Vendor stock can be partially random.") }
+  "Pelican II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-OrcaReefList 40); sourceUrl = "https://inara.cz/starfield/ship/2552/"; notes = @("Vendor stock can be partially random.") }
+  "Phalanx" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-DeimosPolisList $null); sourceUrl = "https://inara.cz/starfield/ship/985/"; notes = @("Vendor stock can be partially random.") }
+  "Pik Up" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-AkilaHopeList $null); sourceUrl = "https://inara.cz/starfield/ship/964/"; notes = @("Vendor stock can be partially random.") }
+  "Pik Up II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-AkilaHopeList 24); sourceUrl = "https://inara.cz/starfield/ship/2554/"; notes = @("Vendor stock can be partially random.") }
+  "Polis" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-DeimosPolisList $null); sourceUrl = "https://inara.cz/starfield/ship/2556/"; notes = @("Vendor stock can be partially random.") }
+  "Pterosaur" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList $null); sourceUrl = "https://inara.cz/starfield/ship/973/"; notes = @("Vendor stock can be partially random.") }
+  "Rambler" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SettledShuttleVendorList $null $false); sourceUrl = "https://inara.cz/starfield/ship/370/"; notes = @("Vendor stock can be partially random.") }
+  "Rambler II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SettledShuttleVendorList 20 $false); sourceUrl = "https://inara.cz/starfield/ship/954/"; notes = @("Vendor stock can be partially random.") }
+  "Ranger" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-ZumwaltList $null); sourceUrl = "https://inara.cz/starfield/ship/998/"; notes = @("Vendor stock can be partially random.") }
+  "Ranger II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-ZumwaltList 36); sourceUrl = "https://inara.cz/starfield/ship/2560/"; notes = @("Vendor stock can be partially random.") }
+  "Reef" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-OrcaReefList $null); sourceUrl = "https://inara.cz/starfield/ship/2565/"; notes = @("Vendor stock can be partially random.") }
+  "Responder" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SettledShuttleVendorList $null $false); sourceUrl = "https://inara.cz/starfield/ship/556/"; notes = @("Vendor stock can be partially random.") }
+  "Responder II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SettledShuttleVendorList 28 $true); sourceUrl = "https://inara.cz/starfield/ship/963/"; notes = @("Vendor stock can be partially random.") }
+  "Shackleton" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Valo" "Ship Services Technician (HopeTown)")); sourceUrl = "https://inara.cz/starfield/ship/966/"; notes = @("Vendor stock can be partially random.") }
+  "Slipstream" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-SlipstreamVendorList $null); sourceUrl = "https://inara.cz/starfield/ship/2571/"; notes = @("Vendor stock can be partially random.") }
+  "Slipstream II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-SlipstreamVendorList 36); sourceUrl = "https://inara.cz/starfield/ship/111/"; notes = @("Vendor stock can be partially random.") }
+  "Sloop" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2760/")
+  "Sloop II" = (New-PiracyAcquisitionNoSkill "https://inara.cz/starfield/ship/2761/")
+  "Space Ox" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList $null); sourceUrl = "https://inara.cz/starfield/ship/2572/"; notes = @("Vendor stock can be partially random.") }
+  "Space Ox III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-HopeTechList 66); sourceUrl = "https://inara.cz/starfield/ship/2574/"; notes = @("Vendor stock can be partially random.") }
+  "Stormrider" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CommonShipTechList $null $true $true $true $true $false $true); sourceUrl = "https://inara.cz/starfield/ship/2615/"; notes = @("Vendor stock can be partially random.") }
+  "Sunsail" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Cheyenne" "Ship Services Technician (Akila City)"),(New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)"),(New-Location "Porrima" "Ship Services Technician (Paradiso)"),(New-Location $null "Shipbuilder (Outpost)"),(New-Location "Valo" "Ship Services Technician (HopeTown)"),(New-Location "Volii" "Ship Services Technician (Neon)")); sourceUrl = "https://inara.cz/starfield/ship/972/"; notes = @("Vendor stock can be partially random.") }
+  "Transpo" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SettledPassengerList $null); sourceUrl = "https://inara.cz/starfield/ship/949/"; notes = @("Vendor stock can be partially random.") }
+  "Transpo II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = (New-SettledPassengerList 28); sourceUrl = "https://inara.cz/starfield/ship/2589/"; notes = @("Vendor stock can be partially random.") }
+  "Vagabond" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Sol" "Ship Services Technician (New Homestead)")); sourceUrl = "https://inara.cz/starfield/ship/960/"; notes = @("Vendor stock can be partially random.") }
+  "Vista" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CommonShipTechList $null $false $false $true $true $false $true); sourceUrl = "https://inara.cz/starfield/ship/2597/"; notes = @("Vendor stock can be partially random.") }
+  "Voyager" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CommonShipTechList $null $false $false $true $true $false $true); sourceUrl = "https://inara.cz/starfield/ship/1013/"; notes = @("Vendor stock can be partially random.") }
+  "Voyager II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 4); locations = (New-CommonShipTechList 54 $false $false $true $true $false $true); sourceUrl = "https://inara.cz/starfield/ship/2599/"; notes = @("Vendor stock can be partially random.") }
+  "Wanderlust" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = @((New-Location "Ixyll" "Ship Services Technician (Eleos Retreat)")); sourceUrl = "https://inara.cz/starfield/ship/982/"; notes = @("Vendor stock can be partially random.") }
+  "War Horse" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Volii" "Ship Services Technician (Neon)")); sourceUrl = "https://inara.cz/starfield/ship/970/"; notes = @("Vendor stock can be partially random.") }
+  "Warhammer III" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-CommonShipTechList 66 $false $false $true $true $true $true); sourceUrl = "https://inara.cz/starfield/ship/2602/"; notes = @("Vendor stock can be partially random.") }
+  "Warwolf" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = $null; locations = @((New-Location "Narion" "Havershaw")); sourceUrl = "https://inara.cz/starfield/ship/2004/"; notes = @("Vendor stock can be partially random.") }
+  "Zumwalt" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-ZumwaltList $null); sourceUrl = "https://inara.cz/starfield/ship/2603/"; notes = @("Vendor stock can be partially random.") }
   "Zumwalt II" = [ordered]@{ method = "vendor"; status = "verified"; requiredSkill = (New-PilotingRequirement 3); locations = (New-ZumwaltList 32); sourceUrl = "https://inara.cz/starfield/ship/2604/"; notes = @("Vendor stock can be partially random.") }
 }
 

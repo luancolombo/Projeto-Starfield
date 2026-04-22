@@ -54,7 +54,11 @@
             <div class="field-grid">
               <label class="field">
                 <span>Pesquisa</span>
-                <input id="search-input" type="search" placeholder="Aluminum, Adaptive Frame..." />
+                <input id="search-input" type="search" list="item-options" placeholder="Aluminum, Adaptive Frame..." />
+                <datalist id="item-options"></datalist>
+                <small id="search-selection-meta" class="field-hint">
+                  Pesquisa os itens para alimentar o detalhe, vendors e calculadora.
+                </small>
               </label>
 
               <label class="field">
@@ -117,34 +121,51 @@
               </article>
             </div>
           </section>
+
+          <section class="panel detail-panel">
+            <div class="panel-heading">
+              <p class="panel-kicker">Selected Item</p>
+              <h2>Detalhe</h2>
+            </div>
+
+            <div id="item-detail" class="detail-content empty-state">
+              Pesquisa um item na barra lateral para ver valor, categoria, fontes e receita relacionada.
+            </div>
+          </section>
         </aside>
 
         <section class="main-stack">
-          <section class="panel">
+          <section class="panel ship-compare-panel">
             <div class="panel-heading split-heading">
               <div>
-                <p class="panel-kicker">Cargo Registry</p>
-                <h2>Catálogo</h2>
+                <p class="panel-kicker">Fleet Comparator</p>
+                <h2>Comparador De Naves</h2>
               </div>
               <div class="table-caption">
-                <span id="table-results-count">0 resultados</span>
+                <span>Compara stats e pontuações do site lado a lado</span>
               </div>
             </div>
 
-            <div class="table-shell">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th>Raridade</th>
-                    <th>Valor</th>
-                    <th>Massa</th>
-                    <th>Detalhe</th>
-                  </tr>
-                </thead>
-                <tbody id="catalog-table-body"></tbody>
-              </table>
+            <div class="ship-compare-controls">
+              <label class="field">
+                <span>Nave 1</span>
+                <input id="compare-ship-a" type="text" list="ship-options" placeholder="Ex.: Star Eagle" />
+              </label>
+
+              <label class="field">
+                <span>Nave 2</span>
+                <input id="compare-ship-b" type="text" list="ship-options" placeholder="Ex.: Shieldbreaker" />
+              </label>
+
+              <button id="compare-ships-button" class="action-button" type="button">
+                Comparar Naves
+              </button>
+            </div>
+
+            <datalist id="ship-options"></datalist>
+
+            <div id="ship-compare-result" class="ship-compare-result empty-state">
+              Escolhe duas naves para comparar todas as stats e as pontuações do site.
             </div>
           </section>
 
@@ -158,7 +179,7 @@
               <div class="calculator-form">
                 <label class="field">
                   <span>Item selecionado</span>
-                  <input id="selected-item-name" type="text" readonly placeholder="Escolha um item no catálogo" />
+                  <input id="selected-item-name" type="text" readonly placeholder="Pesquisa um item nos filtros" />
                 </label>
 
                 <label class="field">
@@ -224,18 +245,6 @@
             </div>
           </section>
 
-          <section class="panel detail-panel">
-            <div class="panel-heading">
-              <p class="panel-kicker">Selected Item</p>
-              <h2>Detalhe</h2>
-            </div>
-
-            <div id="item-detail" class="detail-content empty-state">
-              Selecione um item na tabela para ver valor, categoria, fontes e
-              receita relacionada.
-            </div>
-          </section>
-
           <section class="panel ranking-panel">
             <div class="panel-heading">
               <p class="panel-kicker">Sell Routes</p>
@@ -243,7 +252,7 @@
             </div>
 
             <div id="vendor-ranking" class="ranking-list empty-state">
-              Escolha um item para rankear vendors.
+              Pesquisa um item para rankear vendors.
             </div>
           </section>
 
@@ -254,7 +263,7 @@
             </div>
 
             <div id="hub-ranking" class="ranking-list empty-state">
-              Escolha um item para rankear hubs.
+              Pesquisa um item para rankear hubs.
             </div>
           </section>
         </aside>

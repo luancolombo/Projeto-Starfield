@@ -2,7 +2,9 @@ const state = {
   datasets: null,
   catalog: [],
   filteredCatalog: [],
-  selectedItemId: null
+  selectedItemId: null,
+  filterInputTimer: null,
+  panelFocusTimer: null
 };
 
 const rarityOrder = ["common", "uncommon", "rare", "exotic", "unique"];
@@ -15,12 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function initializeApp() {
-  const [resources, manufacturedItems, recipes, vendors, shipRankings] = await Promise.all([
+  const [resources, manufacturedItems, recipes, vendors, shipRankings, ships] = await Promise.all([
     fetchJson("./data/resources.json"),
     fetchJson("./data/manufactured-items.json"),
     fetchJson("./data/recipes.json"),
     fetchJson("./data/vendors.json"),
-    fetchJson("./data/ship-rankings.json")
+    fetchJson("./data/ship-rankings.json"),
+    fetchJson("./data/ships.json")
   ]);
 
   state.datasets = {
@@ -29,10 +32,12 @@ async function initializeApp() {
     recipes,
     vendors,
     shipRankings,
+    ships,
     resourceMap: new Map(resources.items.map((item) => [item.id, item])),
     manufacturedMap: new Map(manufacturedItems.items.map((item) => [item.id, item])),
     recipeMap: new Map(recipes.items.map((item) => [item.outputItemId, item])),
-    vendorMap: new Map(vendors.items.map((item) => [item.id, item]))
+    vendorMap: new Map(vendors.items.map((item) => [item.id, item])),
+    shipMap: new Map(ships.items.map((item) => [item.id, item]))
   };
 
   state.catalog = [
@@ -41,19 +46,21 @@ async function initializeApp() {
   ].sort(sortCatalogItems);
 
   populateSubtypeFilter();
+  populateItemOptions();
+  populateShipOptions();
   bindEvents();
   updateSummary();
   renderShipRankingPreview();
-  applyFilters();
-
-  if (state.filteredCatalog.length > 0) {
-    selectItem(state.filteredCatalog[0].id);
-  }
+  applyFilters({ focusResults: false });
+  initializeShipComparisonDefaults();
 }
 
 function renderShipRankingPreview() {
   const container = document.getElementById("ship-ranking-preview");
-  const rankings = state.datasets.shipRankings.rankings || [];
+  const featuredRankingIds = ["balanced", "exploration", "combat"];
+  const rankings = (state.datasets.shipRankings.rankings || []).filter((ranking) =>
+    featuredRankingIds.includes(ranking.id)
+  );
 
   if (rankings.length === 0) {
     container.className = "ship-preview-stack empty-state";
@@ -109,7 +116,13 @@ function formatAcquisitionSummary(acquisition) {
     return "Não comprável; adquirir por pirataria";
   }
 
-  const firstLocation = acquisition.locations?.[0];
+  const locations = Array.isArray(acquisition.locations)
+    ? acquisition.locations
+    : acquisition.locations
+      ? [acquisition.locations]
+      : [];
+
+  const firstLocation = locations[0];
   if (!firstLocation) {
     return "Vendor verificado";
   }
@@ -136,11 +149,33 @@ function bindEvents() {
     "rarity-filter",
     "mineable-filter"
   ].forEach((id) => {
-    document.getElementById(id).addEventListener("input", applyFilters);
-    document.getElementById(id).addEventListener("change", applyFilters);
+    const element = document.getElementById(id);
+    element.addEventListener("input", () => scheduleFilterUpdate(true));
+    element.addEventListener("change", () => {
+      if (state.filterInputTimer) {
+        window.clearTimeout(state.filterInputTimer);
+        state.filterInputTimer = null;
+      }
+
+      applyFilters({ focusResults: true });
+    });
   });
 
   document.getElementById("calculate-button").addEventListener("click", runSimulation);
+  document.getElementById("compare-ships-button").addEventListener("click", runShipComparison);
+  document.getElementById("compare-ship-a").addEventListener("keydown", handleCompareEnter);
+  document.getElementById("compare-ship-b").addEventListener("keydown", handleCompareEnter);
+}
+
+function scheduleFilterUpdate(focusResults = false) {
+  if (state.filterInputTimer) {
+    window.clearTimeout(state.filterInputTimer);
+  }
+
+  state.filterInputTimer = window.setTimeout(() => {
+    state.filterInputTimer = null;
+    applyFilters({ focusResults });
+  }, 180);
 }
 
 function populateSubtypeFilter() {
@@ -160,6 +195,26 @@ function populateSubtypeFilter() {
     option.textContent = humanizeKey(subtype);
     subtypeFilter.appendChild(option);
   }
+}
+
+function populateItemOptions() {
+  const datalist = document.getElementById("item-options");
+  const uniqueNames = [...new Set(state.catalog.map((item) => item.name))].sort((a, b) =>
+    a.localeCompare(b)
+  );
+
+  datalist.innerHTML = uniqueNames
+    .map((name) => `<option value="${escapeHtml(name)}"></option>`)
+    .join("");
+}
+
+function populateShipOptions() {
+  const datalist = document.getElementById("ship-options");
+  datalist.innerHTML = state.datasets.ships.items
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((ship) => `<option value="${escapeHtml(ship.name)}"></option>`)
+    .join("");
 }
 
 function updateSummary() {
@@ -197,8 +252,10 @@ function updateSummary() {
     : "--";
 }
 
-function applyFilters() {
-  const search = document.getElementById("search-input").value.trim().toLowerCase();
+function applyFilters(options = {}) {
+  const { focusResults = false } = options;
+  const rawSearch = document.getElementById("search-input").value.trim();
+  const search = rawSearch.toLowerCase();
   const category = document.getElementById("category-filter").value;
   const subtype = document.getElementById("subtype-filter").value;
   const rarity = document.getElementById("rarity-filter").value;
@@ -228,8 +285,9 @@ function applyFilters() {
     return true;
   });
 
-  renderCatalogTable();
-  document.getElementById("table-results-count").textContent = `${state.filteredCatalog.length} resultados`;
+  const exactSearchMatch = rawSearch
+    ? state.filteredCatalog.find((item) => item.name.toLowerCase() === search)
+    : null;
 
   if (
     state.selectedItemId &&
@@ -238,50 +296,74 @@ function applyFilters() {
     state.selectedItemId = null;
   }
 
-  if (!state.selectedItemId && state.filteredCatalog.length > 0) {
-    selectItem(state.filteredCatalog[0].id);
-  } else if (state.selectedItemId) {
+  if (exactSearchMatch) {
+    state.selectedItemId = exactSearchMatch.id;
+  } else if (!state.selectedItemId && state.filteredCatalog.length > 0) {
+    state.selectedItemId = state.filteredCatalog[0].id;
+  }
+
+  updateSearchSelectionMeta();
+
+  if (state.selectedItemId) {
     renderSelectedItem();
+    syncCalculatorSelection();
+    runSimulation();
+    maybeFocusItemWorkspace(focusResults && Boolean(exactSearchMatch));
+  } else {
+    renderSelectedItem();
+    syncCalculatorSelection();
+    resetSimulation();
   }
 }
 
-function renderCatalogTable() {
-  const tableBody = document.getElementById("catalog-table-body");
-  tableBody.innerHTML = "";
-
-  for (const item of state.filteredCatalog) {
-    const row = document.createElement("tr");
-    row.dataset.itemId = item.id;
-    if (item.id === state.selectedItemId) {
-      row.classList.add("is-selected");
-    }
-
-    row.innerHTML = `
-      <td>
-        <strong>${escapeHtml(item.name)}</strong>
-      </td>
-      <td>
-        <span class="pill ${item.saleCategory === "resources" ? "resource" : "manufactured"}">
-          ${item.saleCategory === "resources" ? "Resource" : "Manufactured"}
-        </span>
-      </td>
-      <td class="rarity-${item.rarity}">${humanizeKey(item.rarity)}</td>
-      <td>${formatCredits(item.baseValue)}</td>
-      <td>${formatNumber(item.mass)}</td>
-      <td>${escapeHtml(humanizeKey(item.category || "--"))}</td>
-    `;
-
-    row.addEventListener("click", () => selectItem(item.id));
-    tableBody.appendChild(row);
+function maybeFocusItemWorkspace(shouldFocus) {
+  if (!shouldFocus || !state.selectedItemId) {
+    return;
   }
+
+  const detailPanel = document.querySelector(".detail-panel");
+  const calculatorPanel = document.querySelector(".calculator-panel");
+
+  if (!detailPanel || !calculatorPanel) {
+    return;
+  }
+
+  detailPanel.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  [detailPanel, calculatorPanel].forEach((panel) => {
+    panel.classList.remove("panel-focus");
+    void panel.offsetWidth;
+    panel.classList.add("panel-focus");
+  });
+
+  if (state.panelFocusTimer) {
+    window.clearTimeout(state.panelFocusTimer);
+  }
+
+  state.panelFocusTimer = window.setTimeout(() => {
+    [detailPanel, calculatorPanel].forEach((panel) => panel.classList.remove("panel-focus"));
+    state.panelFocusTimer = null;
+  }, 1400);
 }
 
-function selectItem(itemId) {
-  state.selectedItemId = itemId;
-  renderCatalogTable();
-  renderSelectedItem();
-  syncCalculatorSelection();
-  runSimulation();
+function updateSearchSelectionMeta() {
+  const meta = document.getElementById("search-selection-meta");
+  const selectedItem = getSelectedItem();
+
+  if (state.filteredCatalog.length === 0) {
+    meta.textContent = "Nenhum item encontrado com os filtros atuais.";
+    return;
+  }
+
+  if (!selectedItem) {
+    meta.textContent = `${state.filteredCatalog.length} itens encontrados.`;
+    return;
+  }
+
+  meta.textContent = `${state.filteredCatalog.length} itens encontrados. Ativo: ${selectedItem.name}.`;
 }
 
 function renderSelectedItem() {
@@ -290,13 +372,13 @@ function renderSelectedItem() {
 
   if (!item) {
     detail.className = "detail-content empty-state";
-    detail.textContent = "Nenhum item selecionado.";
+    detail.textContent = "Pesquisa um item para ver os detalhes.";
     document.getElementById("vendor-ranking").className = "ranking-list empty-state";
     document.getElementById("vendor-ranking").textContent =
-      "Escolha um item para rankear vendors.";
+      "Pesquisa um item para rankear vendors.";
     document.getElementById("hub-ranking").className = "ranking-list empty-state";
     document.getElementById("hub-ranking").textContent =
-      "Escolha um item para rankear hubs.";
+      "Pesquisa um item para rankear hubs.";
     return;
   }
 
@@ -429,13 +511,18 @@ function syncCalculatorSelection() {
   const item = getSelectedItem();
   document.getElementById("selected-item-name").value = item?.name || "";
 
+  if (!item) return;
+
   const suggestedRate = suggestProductionRate(item);
   document.getElementById("production-rate").value = suggestedRate;
 }
 
 function runSimulation() {
   const item = getSelectedItem();
-  if (!item) return;
+  if (!item) {
+    resetSimulation();
+    return;
+  }
 
   const extractorCount = toNumber(document.getElementById("extractor-count").value, 0);
   const productionRate = toNumber(document.getElementById("production-rate").value, 0);
@@ -451,6 +538,13 @@ function runSimulation() {
   document.getElementById("result-gross-revenue").textContent = formatCredits(grossRevenue);
   document.getElementById("result-net-profit").textContent = formatCredits(netProfit);
   document.getElementById("result-profit-hour").textContent = formatCredits(profitHour);
+}
+
+function resetSimulation() {
+  document.getElementById("result-total-output").textContent = "--";
+  document.getElementById("result-gross-revenue").textContent = "--";
+  document.getElementById("result-net-profit").textContent = "--";
+  document.getElementById("result-profit-hour").textContent = "--";
 }
 
 function rankVendorsForItem(item) {
@@ -540,6 +634,148 @@ function rankHubsForItem(item) {
     .sort((a, b) => b.rankingScore - a.rankingScore);
 }
 
+function initializeShipComparisonDefaults() {
+  const sortedShips = state.datasets.ships.items
+    .slice()
+    .sort((a, b) => (b.scores?.balanced || 0) - (a.scores?.balanced || 0));
+
+  const shipA = sortedShips[0];
+  const shipB = sortedShips[1];
+
+  if (!shipA || !shipB) {
+    return;
+  }
+
+  document.getElementById("compare-ship-a").value = shipA.name;
+  document.getElementById("compare-ship-b").value = shipB.name;
+  runShipComparison();
+}
+
+function handleCompareEnter(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    runShipComparison();
+  }
+}
+
+function runShipComparison() {
+  const container = document.getElementById("ship-compare-result");
+  const inputA = document.getElementById("compare-ship-a").value.trim();
+  const inputB = document.getElementById("compare-ship-b").value.trim();
+
+  const shipA = findShipByName(inputA);
+  const shipB = findShipByName(inputB);
+
+  if (!shipA || !shipB) {
+    container.className = "ship-compare-result empty-state";
+    container.textContent = "Escolhe duas naves válidas da lista para comparar.";
+    return;
+  }
+
+  if (shipA.id === shipB.id) {
+    container.className = "ship-compare-result empty-state";
+    container.textContent = "Escolhe duas naves diferentes para a comparação.";
+    return;
+  }
+
+  container.className = "ship-compare-result";
+  container.innerHTML = renderShipComparison(shipA, shipB);
+}
+
+function findShipByName(query) {
+  if (!query) return null;
+
+  const normalizedQuery = normalizeText(query);
+  return (
+    state.datasets.ships.items.find((ship) => normalizeText(ship.name) === normalizedQuery) ||
+    state.datasets.ships.items.find((ship) => normalizeText(ship.name).includes(normalizedQuery)) ||
+    null
+  );
+}
+
+function renderShipComparison(shipA, shipB) {
+  const metrics = [
+    { label: "Ranking geral", getValue: (ship) => ship.scores?.balanced, format: formatScore, numeric: true },
+    { label: "Ranking exploração", getValue: (ship) => ship.scores?.explorationFocused, format: formatScore, numeric: true },
+    { label: "Ranking combate", getValue: (ship) => ship.scores?.combatFocused, format: formatScore, numeric: true },
+    { label: "Classe", getValue: (ship) => ship.class, format: String, numeric: false },
+    { label: "Fuel", getValue: (ship) => ship.fuel, format: formatNumber, numeric: true },
+    { label: "Hull", getValue: (ship) => ship.hull, format: formatNumber, numeric: true },
+    { label: "Cargo", getValue: (ship) => ship.cargo, format: formatNumber, numeric: true },
+    { label: "Reactor", getValue: (ship) => ship.reactor, format: formatNumber, numeric: true },
+    { label: "Crew", getValue: (ship) => ship.crew, format: formatNumber, numeric: true },
+    { label: "Jump", getValue: (ship) => ship.jump, format: formatNumber, numeric: true },
+    { label: "Shield", getValue: (ship) => ship.shield, format: formatNumber, numeric: true },
+    { label: "Damage", getValue: (ship) => ship.damage, format: formatNumber, numeric: true },
+    { label: "Valor", getValue: (ship) => ship.value, format: formatCredits, numeric: true }
+  ];
+
+  return `
+    <div class="ship-compare-summary-grid">
+      ${renderShipCompareSummary(shipA)}
+      ${renderShipCompareSummary(shipB)}
+    </div>
+
+    <div class="ship-compare-table">
+      <div class="ship-compare-row ship-compare-row-head">
+        <span>Stat</span>
+        <span>${escapeHtml(shipA.name)}</span>
+        <span>${escapeHtml(shipB.name)}</span>
+      </div>
+      ${metrics
+        .map((metric) => {
+          const valueA = metric.getValue(shipA);
+          const valueB = metric.getValue(shipB);
+          const winnerA = metric.numeric && Number(valueA) > Number(valueB);
+          const winnerB = metric.numeric && Number(valueB) > Number(valueA);
+
+          return `
+            <div class="ship-compare-row">
+              <span class="ship-compare-label">${escapeHtml(metric.label)}</span>
+              <span class="ship-compare-value ${winnerA ? "is-better" : ""}">${escapeHtml(metric.format(valueA))}</span>
+              <span class="ship-compare-value ${winnerB ? "is-better" : ""}">${escapeHtml(metric.format(valueB))}</span>
+            </div>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+}
+
+function renderShipCompareSummary(ship) {
+  return `
+    <article class="ship-compare-summary">
+      <div class="ship-compare-top">
+        <div>
+          <div class="tag-list">
+            ${renderTagList([
+              `Class ${ship.class}`,
+              ship.isDlc ? "DLC" : "Base Game"
+            ])}
+          </div>
+          <h3>${escapeHtml(ship.name)}</h3>
+        </div>
+        <strong>${formatScore(ship.scores?.balanced)}</strong>
+      </div>
+      <div class="detail-meta">${escapeHtml(formatAcquisitionSummary(ship.acquisition))}</div>
+      <div class="ship-compare-score-grid">
+        <article class="detail-card">
+          <span>Geral</span>
+          <strong>${formatScore(ship.scores?.balanced)}</strong>
+        </article>
+        <article class="detail-card">
+          <span>Exploração</span>
+          <strong>${formatScore(ship.scores?.explorationFocused)}</strong>
+        </article>
+        <article class="detail-card">
+          <span>Combate</span>
+          <strong>${formatScore(ship.scores?.combatFocused)}</strong>
+        </article>
+      </div>
+    </article>
+  `;
+}
+
 function getSelectedItem() {
   return state.catalog.find((item) => item.id === state.selectedItemId) || null;
 }
@@ -592,9 +828,7 @@ function humanizeKey(value) {
 }
 
 function formatCredits(value) {
-  return new Intl.NumberFormat("pt-PT", {
-    maximumFractionDigits: 0
-  }).format(Number(value || 0)) + " cr";
+  return `${new Intl.NumberFormat("pt-PT", { maximumFractionDigits: 0 }).format(Number(value || 0))} cr`;
 }
 
 function formatNumber(value) {
@@ -603,9 +837,24 @@ function formatNumber(value) {
   }).format(Number(value || 0));
 }
 
+function formatScore(value) {
+  return new Intl.NumberFormat("pt-PT", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(Number(value || 0));
+}
+
 function toNumber(value, fallback = 0) {
   const result = Number(value);
   return Number.isFinite(result) ? result : fallback;
+}
+
+function normalizeText(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
 }
 
 function escapeHtml(value) {

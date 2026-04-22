@@ -159,7 +159,11 @@ function renderAcquisition(acquisition) {
     return `<span class="acquisition-badge piracy">Pirataria</span><small>${escapeHtml(acquisition.notes?.[0] || "Não disponível para compra")}${source}</small>`;
   }
 
-  const locations = acquisition.locations || [];
+  const locations = Array.isArray(acquisition.locations)
+    ? acquisition.locations
+    : acquisition.locations
+      ? [acquisition.locations]
+      : [];
   const firstLocation = locations[0];
   if (!firstLocation) {
     return '<span class="acquisition-badge vendor">Vendor</span><small>Vendor verificado</small>';
