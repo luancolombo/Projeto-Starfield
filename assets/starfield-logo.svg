@@ -1,0 +1,23 @@
+<svg width="920" height="220" viewBox="0 0 920 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Starfield logo</title>
+  <desc id="desc">Stylized Starfield wordmark with orbital ring and horizontal lines.</desc>
+  <rect width="920" height="220" fill="transparent"/>
+  <g opacity="0.92">
+    <line x1="36" y1="110" x2="250" y2="110" stroke="#EAF4F8" stroke-width="2.4"/>
+    <line x1="670" y1="110" x2="884" y2="110" stroke="#EAF4F8" stroke-width="2.4"/>
+    <circle cx="460" cy="110" r="84" stroke="#EAF4F8" stroke-width="2.4"/>
+    <circle cx="460" cy="110" r="4.5" fill="#88E7D2"/>
+  </g>
+  <text
+    x="460"
+    y="126"
+    text-anchor="middle"
+    fill="#F4F8FB"
+    font-family="'Rajdhani', 'Space Grotesk', Arial, sans-serif"
+    font-size="62"
+    font-weight="700"
+    letter-spacing="12"
+  >
+    STARFIELD
+  </text>
+</svg>
