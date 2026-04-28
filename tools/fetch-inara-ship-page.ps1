@@ -15,5 +15,19 @@ $headers = @{
   "Accept-Language" = "en-US,en;q=0.9"
 }
 
-$response = Invoke-WebRequest -Uri $Url -Headers $headers -UseBasicParsing
-$response.Content | Set-Content -Path $OutputPath -Encoding UTF8
+$maxAttempts = 5
+
+for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
+  try {
+    $response = Invoke-WebRequest -Uri $Url -Headers $headers -UseBasicParsing
+    $response.Content | Set-Content -Path $OutputPath -Encoding UTF8
+    exit 0
+  }
+  catch {
+    if ($attempt -eq $maxAttempts) {
+      throw
+    }
+
+    Start-Sleep -Seconds (2 * $attempt)
+  }
+}

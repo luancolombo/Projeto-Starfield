@@ -1,0 +1,220 @@
+Deimos All-in-One Berth 2x1
+Deimos All-in-One Berth 3x1
+Deimos Armory 2x1
+Deimos Battle Stations 2x2
+Deimos Brig 2x2
+Deimos Captain's Quarters 2x1
+Deimos Cargo Hall 2x2
+Deimos Cargo Hall 2x3
+Deimos Cargo Hall 3x2
+Deimos Cargo Hall 3x3
+Deimos Companionway 1x1
+Deimos Computer Core 2x1
+Deimos Computer Core 2x2
+Deimos Control Station 2x1
+Deimos Engineering Bay 2x2
+Deimos Engineering Bay A 3x1
+Deimos Engineering Bay B 3x1
+Deimos Infirmary 2x1
+Deimos Living Quarters 2x1
+Deimos Living Quarters 2x2
+Deimos Living Quarters 3x1
+Deimos Mess Hall 2x3
+Deimos Mess Hall 3x2
+Deimos Science Lab 2x1
+Deimos Storeroom 1x1
+Deimos Workshop 2x1
+HopeTech All-in-One Berth 2x1
+HopeTech All-in-One Berth 2x2
+HopeTech Armory 2x1
+HopeTech Battle Stations 2x2
+HopeTech Brig 2x2
+HopeTech Captain's Quarters 2x1
+HopeTech Cargo Hall 2x2
+HopeTech Cargo Hall 2x3
+HopeTech Cargo Hall 3x2
+HopeTech Cargo Hall 3x3
+HopeTech Companionway 1x1
+HopeTech Companionway Fuselage A
+HopeTech Companionway Fuselage B
+HopeTech Companionway Fuselage C
+HopeTech Companionway Fuselage D
+HopeTech Computer Core 2x1
+HopeTech Computer Core 2x2
+HopeTech Control Station 2x1
+HopeTech Engineering Bay 3x1
+HopeTech Hab Cross Brace
+HopeTech Hab Spine
+HopeTech Infirmary 2x1
+HopeTech Living Quarters 2x1
+HopeTech Mess Hall 2x3
+HopeTech Mess Hall 3x2
+HopeTech Science Lab 2x1
+HopeTech Storeroom 1x1
+HopeTech Storeroom Fuselage A
+HopeTech Storeroom Fuselage B
+HopeTech Storeroom Fuselage C
+HopeTech Storeroom Fuselage D
+HopeTech Workshop 2x1
+Nova Cross Passage
+Nova Galactic All-in-One Berth 2x1 A
+Nova Galactic All-in-One Berth 2x1 B
+Nova Galactic All-in-One Berth 2x2
+Nova Galactic Armory 2x1
+Nova Galactic Battle Stations 2x2
+Nova Galactic Brig 2x2
+Nova Galactic Captain's Quarters 2x1
+Nova Galactic Cargo Hall 2x2
+Nova Galactic Cargo Hall 2x3
+Nova Galactic Cargo Hall 3x3
+Nova Galactic Companionway 1x1
+Nova Galactic Computer Core 2x1
+Nova Galactic Control Station 2x1
+Nova Galactic Double Decker 2x1x2 A
+Nova Galactic Double Decker 2x1x2 F
+Nova Galactic Double Decker 2x2x2
+Nova Galactic Double Decker 3x1x2
+Nova Galactic Engineering Bay 3x1
+Nova Galactic Frontier 2x1
+Nova Galactic Infirmary 2x1
+Nova Galactic Living Quarters 2x1
+Nova Galactic Living Quarters 2x2
+Nova Galactic Mess Hall 2x3
+Nova Galactic Mess Hall 3x2
+Nova Galactic Science Lab 2x1
+Nova Galactic Storeroom 1x1
+Nova Galactic Workshop 2x1
+Nova Large Hab Cap Aft B
+Nova Large Hab Cap Fore B
+Stroud All-in-One Berth 2x1 A
+Stroud All-in-One Berth 2x1 B
+Stroud All-in-One Berth 3x1
+Stroud Armory 2x1
+Stroud Battle Stations 2x2
+Stroud Brig 2x2
+Stroud Captain's Quarters 2x1
+Stroud Cargo Hall 2x2
+Stroud Cargo Hall 2x3
+Stroud Cargo Hall 3x2
+Stroud Companionway 1x1
+Stroud Computer Core 2x1
+Stroud Computer Core 2x2
+Stroud Control Station 2x1
+Stroud Engineering Bay 3x1
+Stroud Infirmary 2x1
+Stroud Living Quarters 2x1
+Stroud Living Quarters 2x2
+Stroud Mess Hall 2x3
+Stroud Mess Hall 3x2
+Stroud Science Lab 2x1
+Stroud Storeroom 1x1
+Stroud Storeroom 1x1 Port A
+Stroud Storeroom 1x1 Port B
+Stroud Storeroom 1x1 Port C
+Stroud Storeroom 1x1 Stbd A
+Stroud Storeroom 1x1 Stbd B
+Stroud Storeroom 1x1 Stbd C
+Stroud Workshop 2x1
+Taiyo All-in-One Berth 2x1 Bottom A
+Taiyo All-in-One Berth 2x1 Bottom B
+Taiyo All-in-One Berth 2x1 Mid
+Taiyo All-in-One Berth 2x1 Top A
+Taiyo All-in-One Berth 2x1 Top B
+Taiyo All-in-One Berth 2x2 Bottom A
+Taiyo All-in-One Berth 2x2 Bottom B
+Taiyo All-in-One Berth 2x2 Mid
+Taiyo All-in-One Berth 2x2 Top A
+Taiyo All-in-One Berth 2x2 Top B
+Taiyo Armory 2x1 Bottom A
+Taiyo Armory 2x1 Bottom B
+Taiyo Armory 2x1 Mid
+Taiyo Armory 2x1 Top A
+Taiyo Armory 2x1 Top B
+Taiyo Battle Stations 2x2 Bottom A
+Taiyo Battle Stations 2x2 Bottom B
+Taiyo Battle Stations 2x2 Mid
+Taiyo Battle Stations 2x2 Top A
+Taiyo Battle Stations 2x2 Top B
+Taiyo Brig 2x2 Bottom A
+Taiyo Brig 2x2 Bottom B
+Taiyo Brig 2x2 Mid
+Taiyo Brig 2x2 Top A
+Taiyo Brig 2x2 Top B
+Taiyo Captains Quarters 2x1 Bottom A
+Taiyo Captains Quarters 2x1 Bottom B
+Taiyo Captains Quarters 2x1 Mid
+Taiyo Captains Quarters 2x1 Top A
+Taiyo Captains Quarters 2x1 Top B
+Taiyo Cargo Hall 2x2 Bottom A
+Taiyo Cargo Hall 2x2 Bottom B
+Taiyo Cargo Hall 2x2 Mid
+Taiyo Cargo Hall 2x2 Top A
+Taiyo Cargo Hall 2x2 Top B
+Taiyo Cargo Hall 3x2 Bottom A
+Taiyo Cargo Hall 3x2 Bottom B
+Taiyo Cargo Hall 3x2 Mid
+Taiyo Cargo Hall 3x2 Top A
+Taiyo Cargo Hall 3x2 Top B
+Taiyo Companionway 1x1 Bottom A
+Taiyo Companionway 1x1 Bottom B
+Taiyo Companionway 1x1 Mid
+Taiyo Companionway 1x1 Top A
+Taiyo Companionway 1x1 Top B
+Taiyo Companionway 1x1 Top C
+Taiyo Companionway 1x1 Top D
+Taiyo Computer Core 2x1 Bottom A
+Taiyo Computer Core 2x1 Bottom B
+Taiyo Computer Core 2x1 Mid
+Taiyo Computer Core 2x1 Top A
+Taiyo Computer Core 2x1 Top B
+Taiyo Computer Core 2x2
+Taiyo Computer Core 2x2 Bottom A
+Taiyo Computer Core 2x2 Bottom B
+Taiyo Computer Core 2x2 Mid
+Taiyo Computer Core 2x2 Top A
+Taiyo Control Station 2x1 Bottom A
+Taiyo Control Station 2x1 Bottom B
+Taiyo Control Station 2x1 Mid
+Taiyo Control Station 2x1 Top A
+Taiyo Control Station 2x1 Top B
+Taiyo Engineering Bay 3x1 Bottom A
+Taiyo Engineering Bay 3x1 Bottom B
+Taiyo Engineering Bay 3x1 Mid
+Taiyo Engineering Bay 3x1 Top A
+Taiyo Engineering Bay 3x1 Top B
+Taiyo Hab Cargo Hall 2x3 Top A
+Taiyo Hab Cargo Hall 2x3 Top C
+Taiyo Hab Mess Hall 2x3 Top A
+Taiyo Hab Mess Hall 2x3 Top C
+Taiyo Infirmary 2x1 Bottom A
+Taiyo Infirmary 2x1 Bottom B
+Taiyo Infirmary 2x1 Mid
+Taiyo Infirmary 2x1 Top A
+Taiyo Infirmary 2x1 Top B
+Taiyo Living Quarters 2x1 Bottom A
+Taiyo Living Quarters 2x1 Bottom B
+Taiyo Living Quarters 2x1 Mid
+Taiyo Living Quarters 2x1 Top A
+Taiyo Living Quarters 2x1 Top B
+Taiyo Mess Hall 3x2 Bottom A
+Taiyo Mess Hall 3x2 Bottom B
+Taiyo Mess Hall 3x2 Mid
+Taiyo Mess Hall 3x2 Top A
+Taiyo Mess Hall 3x2 Top B
+Taiyo Science Lab 2x1 Bottom A
+Taiyo Science Lab 2x1 Bottom B
+Taiyo Science Lab 2x1 Mid
+Taiyo Science Lab 2x1 Top A
+Taiyo Science Lab 2x1 Top B
+Taiyo Storeroom 1x1 Bottom A
+Taiyo Storeroom 1x1 Bottom B
+Taiyo Storeroom 1x1 Mid
+Taiyo Storeroom 1x1 Top A
+Taiyo Storeroom 1x1 Top B
+Taiyo Storeroom 1x1 Top C
+Taiyo Storeroom 1x1 Top D
+Taiyo Workshop 2x1 Bottom A
+Taiyo Workshop 2x1 Bottom B
+Taiyo Workshop 2x1 Mid
+Taiyo Workshop 2x1 Top A
+Taiyo Workshop 2x1 Top B

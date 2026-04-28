@@ -1,0 +1,203 @@
+{
+  "metadata": {
+    "game": "Starfield",
+    "dataset": "ship_builder_rules",
+    "version": 1,
+    "generatedAt": "2026-04-26",
+    "notes": [
+      "Regras iniciais para o futuro assistente de construcao de naves.",
+      "Este arquivo ainda nao executa nada sozinho; ele define a base de compatibilidade, prioridades e heuristicas.",
+      "As formulas e heuristicas podem ser refinadas conforme o catalogo de modulos crescer."
+    ],
+    "sources": [
+      "https://inara.cz/starfield/ship-modules/",
+      "https://inara.cz/starfield/ship-modules-list/980/",
+      "https://inara.cz/starfield/ship-modules-list/981/",
+      "https://inara.cz/starfield/ship-modules-list/982/",
+      "https://inara.cz/starfield/ship-modules-list/983/",
+      "https://inara.cz/starfield/ship-modules-list/984/",
+      "https://inara.cz/starfield/ship-modules-list/987/",
+      "https://inara.cz/starfield/ship-modules-list/986/",
+      "https://inara.cz/starfield/ship-modules-list/988/",
+      "https://inara.cz/starfield/ship-modules-list/989/",
+      "https://inara.cz/starfield/ship-modules-list/990/"
+      ,
+      "https://inara.cz/starfield/ship-modules-list/991/",
+      "https://inara.cz/starfield/ship-modules-list/992/",
+      "https://inara.cz/starfield/ship-modules-list/985/",
+      "https://inara.cz/starfield/ship-modules-list/993/",
+      "https://inara.cz/starfield/ship-modules-list/994/"
+    ]
+  },
+  "hardRules": [
+    {
+      "id": "required-core-modules",
+      "name": "Modulos obrigatorios",
+      "description": "Uma nave funcional precisa ter pelo menos 1 reactor, 1 grav drive, 1 shield generator, 1 cockpit, 1 engine, 1 docker e 1 landing bay."
+    },
+    {
+      "id": "reactor-class-ceiling",
+      "name": "Classe maxima pelo reactor",
+      "description": "A classe do reactor define a classe maxima dos modulos classificados. Reactor A limita a modulos A; reactor B aceita A e B; reactor C aceita A, B e C."
+    },
+    {
+      "id": "power-budget",
+      "name": "Orcamento de energia",
+      "description": "A soma da energia alocada para engines, grav drive, shield e weapons nao pode passar do poder total gerado pelo reactor."
+    },
+    {
+      "id": "landing-thrust-requirement",
+      "name": "Landing thrust minimo",
+      "description": "A nave precisa de 1 ponto de landing thrust para cada 200 de massa total.",
+      "formula": "requiredLandingThrust = ceil(shipMass / 200)"
+    },
+    {
+      "id": "mobility-estimate",
+      "name": "Estimativa de mobilidade",
+      "description": "A mobilidade pode ser estimada com base no total de maneuvering thrust e na massa total da nave.",
+      "formula": "mobilityEstimate = (totalManeuveringThrust / shipMass) * 11.9 - 47.6"
+    }
+  ],
+  "recommendationProfiles": [
+    {
+      "id": "balanced",
+      "name": "Equilibrada",
+      "weights": {
+        "reactorPower": 0.18,
+        "shieldStrength": 0.18,
+        "weaponPressure": 0.18,
+        "mobility": 0.16,
+        "jumpCapability": 0.12,
+        "cargoCapacity": 0.10,
+        "massEfficiency": 0.08
+      },
+      "priorityOrder": [
+        "reactor",
+        "shield_generator",
+        "engine",
+        "weapon",
+        "grav_drive",
+        "cargo_hold"
+      ]
+    },
+    {
+      "id": "exploration",
+      "name": "Exploracao",
+      "weights": {
+        "jumpCapability": 0.26,
+        "fuelCapacity": 0.16,
+        "massEfficiency": 0.16,
+        "reactorPower": 0.14,
+        "mobility": 0.14,
+        "cargoCapacity": 0.08,
+        "shieldStrength": 0.06
+      },
+      "priorityOrder": [
+        "grav_drive",
+        "fuel_tank",
+        "engine",
+        "reactor",
+        "shield_generator"
+      ]
+    },
+    {
+      "id": "combat",
+      "name": "Combate",
+      "weights": {
+        "weaponPressure": 0.28,
+        "shieldStrength": 0.22,
+        "reactorPower": 0.18,
+        "mobility": 0.16,
+        "massEfficiency": 0.08,
+        "cargoCapacity": 0.04,
+        "jumpCapability": 0.04
+      },
+      "priorityOrder": [
+        "weapon",
+        "shield_generator",
+        "reactor",
+        "engine"
+      ]
+    },
+    {
+      "id": "cargo",
+      "name": "Carga",
+      "weights": {
+        "cargoCapacity": 0.30,
+        "massEfficiency": 0.18,
+        "reactorPower": 0.14,
+        "landingSupport": 0.14,
+        "mobility": 0.12,
+        "shieldStrength": 0.07,
+        "jumpCapability": 0.05
+      },
+      "priorityOrder": [
+        "cargo_hold",
+        "landing_gear",
+        "engine",
+        "reactor",
+        "shield_generator"
+      ]
+    }
+  ],
+  "upgradeHeuristics": [
+    {
+      "id": "reactor-first-when-overbudget",
+      "if": "allocatedPower > reactorPower",
+      "then": "Recomendar upgrade de reactor antes de sugerir engines, shields ou weapons mais pesados."
+    },
+    {
+      "id": "landing-gear-warning",
+      "if": "landingThrust < requiredLandingThrust",
+      "then": "Apontar que a nave nao pousa direito e priorizar landing gears melhores ou reducao de massa."
+    },
+    {
+      "id": "grav-drive-warning",
+      "if": "jumpCapabilityScore < 40 and profile in [exploration, balanced]",
+      "then": "Sugerir grav drive melhor e revisar fuel tank."
+    },
+    {
+      "id": "shield-warning",
+      "if": "shieldStrengthScore < 45 and profile in [combat, balanced]",
+      "then": "Sugerir shield generator melhor antes de aumentar dano."
+    },
+    {
+      "id": "engine-warning",
+      "if": "mobilityScore < 45",
+      "then": "Sugerir engines com melhor maneuvering thrust por massa ou reduzir carga estrutural."
+    },
+    {
+      "id": "smuggling-path",
+      "if": "playerGoal contains shielded cargo",
+      "then": "Priorizar cargo holds shielded e checar sacrificio de cargo por massa."
+    }
+  ],
+  "gargaloChecks": [
+    {
+      "id": "reactor-bottleneck",
+      "description": "Quando falta energia para ativar o setup desejado."
+    },
+    {
+      "id": "mobility-bottleneck",
+      "description": "Quando o peso total derruba a manobrabilidade."
+    },
+    {
+      "id": "jump-bottleneck",
+      "description": "Quando o grav drive e fraco para a massa da nave."
+    },
+    {
+      "id": "landing-bottleneck",
+      "description": "Quando o landing thrust nao acompanha a massa total."
+    },
+    {
+      "id": "defense-bottleneck",
+      "description": "Quando o shield generator fica atras do nivel esperado para o perfil da nave."
+    }
+  ],
+  "knownGaps": [
+    "Todas as categorias publicas de ship modules da INARA ja estao catalogadas; o projeto agora tambem tem uma primeira camada de vendors por modulo, mas a verificacao vendor por vendor ainda pode refinar locais exatos.",
+    "Ainda falta revisar e verificar os vendors inferidos modulo por modulo em escala maior.",
+    "Ainda falta separar cockpit, hab e cargo por fabricante e estilo de build com mais profundidade.",
+    "Ainda falta montar a logica de compatibilidade por tamanho, snap points e dimensoes reais no editor de nave."
+  ]
+}

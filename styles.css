@@ -131,6 +131,12 @@ h1 {
   justify-items: center;
 }
 
+.hero-copy {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+}
+
 .hero-logo {
   width: min(100%, 560px);
   height: auto;
@@ -401,6 +407,24 @@ select:focus {
   box-shadow: 0 12px 30px rgba(135, 231, 210, 0.18);
 }
 
+.hero-builder-button {
+  justify-self: center;
+  min-width: 320px;
+  padding: 18px 24px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+}
+
+.secondary-action-button {
+  color: var(--text);
+  background:
+    linear-gradient(135deg, rgba(101, 183, 255, 0.18), rgba(135, 231, 210, 0.08)),
+    rgba(5, 15, 23, 0.9);
+  border: 1px solid var(--line-strong);
+}
+
 .calculator-results {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -573,6 +597,202 @@ select:focus {
   color: var(--accent);
 }
 
+.ship-builder-panel,
+.ship-builder-shell,
+.ship-builder-controls,
+.ship-builder-result,
+.ship-builder-recommendations {
+  display: grid;
+  gap: 18px;
+}
+
+.ship-builder-shell {
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  align-items: start;
+}
+
+.ship-builder-shell-page {
+  grid-template-columns: 1fr;
+}
+
+.ship-builder-controls {
+  align-content: start;
+}
+
+.ship-builder-top-grid,
+.ship-builder-module-grid,
+.ship-builder-metric-grid,
+.ship-builder-compatibility-grid,
+.ship-builder-breakdown-grid,
+.ship-builder-score-grid,
+.ship-builder-reference-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.ship-builder-top-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ship-builder-top-grid-page {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.ship-builder-module-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ship-builder-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ship-builder-result.is-ready {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.ship-builder-metric-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ship-builder-compatibility-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ship-builder-diagnostic-card,
+.ship-builder-reference-card,
+.ship-builder-recommendation-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(101, 183, 255, 0.1), transparent 56%),
+    rgba(7, 19, 29, 0.62);
+}
+
+.ship-builder-diagnostic-card {
+  display: grid;
+  gap: 14px;
+}
+
+.ship-builder-diagnostic-card h3,
+.ship-builder-reference-top h3,
+.ship-builder-subheading h3 {
+  margin: 0;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.8rem;
+  line-height: 0.95;
+}
+
+.ship-builder-diagnostic-card p,
+.ship-builder-recommendation-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.ship-builder-breakdown-grid,
+.ship-builder-score-grid,
+.ship-builder-reference-grid,
+.ship-builder-vendor-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ship-builder-subheading {
+  margin-bottom: 0;
+}
+
+.ship-builder-reference-top,
+.ship-builder-recommendation-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 14px;
+}
+
+.ship-builder-reference-top strong {
+  font-size: 2rem;
+  color: var(--accent-2);
+}
+
+.ship-builder-recommendation-card {
+  display: grid;
+  gap: 12px;
+}
+
+.ship-builder-vendor-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(7, 19, 29, 0.56);
+  display: grid;
+  gap: 10px;
+}
+
+.ship-builder-vendor-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+}
+
+.ship-builder-vendor-top strong {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.ship-builder-vendor-lines {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.vendor-status-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(135, 231, 210, 0.12);
+  color: #bdf7eb;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ship-builder-footnote {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.ship-builder-page,
+.ship-builder-page-panel,
+.ship-upgrade-panel,
+.ship-upgrade-roadmap,
+.ship-upgrade-phase-list {
+  display: grid;
+  gap: 18px;
+}
+
+.ship-upgrade-copy {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.detail-card.is-positive strong {
+  color: var(--accent);
+}
+
+.detail-card.is-negative strong {
+  color: var(--danger);
+}
+
 .tag {
   display: inline-flex;
   align-items: center;
@@ -634,6 +854,10 @@ select:focus {
 .full-width-button {
   width: 100%;
   margin-top: 14px;
+}
+
+.builder-open-link {
+  margin-top: 12px;
 }
 
 .compact-ranking {
@@ -851,7 +1075,11 @@ select:focus {
   .detail-stack,
   .ranking-picker,
   .ship-compare-controls,
-  .ship-compare-summary-grid {
+  .ship-compare-summary-grid,
+  .ship-builder-shell,
+  .ship-builder-top-grid,
+  .ship-builder-top-grid-page,
+  .ship-builder-module-grid {
     grid-template-columns: 1fr;
   }
 
@@ -860,7 +1088,13 @@ select:focus {
   }
 
   .calculator-results,
-  .ship-compare-score-grid {
+  .ship-compare-score-grid,
+  .ship-builder-metric-grid,
+  .ship-builder-compatibility-grid,
+  .ship-builder-breakdown-grid,
+  .ship-builder-score-grid,
+  .ship-builder-reference-grid,
+  .ship-builder-vendor-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -885,13 +1119,28 @@ select:focus {
     width: min(100%, 380px);
   }
 
+  .hero-builder-button {
+    min-width: 0;
+    width: 100%;
+  }
+
   h2 {
     font-size: 1.7rem;
   }
 
   .calculator-results,
-  .ship-compare-score-grid {
+  .ship-compare-score-grid,
+  .ship-builder-metric-grid,
+  .ship-builder-compatibility-grid,
+  .ship-builder-breakdown-grid,
+  .ship-builder-score-grid,
+  .ship-builder-reference-grid,
+  .ship-builder-vendor-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ship-builder-actions {
+    display: grid;
   }
 
   .ship-compare-row {

@@ -1,0 +1,18 @@
+Advanced Ship Scrap Unit
+Anti-Targeting System
+Broadside Array Antenna
+Buoyant Insulators
+ComSpike
+Conduction Grid
+EM Pulse Shielding
+Evasive Stealth Drive
+Extended Comm Array
+Micro-Reactor
+Nova Sector Antenna
+Repair System Overdrive
+Scan Jammer - Dual-Frequency
+Scan Jammer - Multi-Frequency
+Scan Jammer - Single-Frequency
+Shield Refractor Unit
+Stellar Reach Antenna
+Strata Mesh Antenna

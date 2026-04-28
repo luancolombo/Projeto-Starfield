@@ -1,0 +1,156 @@
+Atlatl 270A Missile Launcher
+Atlatl 270B Missile Launcher
+Atlatl 270C Missile Launcher
+Atlatl 280A Missile Launcher
+Atlatl 280B Missile Launcher
+Atlatl 280C Missile Launcher
+Atlatl 290B Missile Launcher
+Blaze 2GW SX Laser
+Blaze-P 2GW SX Pulse Laser
+Blaze-P 2GW SX Pulse Laser Turret
+CE-09 Missile Launcher
+CE-19 Missile Launcher
+CE-29 Missile Launcher
+CE-39 Missile Launcher
+CE-49 Missile Launcher
+CE-59 Missile Launcher
+Dangan Pb Cannon
+Dangan Pb RF Autocannon
+Dangan W Cannon
+Dangan W RF Autocannon
+Devastator 1500 Missile Launcher
+Disruptor 3300 Electron Beam
+Disruptor 3300A Auto Electron Beam
+Disruptor 3310 Proton Beam
+Disruptor 3310A Auto Proton Beam
+Disruptor 3320 Neutron Beam
+Disruptor 3320 Neutron Turret
+Disruptor 3320A Auto Neutron Beam
+Disruptor 3330 Helion Beam
+Disruptor 3330A Auto Helion Beam
+Disruptor 3340 Alpha Beam
+Disruptor 3340A Auto Alpha Beam
+Disruptor 3340A Auto Alpha Turret
+Dragon 221 MW Laser
+Dragon 221P MW Pulse Laser
+Dragon 231 IR Laser
+Dragon 231P IR Pulse Laser
+Dragon 241 Laser
+Dragon 241P Pulse Laser
+Dragon 241P Pulse Laser Turret
+Dragon 251 UV Laser
+Dragon 251P UV Pulse Laser
+Dragon 261 SX Laser
+Dragon 261 SX Laser Turret
+Dragon 261P SX Pulse Laser
+EMP-1000 Suppressor
+EMP-200 Suppressor
+EMP-500 Suppressor
+EMP-80 Suppressor
+Eradicator 75MeV Auto Neutron Beam
+Eradicator 75MeV Auto Neutron Turret
+Eradicator 75MeV Neutron Beam
+Exterminator 95MeV Auto Helion Beam
+Exterminator 95MeV Helion Beam
+Firebolt 4000 Suppressor
+Flare 15MW IR Laser
+Flare-P 15MW IR Pulse Laser
+Fulminator 8000 Suppressor
+Hunter Mag-350 Missile Launcher
+Hunter Mag-450 Missile Launcher
+Infiltrator SC-01 Missile Launcher
+Infiltrator SC-02 Missile Launcher
+Jishaku AlNiCo Railgun
+Jishaku AlNiCo RF Rapid Railgun
+Jishaku Fe Railgun
+Jishaku Fe RF Rapid Railgun
+Jishaku Fe RF Rapid Railgun Turret
+Jishaku Nd Railgun
+Jishaku Nd RF Rapid Railgun
+Jishaku Nd RF Rapid Railgun Turret
+KE-20 Cannon
+KE-20A Autocannon
+KE-31 Cannon
+KE-31A Autocannon
+KE-42 Cannon
+KE-42 Cannon Turret
+KE-42A Autocannon
+KE-49 Cannon
+KE-49A Autocannon
+Marauder 114ANC Railgun
+Marauder 114ANC Rapid Railgun
+Marauder 115N Railgun
+Marauder 115N Railgun Turret
+Marauder 115N Rapid Railgun
+Mauler 104L Autocannon
+Mauler 104L Cannon
+Mauler 105U Autocannon
+Mauler 105U Cannon
+Mauler 106S Shot-Cannon
+Mauler 106T Autocannon
+Mauler 106T Autocannon Turret
+Mauler 106T Cannon
+Mauler 107I Autocannon
+Mauler 107I Cannon
+MKE-4 Gauss Gun
+MKE-4A Auto Gauss Gun
+MKE-9 Gauss Gun
+MKE-9A Auto Gauss Gun
+Nullifier 1750 Suppressor
+Obliterator 250MeV Alpha Beam
+Obliterator 250MeV Alpha Turret
+Obliterator 250MeV Auto Alpha Beam
+PB-100 Neutron Beam
+PB-175 Helion Beam
+PB-30 Electron Beam
+PB-300 Alpha Beam
+PB-50 Proton Beam
+PBO-100 Auto Neutron Beam
+PBO-100 Auto Neutron Turret
+PBO-175 Auto Helion Beam
+PBO-30 Auto Electron Beam
+PBO-300 Auto Alpha Beam
+PBO-300 Auto Alpha Turret
+PBO-40 Auto Electron Beam
+PBO-50 Auto Proton Beam
+Ravager 20MeV Auto Electron Beam
+Ravager 20MeV Electron Beam
+Reza 10 PHz Pulse Laser Turret
+Reza 10 PHz UV Laser
+Reza 10 PHz UV Pulse Laser
+Reza 30 THz IR Laser
+Reza 30 THz IR Pulse Laser
+Reza 300 PHz SX Laser
+Reza 300 PHz SX Pulse Laser
+Reza 300 PHz SX Pulse Laser Turret
+Reza 45 GHz MW Laser
+Reza 45 GHz MW Pulse Laser
+Reza 600 THz Laser
+Reza 600 THz Pulse Laser
+Scorch 60MW Laser
+Scorch-P 60MW Pulse Laser
+Scorch-P 60MW Pulse Laser Turret
+Scorch-S 80MW Pulse Laser Turret
+Singe 4MW Laser
+Singe-P 4MW Pulse Laser
+Spark 750 Suppressor
+Supaku 110GC Suppressor
+Supaku 250GC Suppressor
+Supaku 600GC Suppressor
+Tatsu 500EM Suppressor
+Tatsu 501EM Suppressor
+Torch 250MW UV Laser
+Torch-P 250MW UV Pulse Laser
+Tsukisasu 13K Missile Launcher
+Tsukisasu 19K Missile Launcher
+Tsukisasu 25k Missile Launcher
+Tsukisasu 33k Missile Launcher
+Tsukisasu 40k Missile Launcher
+Tsukisasu 50k Missile Launcher
+Vanguard Ares Particle Cannon
+Vanguard Hellfire Autocannon
+Vanguard Obliterator Autoprojector
+Vanguard Starseeker Pulse Laser
+Vanguard Tempest CE-13 Missile Launcher
+Vaporizer 35MeV Auto Proton Beam
+Vaporizer 35MeV Proton Beam

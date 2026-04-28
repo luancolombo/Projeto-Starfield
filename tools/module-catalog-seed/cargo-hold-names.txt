@@ -1,0 +1,36 @@
+100CM Ballast Cargo Hold
+100CM Ballast Shielded Cargo Hold
+10ST Hauler Shielded Cargo Hold
+10T Hauler Cargo Hold
+200CM Ballast Cargo Hold
+200CM Ballast Shielded Cargo Hold
+20T Hauler Cargo Hold
+300CM Ballast Cargo Hold
+30T Hauler Cargo Hold
+400CM Ballast Cargo Hold
+40T Hauler Cargo Hold
+Caravel V101 Cargo Hold
+Caravel V101 Shielded Cargo Hold
+Caravel V102 Cargo Hold
+Caravel V102 Shielded Cargo Hold
+Caravel V103 Cargo Hold
+Caravel V104 Cargo Hold
+da Gama 1000 Cargo Hold
+da Gama 1000 Shielded Cargo Hold
+da Gama 1010 Cargo Hold
+da Gama 1010 Shielded Cargo Hold
+da Gama 1020 Cargo Hold
+Galleon S201 Cargo Hold
+Galleon S202 Cargo Hold
+Galleon S203 Cargo Hold
+Galleon S204 Cargo Hold
+Polo 2000 Cargo Hold
+Polo 2010 Cargo Hold
+Polo 2020 Cargo Hold
+Polo 2030 Cargo Hold
+StorMax 120 Cargo Hold
+StorMax 30 Cargo Hold
+StorMax 40 Cargo Hold
+StorMax 50 Cargo Hold
+StorMax 60 Cargo Hold
+StorMax 70 Cargo Hold

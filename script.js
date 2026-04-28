@@ -17,14 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function initializeApp() {
-  const [resources, manufacturedItems, recipes, vendors, shipRankings, ships] = await Promise.all([
+  const [resources, manufacturedItems, recipes, vendors, shipRankings, ships, shipModules, shipBuilderRules] = await Promise.all([
     fetchJson("./data/resources.json"),
     fetchJson("./data/manufactured-items.json"),
     fetchJson("./data/recipes.json"),
     fetchJson("./data/vendors.json"),
     fetchJson("./data/ship-rankings.json"),
-    fetchJson("./data/ships.json")
+    fetchJson("./data/ships.json"),
+    fetchJson("./data/ship-modules.json"),
+    fetchJson("./data/ship-builder-rules.json")
   ]);
+
+  const modulesByType = groupModulesByType(shipModules.items);
+  const builderMaxima = buildShipBuilderMaxima(modulesByType);
 
   state.datasets = {
     resources,
@@ -33,11 +38,16 @@ async function initializeApp() {
     vendors,
     shipRankings,
     ships,
+    shipModules,
+    shipBuilderRules,
     resourceMap: new Map(resources.items.map((item) => [item.id, item])),
     manufacturedMap: new Map(manufacturedItems.items.map((item) => [item.id, item])),
     recipeMap: new Map(recipes.items.map((item) => [item.outputItemId, item])),
     vendorMap: new Map(vendors.items.map((item) => [item.id, item])),
-    shipMap: new Map(ships.items.map((item) => [item.id, item]))
+    shipMap: new Map(ships.items.map((item) => [item.id, item])),
+    moduleMap: new Map(shipModules.items.map((item) => [item.id, item])),
+    modulesByType,
+    builderMaxima
   };
 
   state.catalog = [
@@ -53,6 +63,11 @@ async function initializeApp() {
   renderShipRankingPreview();
   applyFilters({ focusResults: false });
   initializeShipComparisonDefaults();
+
+  if (hasHomeShipBuilder()) {
+    populateShipBuilderOptions();
+    runShipBuilderAutoBuild();
+  }
 }
 
 function renderShipRankingPreview() {
@@ -165,6 +180,38 @@ function bindEvents() {
   document.getElementById("compare-ships-button").addEventListener("click", runShipComparison);
   document.getElementById("compare-ship-a").addEventListener("keydown", handleCompareEnter);
   document.getElementById("compare-ship-b").addEventListener("keydown", handleCompareEnter);
+
+  if (hasHomeShipBuilder()) {
+    document.getElementById("load-ship-preset-button").addEventListener("click", runShipBuilderShipPreset);
+    document.getElementById("analyze-build-button").addEventListener("click", runShipBuilderAnalysis);
+    document.getElementById("auto-build-button").addEventListener("click", runShipBuilderAutoBuild);
+    document.getElementById("builder-reactor").addEventListener("change", populateShipBuilderOptions);
+    document.getElementById("builder-reactor").addEventListener("input", handleBuilderInput);
+    document.getElementById("builder-class-filter").addEventListener("change", populateShipBuilderOptions);
+    [
+      "builder-profile",
+      "builder-class-filter",
+      "builder-reference-ship",
+      "builder-engine",
+      "builder-engine-count",
+      "builder-shield",
+      "builder-grav-drive",
+      "builder-weapon",
+      "builder-weapon-count",
+      "builder-cargo-hold",
+      "builder-cargo-count",
+      "builder-fuel-tank",
+      "builder-fuel-count"
+    ].forEach((id) => {
+      const element = document.getElementById(id);
+      element.addEventListener("keydown", handleBuilderEnter);
+      element.addEventListener("change", handleBuilderInput);
+    });
+  }
+}
+
+function hasHomeShipBuilder() {
+  return Boolean(document.getElementById("builder-reactor"));
 }
 
 function scheduleFilterUpdate(focusResults = false) {
@@ -215,6 +262,51 @@ function populateShipOptions() {
     .sort((a, b) => a.name.localeCompare(b.name))
     .map((ship) => `<option value="${escapeHtml(ship.name)}"></option>`)
     .join("");
+}
+
+function populateShipBuilderOptions() {
+  const reactor = findModuleByTypeAndName("reactor", document.getElementById("builder-reactor")?.value);
+  const reactorClass = reactor?.moduleClass || null;
+  const classFilter = getBuilderClassFilter();
+  const datalistConfig = [
+    ["builder-reactor-options", "reactor"],
+    ["builder-engine-options", "engine"],
+    ["builder-shield-options", "shield_generator"],
+    ["builder-grav-drive-options", "grav_drive"],
+    ["builder-weapon-options", "weapon"],
+    ["builder-cargo-options", "cargo_hold"],
+    ["builder-fuel-options", "fuel_tank"]
+  ];
+
+  datalistConfig.forEach(([datalistId, moduleType]) => {
+    const datalist = document.getElementById(datalistId);
+    const modules = (state.datasets.modulesByType[moduleType] || [])
+      .filter((module) =>
+        shouldIncludeModuleForBuilderFilter(module, moduleType, classFilter, reactorClass)
+      )
+      .slice()
+      .sort(sortModulesForBuilderOptions);
+
+    datalist.innerHTML = modules
+      .map((module) => `<option value="${escapeHtml(module.name)}"></option>`)
+      .join("");
+  });
+}
+
+function getBuilderClassFilter() {
+  return document.getElementById("builder-class-filter")?.value || "all";
+}
+
+function shouldIncludeModuleForBuilderFilter(module, moduleType, classFilter, reactorClass) {
+  if (moduleType !== "reactor" && reactorClass && !isModuleCompatibleWithReactor(module, reactorClass)) {
+    return false;
+  }
+
+  if (classFilter === "all" || !module?.moduleClass) {
+    return true;
+  }
+
+  return String(module.moduleClass).toUpperCase() === String(classFilter).toUpperCase();
 }
 
 function updateSummary() {
@@ -776,6 +868,1054 @@ function renderShipCompareSummary(ship) {
   `;
 }
 
+function handleBuilderEnter(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    runShipBuilderAnalysis();
+  }
+}
+
+function handleBuilderInput() {
+  const result = document.getElementById("ship-builder-result");
+  if (result.classList.contains("is-ready")) {
+    runShipBuilderAnalysis();
+  }
+}
+
+function runShipBuilderShipPreset() {
+  const ship = findShipByName(document.getElementById("builder-reference-ship").value.trim());
+  const container = document.getElementById("ship-builder-result");
+
+  if (!ship) {
+    container.className = "ship-builder-result empty-state";
+    container.textContent = "Escolhe uma nave valida em 'Nave de referencia' para carregar um preset aproximado.";
+    return;
+  }
+
+  const profile = getBuilderProfile(document.getElementById("builder-profile").value);
+  const preset = buildShipPresetFromShip(ship, profile);
+
+  if (!preset?.reactor) {
+    container.className = "ship-builder-result empty-state";
+    container.textContent = "Nao consegui montar um preset aproximado para essa nave com os modulos atuais.";
+    return;
+  }
+
+  document.getElementById("builder-class-filter").value = ship.class || "all";
+  document.getElementById("builder-reactor").value = preset.reactor?.name || "";
+  populateShipBuilderOptions();
+  document.getElementById("builder-engine").value = preset.engine?.name || "";
+  document.getElementById("builder-engine-count").value = String(preset.engineCount || 1);
+  document.getElementById("builder-shield").value = preset.shield?.name || "";
+  document.getElementById("builder-grav-drive").value = preset.gravDrive?.name || "";
+  document.getElementById("builder-weapon").value = preset.weapon?.name || "";
+  document.getElementById("builder-weapon-count").value = String(preset.weaponCount || 1);
+  document.getElementById("builder-cargo-hold").value = preset.cargoHold?.name || "";
+  document.getElementById("builder-cargo-count").value = String(preset.cargoCount || 1);
+  document.getElementById("builder-fuel-tank").value = preset.fuelTank?.name || "";
+  document.getElementById("builder-fuel-count").value = String(preset.fuelCount || 0);
+
+  runShipBuilderAnalysis();
+}
+
+function runShipBuilderAutoBuild() {
+  const profile = getBuilderProfile(document.getElementById("builder-profile").value);
+  const referenceShip = findShipByName(document.getElementById("builder-reference-ship").value.trim());
+  const classFilter = getBuilderClassFilter();
+  const targetClass = classFilter !== "all" ? classFilter : referenceShip?.class || "C";
+  const countPreset = getAutoBuildCountPreset(profile.id);
+  const reactor = pickBestModuleForAutoBuild("reactor", profile, {
+    exactClass: targetClass
+  });
+
+  if (!reactor) {
+    const container = document.getElementById("ship-builder-result");
+    container.className = "ship-builder-result empty-state";
+    container.textContent = "Nao encontrei reactor suficiente para montar a auto-build.";
+    return;
+  }
+
+  document.getElementById("builder-reactor").value = reactor.name;
+  if (classFilter === "all") {
+    document.getElementById("builder-class-filter").value = reactor.moduleClass || "all";
+  }
+
+  populateShipBuilderOptions();
+
+  const effectiveClass = reactor.moduleClass || targetClass;
+  const autoModules = {
+    engine: pickBestModuleForAutoBuild("engine", profile, { exactClass: effectiveClass, reactorClass: effectiveClass }),
+    shield: pickBestModuleForAutoBuild("shield_generator", profile, { exactClass: effectiveClass, reactorClass: effectiveClass }),
+    gravDrive: pickBestModuleForAutoBuild("grav_drive", profile, { exactClass: effectiveClass, reactorClass: effectiveClass }),
+    weapon: pickBestModuleForAutoBuild("weapon", profile, { exactClass: effectiveClass, reactorClass: effectiveClass }),
+    cargoHold: pickBestModuleForAutoBuild("cargo_hold", profile, { reactorClass: effectiveClass }),
+    fuelTank: pickBestModuleForAutoBuild("fuel_tank", profile, { reactorClass: effectiveClass })
+  };
+
+  document.getElementById("builder-engine").value = autoModules.engine?.name || "";
+  document.getElementById("builder-shield").value = autoModules.shield?.name || "";
+  document.getElementById("builder-grav-drive").value = autoModules.gravDrive?.name || "";
+  document.getElementById("builder-weapon").value = autoModules.weapon?.name || "";
+  document.getElementById("builder-cargo-hold").value = autoModules.cargoHold?.name || "";
+  document.getElementById("builder-fuel-tank").value = autoModules.fuelTank?.name || "";
+  document.getElementById("builder-engine-count").value = String(countPreset.engineCount);
+  document.getElementById("builder-weapon-count").value = String(countPreset.weaponCount);
+  document.getElementById("builder-cargo-count").value = String(countPreset.cargoCount);
+  document.getElementById("builder-fuel-count").value = String(countPreset.fuelCount);
+
+  runShipBuilderAnalysis();
+}
+
+function runShipBuilderAnalysis() {
+  const container = document.getElementById("ship-builder-result");
+  const selection = readShipBuilderSelection();
+  const missingCoreModules = getMissingCoreModules(selection);
+
+  if (missingCoreModules.length > 0) {
+    container.className = "ship-builder-result empty-state";
+    container.textContent = `Falta escolher: ${missingCoreModules.join(", ")}.`;
+    return;
+  }
+
+  if (!selection.reactor) {
+    container.className = "ship-builder-result empty-state";
+    container.textContent = "Escolhe um reactor valido para abrir a analise da build.";
+    return;
+  }
+
+  const analysis = analyzeShipBuild(selection);
+  container.className = "ship-builder-result is-ready";
+  container.innerHTML = renderShipBuilderAnalysis(analysis);
+}
+
+function readShipBuilderSelection() {
+  return {
+    profileId: document.getElementById("builder-profile").value,
+    referenceShip: findShipByName(document.getElementById("builder-reference-ship").value.trim()),
+    reactor: findModuleByTypeAndName("reactor", document.getElementById("builder-reactor").value.trim()),
+    engine: findModuleByTypeAndName("engine", document.getElementById("builder-engine").value.trim()),
+    engineCount: clamp(toNumber(document.getElementById("builder-engine-count").value, 1), 1, 8),
+    shield: findModuleByTypeAndName("shield_generator", document.getElementById("builder-shield").value.trim()),
+    gravDrive: findModuleByTypeAndName("grav_drive", document.getElementById("builder-grav-drive").value.trim()),
+    weapon: findModuleByTypeAndName("weapon", document.getElementById("builder-weapon").value.trim()),
+    weaponCount: clamp(toNumber(document.getElementById("builder-weapon-count").value, 1), 1, 12),
+    cargoHold: findModuleByTypeAndName("cargo_hold", document.getElementById("builder-cargo-hold").value.trim()),
+    cargoCount: clamp(toNumber(document.getElementById("builder-cargo-count").value, 1), 1, 12),
+    fuelTank: findModuleByTypeAndName("fuel_tank", document.getElementById("builder-fuel-tank").value.trim()),
+    fuelCount: clamp(toNumber(document.getElementById("builder-fuel-count").value, 0), 0, 12)
+  };
+}
+
+function getMissingCoreModules(selection) {
+  const labels = [];
+
+  if (!selection.reactor) labels.push("reactor");
+  if (!selection.engine) labels.push("engine");
+  if (!selection.shield) labels.push("shield generator");
+  if (!selection.gravDrive) labels.push("grav drive");
+  if (!selection.weapon) labels.push("weapon");
+  if (!selection.cargoHold) labels.push("cargo hold");
+
+  return labels;
+}
+
+function analyzeShipBuild(selection, options = {}) {
+  const { includeRecommendations = true } = options;
+  const profile = getBuilderProfile(selection.profileId);
+  const reactorClass = selection.reactor?.moduleClass || "C";
+  const incompatibilities = [
+    ["engine", selection.engine],
+    ["shield", selection.shield],
+    ["grav drive", selection.gravDrive],
+    ["weapon", selection.weapon]
+  ]
+    .filter(([, module]) => module && !isModuleCompatibleWithReactor(module, reactorClass))
+    .map(([label, module]) => `${label}: ${module.name}`);
+
+  const totals = {
+    reactorPower: selection.reactor?.stats?.power || 0,
+    allocatedPower:
+      ((selection.engine?.stats?.maxPower || 0) * selection.engineCount) +
+      (selection.shield?.stats?.maxPower || 0) +
+      (selection.gravDrive?.stats?.maxPower || 0) +
+      ((selection.weapon?.stats?.maxPower || 0) * selection.weaponCount),
+    mass:
+      (selection.reactor?.stats?.mass || 0) +
+      ((selection.engine?.stats?.mass || 0) * selection.engineCount) +
+      (selection.shield?.stats?.mass || 0) +
+      (selection.gravDrive?.stats?.mass || 0) +
+      ((selection.weapon?.stats?.mass || 0) * selection.weaponCount) +
+      ((selection.cargoHold?.stats?.mass || 0) * selection.cargoCount) +
+      ((selection.fuelTank?.stats?.mass || 0) * selection.fuelCount),
+    cargo: (selection.cargoHold?.stats?.cargo || 0) * selection.cargoCount,
+    fuel: (selection.fuelTank?.stats?.fuel || 0) * selection.fuelCount,
+    shield: selection.shield?.stats?.shieldHealth || 0,
+    jump: selection.gravDrive?.stats?.jumpThrust || 0,
+    maneuveringThrust: (selection.engine?.stats?.maneuveringThrust || 0) * selection.engineCount,
+    thrust: (selection.engine?.stats?.thrust || 0) * selection.engineCount,
+    value:
+      (selection.reactor?.stats?.value || 0) +
+      ((selection.engine?.stats?.value || 0) * selection.engineCount) +
+      (selection.shield?.stats?.value || 0) +
+      (selection.gravDrive?.stats?.value || 0) +
+      ((selection.weapon?.stats?.value || 0) * selection.weaponCount) +
+      ((selection.cargoHold?.stats?.value || 0) * selection.cargoCount) +
+      ((selection.fuelTank?.stats?.value || 0) * selection.fuelCount)
+  };
+
+  totals.weaponPressure = computeWeaponPressure(selection.weapon) * selection.weaponCount;
+  totals.mobilityEstimate = clamp(
+    ((totals.maneuveringThrust / Math.max(totals.mass, 1)) * 11.9) - 47.6,
+    0,
+    100
+  );
+
+  const componentScores = {
+    reactorPower: normalizeAgainstMax(totals.reactorPower, state.datasets.builderMaxima.reactorPower),
+    shieldStrength: normalizeAgainstMax(totals.shield, state.datasets.builderMaxima.shieldStrength),
+    weaponPressure: normalizeAgainstMax(
+      totals.weaponPressure,
+      state.datasets.builderMaxima.weaponPressure * selection.weaponCount
+    ),
+    mobility: totals.mobilityEstimate,
+    jumpCapability: computeJumpCapabilityScore(totals),
+    cargoCapacity: normalizeAgainstMax(
+      totals.cargo,
+      state.datasets.builderMaxima.cargoCapacity * selection.cargoCount
+    ),
+    fuelCapacity: normalizeAgainstMax(
+      totals.fuel,
+      Math.max(state.datasets.builderMaxima.fuelCapacity * Math.max(selection.fuelCount, 1), 1)
+    ),
+    massEfficiency: computeMassEfficiencyScore(totals),
+    landingSupport: 65
+  };
+
+  const buildScore = computeWeightedProfileScore(componentScores, profile.weights);
+  const bottleneck = detectBuildBottleneck({
+    selection,
+    profile,
+    totals,
+    componentScores,
+    incompatibilities
+  });
+
+  const referenceShipDelta = selection.referenceShip
+    ? buildReferenceShipDelta(selection.referenceShip, totals, buildScore)
+    : null;
+
+  return {
+    selection,
+    profile,
+    totals,
+    componentScores,
+    buildScore,
+    bottleneck,
+    incompatibilities,
+    referenceShipDelta,
+    recommendations: includeRecommendations
+      ? recommendShipBuildUpgrades(selection, profile, buildScore)
+      : []
+  };
+}
+
+function renderShipBuilderAnalysis(analysis) {
+  const {
+    selection,
+    profile,
+    totals,
+    componentScores,
+    buildScore,
+    bottleneck,
+    incompatibilities,
+    referenceShipDelta,
+    recommendations
+  } = analysis;
+  const powerDelta = totals.reactorPower - totals.allocatedPower;
+  const statusTags = [
+    `Perfil ${profile.name}`,
+    `Classe ${selection.reactor.moduleClass || "C"}`,
+    powerDelta >= 0 ? "Energia ok" : "Energia estourada",
+    incompatibilities.length === 0 ? "Compatibilidade ok" : "Modulo fora da classe"
+  ];
+
+  return `
+    <div class="ship-builder-metric-grid">
+      <article class="metric-card accent-card">
+        <span>Score da build</span>
+        <strong>${formatScore(buildScore)}</strong>
+        <small>Pontuacao ponderada pelo perfil escolhido</small>
+      </article>
+      <article class="metric-card">
+        <span>Power budget</span>
+        <strong>${formatNumber(totals.allocatedPower)} / ${formatNumber(totals.reactorPower)}</strong>
+        <small>${powerDelta >= 0 ? `${formatNumber(powerDelta)} livres` : `${formatNumber(Math.abs(powerDelta))} acima do limite`}</small>
+      </article>
+      <article class="metric-card">
+        <span>Mobilidade estimada</span>
+        <strong>${formatNumber(totals.mobilityEstimate)}</strong>
+        <small>Baseada em thrust de manobra e massa</small>
+      </article>
+      <article class="metric-card">
+        <span>Gargalo principal</span>
+        <strong>${escapeHtml(bottleneck.title)}</strong>
+        <small>${escapeHtml(bottleneck.summary)}</small>
+      </article>
+    </div>
+
+    <article class="ship-builder-diagnostic-card">
+      <div class="tag-list">
+        ${renderTagList(statusTags)}
+      </div>
+      <h3>Diagnostico atual</h3>
+      <p>${escapeHtml(buildBuilderDiagnosisText(analysis))}</p>
+      ${
+        incompatibilities.length > 0
+          ? `
+            <div>
+              <div class="detail-meta">Modulos fora da classe do reactor</div>
+              <div class="tag-list">
+                ${renderTagList(incompatibilities)}
+              </div>
+            </div>
+          `
+          : ""
+      }
+    </article>
+
+    <div class="ship-builder-breakdown-grid">
+      <article class="detail-card">
+        <span>Reactor power</span>
+        <strong>${formatNumber(totals.reactorPower)}</strong>
+      </article>
+      <article class="detail-card">
+        <span>Shield health</span>
+        <strong>${formatNumber(totals.shield)}</strong>
+      </article>
+      <article class="detail-card">
+        <span>Jump thrust</span>
+        <strong>${formatNumber(totals.jump)}</strong>
+      </article>
+      <article class="detail-card">
+        <span>Cargo total</span>
+        <strong>${formatNumber(totals.cargo)}</strong>
+      </article>
+      <article class="detail-card">
+        <span>Fuel total</span>
+        <strong>${formatNumber(totals.fuel)}</strong>
+      </article>
+      <article class="detail-card">
+        <span>Weapon pressure</span>
+        <strong>${formatNumber(totals.weaponPressure)}</strong>
+      </article>
+      <article class="detail-card">
+        <span>Massa total</span>
+        <strong>${formatNumber(totals.mass)}</strong>
+      </article>
+      <article class="detail-card">
+        <span>Valor total</span>
+        <strong>${formatCredits(totals.value)}</strong>
+      </article>
+    </div>
+
+    <div class="ship-builder-score-grid">
+      ${renderShipBuilderScoreCard("Reactor", componentScores.reactorPower)}
+      ${renderShipBuilderScoreCard("Shield", componentScores.shieldStrength)}
+      ${renderShipBuilderScoreCard("Weapon", componentScores.weaponPressure)}
+      ${renderShipBuilderScoreCard("Mobilidade", componentScores.mobility)}
+      ${renderShipBuilderScoreCard("Jump", componentScores.jumpCapability)}
+      ${renderShipBuilderScoreCard("Carga", componentScores.cargoCapacity)}
+    </div>
+
+    <div class="ship-builder-vendor-grid">
+      ${renderBuilderVendorCards(selection)}
+    </div>
+
+    ${
+      referenceShipDelta
+        ? renderReferenceShipDelta(referenceShipDelta)
+        : ""
+    }
+
+    <div class="ship-builder-recommendations">
+      <div class="panel-heading ship-builder-subheading">
+        <div>
+          <p class="panel-kicker">Next Upgrades</p>
+          <h3>Melhores trocas agora</h3>
+        </div>
+      </div>
+      ${
+        recommendations.length > 0
+          ? recommendations.map(renderShipBuilderRecommendation).join("")
+          : `<div class="empty-state">Nao encontrei uma troca clara dentro das categorias mapeadas para esta build.</div>`
+      }
+    </div>
+
+    <div class="ship-builder-footnote">
+      V1 do assistente: a nave de referencia serve como alvo de comparacao, nao como leitura automatica das pecas instaladas.
+    </div>
+  `;
+}
+
+function renderShipBuilderScoreCard(label, value) {
+  return `
+    <article class="detail-card">
+      <span>${escapeHtml(label)}</span>
+      <strong>${formatNumber(value)}</strong>
+    </article>
+  `;
+}
+
+function renderReferenceShipDelta(referenceShipDelta) {
+  return `
+    <article class="ship-builder-reference-card">
+      <div class="ship-builder-reference-top">
+        <div>
+          <div class="detail-meta">Meta de comparacao</div>
+          <h3>${escapeHtml(referenceShipDelta.ship.name)}</h3>
+        </div>
+        <strong>${formatScore(referenceShipDelta.ship.scores?.balanced)}</strong>
+      </div>
+      <div class="ship-builder-reference-grid">
+        ${renderReferenceDeltaCard("Reactor", referenceShipDelta.reactorDelta)}
+        ${renderReferenceDeltaCard("Cargo", referenceShipDelta.cargoDelta)}
+        ${renderReferenceDeltaCard("Shield", referenceShipDelta.shieldDelta)}
+        ${renderReferenceDeltaCard("Jump", referenceShipDelta.jumpDelta)}
+        ${renderReferenceDeltaCard("Dano", referenceShipDelta.damageDelta)}
+      </div>
+    </article>
+  `;
+}
+
+function renderReferenceDeltaCard(label, value) {
+  const deltaClass = value >= 0 ? "is-positive" : "is-negative";
+  const prefix = value >= 0 ? "+" : "";
+
+  return `
+    <article class="detail-card ${deltaClass}">
+      <span>${escapeHtml(label)} vs referencia</span>
+      <strong>${prefix}${formatNumber(value)}</strong>
+    </article>
+  `;
+}
+
+function renderBuilderVendorCards(selection) {
+  const modules = [
+    { label: "Reactor", module: selection.reactor, count: 1 },
+    { label: "Engine", module: selection.engine, count: selection.engineCount },
+    { label: "Shield", module: selection.shield, count: 1 },
+    { label: "Grav Drive", module: selection.gravDrive, count: 1 },
+    { label: "Weapon", module: selection.weapon, count: selection.weaponCount },
+    { label: "Cargo Hold", module: selection.cargoHold, count: selection.cargoCount },
+    { label: "Fuel Tank", module: selection.fuelTank, count: selection.fuelCount }
+  ].filter((entry) => entry.module && entry.count > 0);
+
+  return modules.map(renderBuilderVendorCard).join("");
+}
+
+function renderBuilderVendorCard(entry) {
+  const vendorSummary = entry.module.vendorSummary || {};
+  const locations = Array.isArray(vendorSummary.locations) ? vendorSummary.locations.slice(0, 2) : [];
+  const vendorStatus = humanizeVendorStatus(vendorSummary.status);
+  const countLabel = entry.count > 1 ? `x${entry.count}` : "1 unidade";
+
+  return `
+    <article class="ship-builder-vendor-card">
+      <div class="ship-builder-vendor-top">
+        <div>
+          <div class="detail-meta">${escapeHtml(entry.label)} • ${escapeHtml(countLabel)}</div>
+          <strong>${escapeHtml(entry.module.name)}</strong>
+        </div>
+        <span class="vendor-status-badge">${escapeHtml(vendorStatus)}</span>
+      </div>
+      <div class="detail-meta">${escapeHtml(entry.module.manufacturer || "Fabricante nao informado")}</div>
+      <div class="ship-builder-vendor-lines">
+        ${
+          locations.length > 0
+            ? locations.map((location) => `<span>${escapeHtml(location)}</span>`).join("")
+            : `<span>Vendor especifico ainda nao mapeado.</span>`
+        }
+      </div>
+    </article>
+  `;
+}
+
+function humanizeVendorStatus(status) {
+  const labels = {
+    verified_manufacturer_shop: "Vendor confirmado",
+    verified_various_ship_technicians: "Tecnicos confirmados",
+    verified_quest_unlock: "Quest unlock",
+    partially_collected: "Parcial",
+    inferred_manufacturer: "Fabricante inferido",
+    inferred_general_pool: "Pool inferido",
+    inferred_smuggling_vendor: "Smuggling vendor",
+    inferred_faction_unlock: "Faction unlock",
+    inferred_vehicle_vendor: "Vehicle vendor",
+    free_unlock: "Free unlock"
+  };
+
+  return labels[status] || "Vendor";
+}
+
+function renderShipBuilderRecommendation(recommendation) {
+  const fromClass = recommendation.from?.moduleClass ? `Class ${recommendation.from.moduleClass}` : "Sem classe";
+  const toClass = recommendation.to?.moduleClass ? `Class ${recommendation.to.moduleClass}` : "Sem classe";
+
+  return `
+    <article class="ship-builder-recommendation-card">
+      <div class="ship-builder-recommendation-top">
+        <div>
+          <div class="detail-meta">${escapeHtml(humanizeKey(recommendation.moduleType))}</div>
+          <strong>${escapeHtml(recommendation.to.name)}</strong>
+        </div>
+        <span class="score-badge">+${formatScore(recommendation.scoreGain)}</span>
+      </div>
+      <div class="detail-meta">
+        ${escapeHtml(recommendation.from.name)} (${escapeHtml(fromClass)}) -> ${escapeHtml(recommendation.to.name)} (${escapeHtml(toClass)})
+      </div>
+      <p>${escapeHtml(recommendation.reason)}</p>
+    </article>
+  `;
+}
+
+function buildBuilderDiagnosisText(analysis) {
+  const { profile, bottleneck, componentScores, selection, totals } = analysis;
+  const leadingEdge = getStrongestArea(componentScores);
+  const shipReferenceText = selection.referenceShip
+    ? ` A nave de referencia escolhida foi ${selection.referenceShip.name}.`
+    : "";
+
+  return `No perfil ${profile.name}, a build esta mais forte em ${leadingEdge} e o gargalo principal esta em ${bottleneck.title.toLowerCase()}. Ela fecha com ${formatNumber(totals.allocatedPower)} de energia alocada, ${formatNumber(totals.mass)} de massa e ${formatNumber(totals.cargo)} de cargo.${shipReferenceText}`;
+}
+
+function getStrongestArea(componentScores) {
+  const labels = {
+    reactorPower: "reactor",
+    shieldStrength: "defesa",
+    weaponPressure: "pressao de dano",
+    mobility: "mobilidade",
+    jumpCapability: "alcance de salto",
+    cargoCapacity: "capacidade de carga",
+    fuelCapacity: "autonomia",
+    massEfficiency: "eficiencia de massa"
+  };
+
+  const strongest = Object.entries(componentScores).sort((a, b) => b[1] - a[1])[0];
+  return labels[strongest?.[0]] || "equilibrio geral";
+}
+
+function getBuilderProfile(profileId) {
+  return (
+    state.datasets.shipBuilderRules.recommendationProfiles.find((profile) => profile.id === profileId) ||
+    state.datasets.shipBuilderRules.recommendationProfiles[0]
+  );
+}
+
+function getAutoBuildCountPreset(profileId) {
+  const presets = {
+    balanced: { engineCount: 4, weaponCount: 3, cargoCount: 2, fuelCount: 1 },
+    exploration: { engineCount: 3, weaponCount: 2, cargoCount: 2, fuelCount: 2 },
+    combat: { engineCount: 4, weaponCount: 4, cargoCount: 1, fuelCount: 1 },
+    cargo: { engineCount: 3, weaponCount: 2, cargoCount: 4, fuelCount: 2 }
+  };
+
+  return presets[profileId] || presets.balanced;
+}
+
+function buildShipPresetFromShip(ship, profile) {
+  const exactClass = ship.class || "C";
+  const reactor = findClosestModuleMatch("reactor", ship.reactor, (module) => module.stats?.power, {
+    exactClass
+  });
+  const shield = findClosestModuleMatch("shield_generator", ship.shield, (module) => module.stats?.shieldHealth, {
+    exactClass
+  });
+  const gravDrive = findClosestModuleMatch("grav_drive", ship.jump, (module) => module.stats?.jumpThrust, {
+    exactClass
+  });
+  const cargoPreset = findClosestCountedModuleMatch("cargo_hold", ship.cargo, (module) => module.stats?.cargo, {
+    minCount: 1,
+    maxCount: 6
+  });
+  const fuelPreset = findClosestCountedModuleMatch("fuel_tank", ship.fuel, (module) => module.stats?.fuel, {
+    minCount: 0,
+    maxCount: 6
+  });
+  const weaponPreset = findClosestCountedModuleMatch(
+    "weapon",
+    ship.damage,
+    getShipComparableWeaponValue,
+    {
+      exactClass,
+      minCount: 1,
+      maxCount: 6
+    }
+  );
+  const enginePreset = findClosestEnginePreset({
+    ship,
+    reactor,
+    shield,
+    gravDrive,
+    weaponPreset,
+    profile
+  });
+
+  return {
+    reactor,
+    shield,
+    gravDrive,
+    engine: enginePreset?.module || pickBestModuleForAutoBuild("engine", profile, { exactClass, reactorClass: exactClass }),
+    engineCount: enginePreset?.count || getAutoBuildCountPreset(profile.id).engineCount,
+    weapon: weaponPreset?.module || pickBestModuleForAutoBuild("weapon", profile, { exactClass, reactorClass: exactClass }),
+    weaponCount: weaponPreset?.count || getAutoBuildCountPreset(profile.id).weaponCount,
+    cargoHold: cargoPreset?.module || pickBestModuleForAutoBuild("cargo_hold", profile, { reactorClass: exactClass }),
+    cargoCount: cargoPreset?.count || getAutoBuildCountPreset(profile.id).cargoCount,
+    fuelTank: fuelPreset?.module || pickBestModuleForAutoBuild("fuel_tank", profile, { reactorClass: exactClass }),
+    fuelCount: fuelPreset?.count ?? getAutoBuildCountPreset(profile.id).fuelCount
+  };
+}
+
+function findClosestModuleMatch(moduleType, targetValue, metricGetter, options = {}) {
+  const { exactClass = null, reactorClass = null } = options;
+  const modules = getModulesForBuilderSelection(moduleType, { exactClass, reactorClass });
+
+  if (modules.length === 0) {
+    return null;
+  }
+
+  return modules
+    .slice()
+    .sort((a, b) => {
+      const diffA = Math.abs((metricGetter(a) || 0) - targetValue);
+      const diffB = Math.abs((metricGetter(b) || 0) - targetValue);
+      if (diffA !== diffB) return diffA - diffB;
+
+      return sortModulesForBuilderOptions(a, b);
+    })[0];
+}
+
+function findClosestCountedModuleMatch(moduleType, targetValue, metricGetter, options = {}) {
+  const { exactClass = null, reactorClass = null, minCount = 1, maxCount = 6 } = options;
+  const modules = getModulesForBuilderSelection(moduleType, { exactClass, reactorClass });
+  let bestMatch = null;
+
+  for (const module of modules) {
+    for (let count = minCount; count <= maxCount; count += 1) {
+      const totalValue = (metricGetter(module) || 0) * count;
+      const diff = Math.abs(totalValue - targetValue);
+      const score = diff + ((module.stats?.mass || 0) * count * 0.04);
+
+      if (!bestMatch || score < bestMatch.score) {
+        bestMatch = {
+          module,
+          count,
+          totalValue,
+          score
+        };
+      }
+    }
+  }
+
+  return bestMatch;
+}
+
+function findClosestEnginePreset(context) {
+  const {
+    ship,
+    reactor,
+    shield,
+    gravDrive,
+    weaponPreset,
+    profile
+  } = context;
+  const exactClass = reactor?.moduleClass || ship.class || "C";
+  const engines = getModulesForBuilderSelection("engine", { exactClass, reactorClass: exactClass });
+  const preferredCount = getPreferredEngineCountByClass(exactClass);
+  const targetPowerBudget = Math.max(
+    3,
+    (ship.reactor || reactor?.stats?.power || 0) -
+      ((shield?.stats?.maxPower || 0) + (gravDrive?.stats?.maxPower || 0) + ((weaponPreset?.module?.stats?.maxPower || 0) * (weaponPreset?.count || 1)))
+  );
+  let bestMatch = null;
+
+  for (const engine of engines) {
+    for (let count = 1; count <= 6; count += 1) {
+      const totalEnginePower = (engine.stats?.maxPower || 0) * count;
+      const powerDiff = Math.abs(totalEnginePower - targetPowerBudget);
+      const countDiff = Math.abs(count - preferredCount);
+      const thrustScore = ((engine.stats?.maneuveringThrust || 0) / Math.max(engine.stats?.mass || 1, 1)) * count;
+      const score = (powerDiff * 24) + (countDiff * 18) - thrustScore;
+
+      if (!bestMatch || score < bestMatch.score) {
+        bestMatch = {
+          module: engine,
+          count,
+          score
+        };
+      }
+    }
+  }
+
+  return bestMatch;
+}
+
+function getModulesForBuilderSelection(moduleType, options = {}) {
+  const { exactClass = null, reactorClass = null } = options;
+
+  return (state.datasets.modulesByType[moduleType] || []).filter((module) => {
+    if (exactClass && module.moduleClass && String(module.moduleClass).toUpperCase() !== String(exactClass).toUpperCase()) {
+      return false;
+    }
+
+    if (reactorClass && !isModuleCompatibleWithReactor(module, reactorClass)) {
+      return false;
+    }
+
+    return true;
+  });
+}
+
+function getPreferredEngineCountByClass(moduleClass) {
+  const mapping = {
+    A: 2,
+    B: 3,
+    C: 4
+  };
+
+  return mapping[String(moduleClass || "").toUpperCase()] || 3;
+}
+
+function getShipComparableWeaponValue(module) {
+  if (!module) return 0;
+
+  const stats = module.stats || {};
+  return Math.max(
+    stats.hullDamage || 0,
+    stats.shieldDamage || 0,
+    (stats.emDamage || 0) * 0.75
+  );
+}
+
+function pickBestModuleForAutoBuild(moduleType, profile, options = {}) {
+  const { exactClass = null, reactorClass = null } = options;
+  const modules = (state.datasets.modulesByType[moduleType] || [])
+    .filter((module) => {
+      if (exactClass && module.moduleClass && String(module.moduleClass).toUpperCase() !== String(exactClass).toUpperCase()) {
+        return false;
+      }
+
+      if (reactorClass && !isModuleCompatibleWithReactor(module, reactorClass)) {
+        return false;
+      }
+
+      return true;
+    })
+    .slice()
+    .sort((a, b) => scoreModuleForProfile(moduleType, b, profile) - scoreModuleForProfile(moduleType, a, profile));
+
+  return modules[0] || null;
+}
+
+function scoreModuleForProfile(moduleType, module, profile) {
+  const stats = module.stats || {};
+
+  switch (moduleType) {
+    case "reactor":
+      return (stats.power || 0) * 14 + (stats.hull || 0) - (stats.mass || 0) * 0.35;
+    case "engine":
+      return ((stats.maneuveringThrust || 0) * 0.9) + ((stats.thrust || 0) * 0.08) - ((stats.mass || 0) * 1.6);
+    case "shield_generator":
+      return (stats.shieldHealth || 0) + ((stats.shieldHealthPerPower || 0) * 30) - ((stats.mass || 0) * 0.8);
+    case "grav_drive":
+      return ((stats.jumpThrust || 0) * (profile.id === "exploration" ? 22 : 16)) - ((stats.mass || 0) * 0.8);
+    case "weapon":
+      return computeWeaponPressure(module) - ((stats.maxPower || 0) * 6);
+    case "cargo_hold":
+      return ((stats.cargo || 0) * (profile.id === "cargo" ? 1.4 : 1)) + ((stats.cargoPerMass || 0) * 80) - ((stats.mass || 0) * 0.5);
+    case "fuel_tank":
+      return ((stats.fuel || 0) * (profile.id === "exploration" ? 1.4 : 1)) + ((stats.fuelPerMass || 0) * 40) - ((stats.mass || 0) * 0.4);
+    default:
+      return 0;
+  }
+}
+
+function recommendShipBuildUpgrades(selection, profile, currentScore) {
+  const classFilter = getBuilderClassFilter();
+  const recommendationTypes = [...new Set([...(profile.priorityOrder || []), "fuel_tank"])]
+    .filter((moduleType) => selection[moduleTypeToSelectionKey(moduleType)]);
+  const candidates = [];
+
+  for (const moduleType of recommendationTypes) {
+    const selectionKey = moduleTypeToSelectionKey(moduleType);
+    const currentModule = selection[selectionKey];
+    if (!currentModule) continue;
+
+    const options = (state.datasets.modulesByType[moduleType] || []).filter((candidate) => {
+      if (candidate.id === currentModule.id) {
+        return false;
+      }
+
+      if (classFilter !== "all" && candidate.moduleClass && String(candidate.moduleClass).toUpperCase() !== String(classFilter).toUpperCase()) {
+        return false;
+      }
+
+      if (moduleType === "reactor") {
+        return canSwapReactor(selection, candidate);
+      }
+
+      return isModuleCompatibleWithReactor(candidate, selection.reactor.moduleClass || "C");
+    });
+
+    let bestUpgrade = null;
+
+    for (const candidate of options) {
+      const upgradedSelection = { ...selection, [selectionKey]: candidate };
+      const upgradedAnalysis = analyzeShipBuild(upgradedSelection, { includeRecommendations: false });
+      const scoreGain = upgradedAnalysis.buildScore - currentScore;
+
+      if (scoreGain <= 0.35) {
+        continue;
+      }
+
+      const recommendation = {
+        moduleType,
+        from: currentModule,
+        to: candidate,
+        scoreGain,
+        reason: buildUpgradeReason(moduleType, selection, upgradedAnalysis, currentScore)
+      };
+
+      if (!bestUpgrade || recommendation.scoreGain > bestUpgrade.scoreGain) {
+        bestUpgrade = recommendation;
+      }
+    }
+
+    if (bestUpgrade) {
+      candidates.push(bestUpgrade);
+    }
+  }
+
+  return candidates
+    .sort((a, b) => b.scoreGain - a.scoreGain)
+    .slice(0, 3);
+}
+
+function buildUpgradeReason(moduleType, selection, upgradedAnalysis, currentScore) {
+  const delta = upgradedAnalysis.buildScore - currentScore;
+  const bottleneckTitle = upgradedAnalysis.bottleneck.title.toLowerCase();
+  const lookup = {
+    reactor: "Abre mais margem de energia e reduz o risco de travar upgrades futuros.",
+    engine: "Melhora a mobilidade estimada e deixa a nave menos pesada por thrust entregue.",
+    shield_generator: "Sobe a sobrevivencia da build sem mexer no resto do pacote.",
+    grav_drive: "Ajuda a build a viajar melhor e reduz o gargalo de salto.",
+    weapon: "Aumenta a pressao ofensiva e melhora o score de combate.",
+    cargo_hold: "Entrega mais carga util para o mesmo perfil de build.",
+    fuel_tank: "Da mais autonomia para exploracao e rotas longas."
+  };
+
+  return `${lookup[moduleType] || "Melhora o conjunto geral da build."} Ganho estimado de ${formatScore(delta)} pontos e gargalo apontado em ${bottleneckTitle}.`;
+}
+
+function buildReferenceShipDelta(ship, totals, buildScore) {
+  return {
+    ship,
+    buildScoreDelta: buildScore - (ship.scores?.balanced || 0),
+    reactorDelta: totals.reactorPower - (ship.reactor || 0),
+    cargoDelta: totals.cargo - (ship.cargo || 0),
+    shieldDelta: totals.shield - (ship.shield || 0),
+    jumpDelta: totals.jump - (ship.jump || 0),
+    damageDelta: totals.weaponPressure - (ship.damage || 0)
+  };
+}
+
+function detectBuildBottleneck(context) {
+  const { profile, totals, componentScores, incompatibilities } = context;
+
+  if (incompatibilities.length > 0) {
+    return {
+      id: "class-ceiling",
+      title: "Classe de modulo",
+      summary: "Alguma peca passa do limite suportado pelo reactor atual."
+    };
+  }
+
+  if (totals.allocatedPower > totals.reactorPower) {
+    return {
+      id: "reactor-bottleneck",
+      title: "Reactor",
+      summary: "A build pede mais energia do que o reactor consegue entregar."
+    };
+  }
+
+  if (componentScores.mobility < 45) {
+    return {
+      id: "mobility-bottleneck",
+      title: "Mobilidade",
+      summary: "O peso atual esta derrubando o giro e a resposta da nave."
+    };
+  }
+
+  if (["balanced", "exploration"].includes(profile.id) && componentScores.jumpCapability < 45) {
+    return {
+      id: "jump-bottleneck",
+      title: "Grav drive",
+      summary: "O alcance de salto ainda esta curto para o perfil escolhido."
+    };
+  }
+
+  if (["balanced", "combat"].includes(profile.id) && componentScores.shieldStrength < 45) {
+    return {
+      id: "defense-bottleneck",
+      title: "Shield",
+      summary: "A defesa ficou abaixo do ideal para uma build de linha de frente."
+    };
+  }
+
+  if (profile.id === "cargo" && componentScores.cargoCapacity < 45) {
+    return {
+      id: "cargo-bottleneck",
+      title: "Cargo",
+      summary: "Ainda falta volume de carga para o perfil de transporte."
+    };
+  }
+
+  return {
+    id: "stable",
+    title: "Sem gargalo critico",
+    summary: "A build esta coerente para esta fase da V1."
+  };
+}
+
+function computeWeightedProfileScore(componentScores, weights) {
+  return Object.entries(weights || {}).reduce((total, [key, weight]) => {
+    return total + ((componentScores[key] || 0) * weight);
+  }, 0);
+}
+
+function computeJumpCapabilityScore(totals) {
+  const jumpBase = normalizeAgainstMax(totals.jump, state.datasets.builderMaxima.jumpCapability) * 0.72;
+  const fuelBase = normalizeAgainstMax(totals.fuel, Math.max(state.datasets.builderMaxima.fuelCapacity, 1)) * 0.28;
+  const massPenalty = Math.min(24, totals.mass / 180);
+  return clamp(jumpBase + fuelBase - massPenalty + 12, 0, 100);
+}
+
+function computeMassEfficiencyScore(totals) {
+  const payloadPressure =
+    (totals.weaponPressure * 2.6) +
+    (totals.shield / 8) +
+    (totals.jump * 10) +
+    (totals.cargo / 12) +
+    (totals.fuel / 10);
+  const efficiency = payloadPressure / Math.max(totals.mass, 1);
+  return clamp((efficiency / 14) * 100, 0, 100);
+}
+
+function computeWeaponPressure(module) {
+  if (!module) return 0;
+
+  const stats = module.stats || {};
+  const hullPressure = (stats.hullDpsPerPower || stats.hullDamage || 0) * Math.max(stats.maxPower || 1, 1);
+  const shieldPressure = (stats.shieldDpsPerPower || stats.shieldDamage || 0) * Math.max(stats.maxPower || 1, 1);
+  const emPressure = (stats.emDamage || 0) * 0.45;
+  return hullPressure + shieldPressure + emPressure;
+}
+
+function buildShipBuilderMaxima(modulesByType) {
+  return {
+    reactorPower: getModuleTypeMax(modulesByType.reactor, (item) => item.stats?.power),
+    shieldStrength: getModuleTypeMax(modulesByType.shield_generator, (item) => item.stats?.shieldHealth),
+    jumpCapability: getModuleTypeMax(modulesByType.grav_drive, (item) => item.stats?.jumpThrust),
+    cargoCapacity: getModuleTypeMax(modulesByType.cargo_hold, (item) => item.stats?.cargo),
+    fuelCapacity: getModuleTypeMax(modulesByType.fuel_tank, (item) => item.stats?.fuel),
+    weaponPressure: getModuleTypeMax(modulesByType.weapon, computeWeaponPressure)
+  };
+}
+
+function groupModulesByType(items) {
+  return items.reduce((accumulator, item) => {
+    const key = item.moduleType;
+    if (!accumulator[key]) {
+      accumulator[key] = [];
+    }
+
+    accumulator[key].push(item);
+    return accumulator;
+  }, {});
+}
+
+function getModuleTypeMax(items, getter) {
+  return Math.max(
+    1,
+    ...(items || []).map((item) => Number(getter(item) || 0))
+  );
+}
+
+function findModuleByTypeAndName(moduleType, query) {
+  if (!query) return null;
+
+  const normalizedQuery = normalizeText(query);
+  return (
+    (state.datasets.modulesByType[moduleType] || []).find(
+      (item) => normalizeText(item.name) === normalizedQuery
+    ) ||
+    (state.datasets.modulesByType[moduleType] || []).find(
+      (item) => normalizeText(item.name).includes(normalizedQuery)
+    ) ||
+    null
+  );
+}
+
+function sortModulesForBuilderOptions(a, b) {
+  const classDiff = getModuleClassRank(a.moduleClass) - getModuleClassRank(b.moduleClass);
+  if (classDiff !== 0) return classDiff;
+
+  const levelDiff = (a.requiredLevel || 0) - (b.requiredLevel || 0);
+  if (levelDiff !== 0) return levelDiff;
+
+  return a.name.localeCompare(b.name);
+}
+
+function isModuleCompatibleWithReactor(module, reactorClass) {
+  if (!module?.moduleClass) {
+    return true;
+  }
+
+  return getModuleClassRank(module.moduleClass) <= getModuleClassRank(reactorClass);
+}
+
+function canSwapReactor(selection, candidateReactor) {
+  const candidateClass = candidateReactor?.moduleClass || "C";
+  return [
+    selection.engine,
+    selection.shield,
+    selection.gravDrive,
+    selection.weapon
+  ].every((module) => isModuleCompatibleWithReactor(module, candidateClass));
+}
+
+function moduleTypeToSelectionKey(moduleType) {
+  const mapping = {
+    reactor: "reactor",
+    engine: "engine",
+    shield_generator: "shield",
+    grav_drive: "gravDrive",
+    weapon: "weapon",
+    cargo_hold: "cargoHold",
+    fuel_tank: "fuelTank"
+  };
+
+  return mapping[moduleType] || moduleType;
+}
+
+function getModuleClassRank(moduleClass) {
+  const ranks = { A: 1, B: 2, C: 3 };
+  return ranks[String(moduleClass || "").toUpperCase()] || 0;
+}
+
+function normalizeAgainstMax(value, maxValue) {
+  return clamp((Number(value || 0) / Math.max(Number(maxValue || 1), 1)) * 100, 0, 100);
+}
+
 function getSelectedItem() {
   return state.catalog.find((item) => item.id === state.selectedItemId) || null;
 }
@@ -847,6 +1987,10 @@ function formatScore(value) {
 function toNumber(value, fallback = 0) {
   const result = Number(value);
   return Number.isFinite(result) ? result : fallback;
+}
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(Number(value || 0), min), max);
 }
 
 function normalizeText(value) {

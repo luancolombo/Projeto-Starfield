@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ship Builder | Starfield Outpost Ledger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero-panel ranking-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Ship Builder Lab</p>
+          <h1>Builder Completo</h1>
+          <p class="hero-text">
+            Monta uma build manual, carrega um preset aproximado por nave ou usa o modo de upgrade
+            da nave atual para receber um plano de melhoria.
+          </p>
+        </div>
+
+        <div class="hero-stats">
+          <article class="hero-card">
+            <span class="hero-label">Modo</span>
+            <strong>Manual + Upgrade</strong>
+            <span>preset por nave e plano por fases</span>
+          </article>
+          <article class="hero-card">
+            <span class="hero-label">Fonte</span>
+            <strong>INARA + regras locais</strong>
+            <span>modulos, scores e vendors do projeto</span>
+          </article>
+          <article class="hero-card">
+            <span class="hero-label">Voltar</span>
+            <strong><a class="hero-link" href="./index.html">Dashboard</a></strong>
+            <span>comparadores, rankings e calculadoras</span>
+          </article>
+        </div>
+      </header>
+
+      <main class="rankings-page ship-builder-page">
+        <section class="panel ship-builder-page-panel">
+          <div class="panel-heading split-heading">
+            <div>
+              <p class="panel-kicker">Builder Workbench</p>
+              <h2>Assistente De Build</h2>
+            </div>
+            <div class="table-caption">
+              <span>Escolhe o modo, monta a build e recebe diagnostico, vendors e plano de upgrade</span>
+            </div>
+          </div>
+
+          <div class="ship-builder-shell ship-builder-shell-page">
+            <div class="ship-builder-controls">
+              <div class="ship-builder-top-grid ship-builder-top-grid-page">
+                <label class="field">
+                  <span>Modo</span>
+                  <select id="builder-mode">
+                    <option value="manual">Manual</option>
+                    <option value="ship_preset">Preset por nave</option>
+                    <option value="upgrade_current_ship">Upgrade da nave atual</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Perfil da build</span>
+                  <select id="builder-profile">
+                    <option value="balanced">Equilibrada</option>
+                    <option value="exploration">Exploracao</option>
+                    <option value="combat">Combate</option>
+                    <option value="cargo">Carga</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Filtro de classe</span>
+                  <select id="builder-class-filter">
+                    <option value="all">Todas</option>
+                    <option value="A">Class A</option>
+                    <option value="B">Class B</option>
+                    <option value="C">Class C</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Estilo de armamento</span>
+                  <select id="builder-combat-style">
+                    <option value="balanced">Balanced</option>
+                    <option value="shield_break_hull_finish">Shield break + hull finish</option>
+                    <option value="mono_particle">Mono particle</option>
+                    <option value="boarding_disable">Boarding / disable</option>
+                    <option value="missile_support">Missile support</option>
+                  </select>
+                  <small class="field-hint">
+                    Define se o auto-build vai priorizar particle puro, quebrar escudo, finalizar casco ou desabilitar.
+                  </small>
+                </label>
+
+                <label class="field">
+                  <span>Nave de referencia / nave atual</span>
+                  <input
+                    id="builder-reference-ship"
+                    type="text"
+                    list="ship-options"
+                    placeholder="Ex.: Star Eagle, Shieldbreaker..."
+                  />
+                  <small class="field-hint">
+                    No modo upgrade, esta nave vira a base do preset e do plano de melhoria.
+                  </small>
+                </label>
+              </div>
+
+              <div class="ship-builder-module-grid">
+                <label class="field">
+                  <span>Reactor</span>
+                  <input id="builder-reactor" type="text" list="builder-reactor-options" />
+                </label>
+
+                <label class="field">
+                  <span>Engine</span>
+                  <input id="builder-engine" type="text" list="builder-engine-options" />
+                </label>
+
+                <label class="field">
+                  <span>Qtd. engines</span>
+                  <input id="builder-engine-count" type="number" min="1" max="8" value="2" />
+                </label>
+
+                <label class="field">
+                  <span>Shield generator</span>
+                  <input id="builder-shield" type="text" list="builder-shield-options" />
+                </label>
+
+                <label class="field">
+                  <span>Grav drive</span>
+                  <input id="builder-grav-drive" type="text" list="builder-grav-drive-options" />
+                </label>
+
+                <label class="field">
+                  <span>Weapon slot 1</span>
+                  <input id="builder-weapon-slot-1" type="text" list="builder-weapon-options" />
+                </label>
+
+                <label class="field">
+                  <span>Qtd. slot 1</span>
+                  <input id="builder-weapon-slot-1-count" type="number" min="0" max="12" value="2" />
+                </label>
+
+                <label class="field">
+                  <span>Weapon slot 2</span>
+                  <input id="builder-weapon-slot-2" type="text" list="builder-weapon-options" />
+                </label>
+
+                <label class="field">
+                  <span>Qtd. slot 2</span>
+                  <input id="builder-weapon-slot-2-count" type="number" min="0" max="12" value="1" />
+                </label>
+
+                <label class="field">
+                  <span>Weapon slot 3</span>
+                  <input id="builder-weapon-slot-3" type="text" list="builder-weapon-options" />
+                </label>
+
+                <label class="field">
+                  <span>Qtd. slot 3</span>
+                  <input id="builder-weapon-slot-3-count" type="number" min="0" max="12" value="1" />
+                </label>
+
+                <label class="field">
+                  <span>Cargo hold</span>
+                  <input id="builder-cargo-hold" type="text" list="builder-cargo-options" />
+                </label>
+
+                <label class="field">
+                  <span>Qtd. cargo holds</span>
+                  <input id="builder-cargo-count" type="number" min="1" max="12" value="2" />
+                </label>
+
+                <label class="field">
+                  <span>Fuel tank</span>
+                  <input id="builder-fuel-tank" type="text" list="builder-fuel-options" />
+                </label>
+
+                <label class="field">
+                  <span>Qtd. fuel tanks</span>
+                  <input id="builder-fuel-count" type="number" min="0" max="12" value="1" />
+                </label>
+
+                <label class="field">
+                  <span>Landing gear</span>
+                  <input id="builder-landing-gear" type="text" list="builder-landing-gear-options" />
+                </label>
+
+                <label class="field">
+                  <span>Qtd. landing gears</span>
+                  <input id="builder-landing-gear-count" type="number" min="1" max="12" value="3" />
+                </label>
+              </div>
+
+              <div class="ship-builder-actions">
+                <button id="load-ship-preset-button" class="action-button secondary-action-button" type="button">
+                  Carregar preset da nave
+                </button>
+                <button id="auto-build-button" class="action-button secondary-action-button" type="button">
+                  Auto-build por perfil
+                </button>
+                <button id="analyze-build-button" class="action-button" type="button">
+                  Analisar build
+                </button>
+              </div>
+            </div>
+
+            <div id="ship-builder-result" class="ship-builder-result empty-state">
+              Escolhe um modo e monta a build para abrir o diagnostico completo.
+            </div>
+          </div>
+
+          <datalist id="ship-options"></datalist>
+          <datalist id="builder-reactor-options"></datalist>
+          <datalist id="builder-engine-options"></datalist>
+          <datalist id="builder-shield-options"></datalist>
+          <datalist id="builder-grav-drive-options"></datalist>
+          <datalist id="builder-weapon-options"></datalist>
+          <datalist id="builder-cargo-options"></datalist>
+          <datalist id="builder-fuel-options"></datalist>
+          <datalist id="builder-landing-gear-options"></datalist>
+        </section>
+
+        <section class="panel ship-upgrade-panel">
+          <div class="panel-heading">
+            <p class="panel-kicker">Upgrade Plan</p>
+            <h2>Plano Da Nave Atual</h2>
+          </div>
+
+          <div id="ship-upgrade-roadmap" class="empty-state">
+            Ativa o modo de upgrade da nave atual para receber um plano em fases.
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./ship-builder.js"></script>
+  </body>
+</html>

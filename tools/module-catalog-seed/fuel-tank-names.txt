@@ -1,0 +1,21 @@
+100G He3 Tank
+200G He3 Tank
+300G He3 Tank
+400G He3 Tank
+500T He3 Tank
+600T He3 Tank
+700T He3 Tank
+800T He3 Tank
+900T He3 Tank
+H10 Atlas He3 Tank
+H20 Atlas He3 Tank
+H30 Atlas He3 Tank
+H40 Atlas He3 Tank
+M10 Ulysses He3 Tank
+M20 Ulysses He3 Tank
+M30 Ulysses He3 Tank
+M40 Ulysses He3 Tank
+M50 Ulysses He3 Tank
+Titan 350 He3 Tank
+Titan 450 He3 Tank
+Titan 550 He3 Tank

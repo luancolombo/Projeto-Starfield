@@ -1,0 +1,52 @@
+101DS Mag Inertial Reactor
+102DS Mag Inertial Reactor
+103DS Mag Inertial Reactor
+104DS Mag Inertial Reactor
+114MM Toroidal Reactor
+124MM Toroidal Reactor
+134MM Toroidal Reactor
+144MM Toroidal Reactor
+154MM Toroidal Reactor
+164MM Toroidal Reactor
+330T Stellarator Reactor
+340T Stellarator Reactor
+350T Stellarator Reactor
+360T Stellarator Reactor
+370T Stellarator Reactor
+380T Stellarator Reactor
+DC301 Fast Ignition Reactor
+DC302 Fast Ignition Reactor
+DC303 Fast Ignition Reactor
+Fusor DC401 Reactor
+Fusor DC402 Reactor
+Fusor DC403 Reactor
+Ion Beam H-1010 Reactor
+Ion Beam H-1020 Reactor
+Ion Beam H-1030 Reactor
+Pinch 5Z Reactor
+Pinch 6Z Reactor
+Pinch 7Z Reactor
+Pinch 8A Reactor
+Pinch 8Z Reactor
+SF10 Sheared Flow Reactor
+SF20 Sheared Flow Reactor
+SF30 Sheared Flow Reactor
+SF40 Sheared Flow Reactor
+Spheromak DC201 Reactor
+Spheromak DC202 Reactor
+Theta Pinch A9 Reactor
+Theta Pinch B9 Reactor
+Theta Pinch C9 Reactor
+Theta Pinch D9 Reactor
+Tokamak X-050 Reactor
+Tokamak X-100 Reactor
+Tokamak X-120S Reactor
+Tokamak X-150 Reactor
+Tokamak X-200 Reactor
+Tokamak X-250 Reactor
+Tokamak X-300 Reactor
+Z-Machine 1000 Reactor
+Z-Machine 2000 Reactor
+Z-Machine 2020 Reactor
+Z-Machine 3000 Reactor
+Z-Machine 4000 Reactor

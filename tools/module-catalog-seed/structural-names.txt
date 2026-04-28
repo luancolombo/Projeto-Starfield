@@ -1,0 +1,204 @@
+Armor Plating - Port
+Armor Plating - Starboard
+Deimos Belly - Aft
+Deimos Belly - Fore
+Deimos Bracer A
+Deimos Braking Engine
+Deimos Bumper - Port Aft
+Deimos Bumper - Port Fore
+Deimos Bumper - Port Mid
+Deimos Bumper - Stbd Aft
+Deimos Bumper - Stbd Fore
+Deimos Bumper - Stbd Mid
+Deimos Cowling - Aft
+Deimos Cowling - Fore
+Deimos Hull A
+Deimos Radiator
+Deimos Skeg A
+Deimos Skeg A Aft
+Deimos Skeg B
+Deimos Spine A - Aft
+Deimos Spine A - Fore
+Deimos Spine B
+Deimos Spine C - Aft
+Deimos Spine C - Fore
+Deimos Spine D - Aft
+Deimos Spine D - Fore
+Deimos Spine E - Aft
+Deimos Spine E - Fore
+Deimos Spine F - Aft
+Deimos Spine F - Fore
+Deimos Spine G
+Deimos Tail A
+Deimos Wing A - Port
+Deimos Wing A - Port Aft
+Deimos Wing A - Stbd
+Deimos Wing A - Stbd Aft
+Deimos Wing B - Port
+Deimos Wing B - Stbd
+Deimos Wing C - Port
+Deimos Wing C - Stbd
+Deimos Wing D - Port
+Deimos Wing D - Port Aft
+Deimos Wing D - Stbd
+Deimos Wing D - Stbd Aft
+Deimos Wing E - Port
+Deimos Wing E - Port Aft
+Deimos Wing E - Stbd
+Deimos Wing E - Stbd Aft
+Equipment Plate
+HopeTech Bumper A
+HopeTech Cap A - Aft
+HopeTech Cap A - Fore
+HopeTech Cap A - Mid
+HopeTech Cap A - Port Aft
+HopeTech Cap A - Port Fore
+HopeTech Cap A - Port Mid
+HopeTech Cap A - Stbd Aft
+HopeTech Cap A - Stbd Fore
+HopeTech Cap A - Stbd Mid
+HopeTech Cap B - Mid
+HopeTech Marker A
+HopeTech Nose A - Fore
+HopeTech Nose A - Port
+HopeTech Nose A - Stbd
+HopeTech Nose B - Aft
+HopeTech Nose B - Fore
+HopeTech Pipes - Aft
+HopeTech Pipes - Fore
+HopeTech Pipes A - Mid
+HopeTech Pipes B - Mid
+HopeTech Radiator
+HopeTech Riser A
+HopeTech Riser B
+HopeTech Thruster
+Horizon Weapon Mount
+Nova Bracer
+Nova Braking Engine - Port
+Nova Braking Engine - Starboard
+Nova Braking Engine B - Port
+Nova Braking Engine B - Starboard
+Nova Braking Engine C - Bottom
+Nova Braking Engine C - Top
+Nova Cowling 1L-PA
+Nova Cowling 1L-PF
+Nova Cowling 1L-PM
+Nova Cowling 1L-SA
+Nova Cowling 1L-SF
+Nova Cowling 1L-SM
+Nova Cowling 1L-TA
+Nova Cowling 1L-TF
+Nova Cowling 2L-BA
+Nova Cowling 2L-BF
+Nova Cowling 2L-BM
+Nova Cowling 2L-PA
+Nova Cowling 2L-PF
+Nova Cowling 2L-PM
+Nova Cowling 2L-SA
+Nova Cowling 2L-SF
+Nova Cowling 2L-SM
+Nova Cowling 2L-TA
+Nova Cowling 2L-TF
+Nova Cowling 2L-TM
+Nova Cowling B 1L-PM
+Nova Cowling B 1L-SM
+Nova Cowling B 2L-PA
+Nova Cowling B 2L-PF
+Nova Cowling B 2L-SA
+Nova Cowling B 2L-SF
+Nova Cowling J 2L-BA
+Nova Cowling J 2L-BF
+Nova Cowling J 2L-BM
+Nova Cowling J 2L-TA
+Nova Cowling J 2L-TF
+Nova Cowling J 2L-TM
+Nova Cowling M 2L2H - Port
+Nova Cowling M 2L2H - Starboard
+Nova Engine Struts
+Nova Large Cone Fore B
+Nova Radiator
+Nova Radiator - Port
+Nova Radiator - Stbd
+Nova Radiator - Top
+Nova Spine C 1L-BA
+Nova Spine C 1L-BF
+Nova Spine C 1L-BM
+Nova Spine C 1L-TA
+Nova Spine C 1L-TF
+Nova Spine C 1L-TM
+Nova Thruster Array - Port
+Nova Thruster Array - Stbd
+Nova Weapon Mount
+Nova Wing - Port
+Nova Wing - Stbd
+Porthole - Aft
+Porthole - Bottom
+Porthole - Fore
+Porthole - Port
+Porthole - Stbd
+Porthole - Top
+Stroud Braking Engine
+Stroud Cap A - Port Aft Bot
+Stroud Cap A - Port Aft Top
+Stroud Cap A - Port Fore Bot
+Stroud Cap A - Port Fore Top
+Stroud Cap A - Stbd Aft Bot
+Stroud Cap A - Stbd Aft Top
+Stroud Cap A - Stbd Fore Bot
+Stroud Cap A - Stbd Fore Top
+Stroud Cap B - Port Aft
+Stroud Cap B - Stbd Aft
+Stroud Cap C - Aft Top
+Stroud Cowling 1LA-PB
+Stroud Cowling 1LA-PT
+Stroud Cowling 1LA-SB
+Stroud Cowling 1LA-ST
+Stroud Cowling 1LB-PB
+Stroud Cowling 1LB-PT
+Stroud Cowling 1LB-SB
+Stroud Cowling 1LB-ST
+Stroud Cowling 3LA-PT
+Stroud Cowling 3LA-ST
+Stroud Engine Bracer A
+Stroud Engine Bracer B
+Stroud Engine Mount
+Stroud Mid Bracer
+Stroud Nose Cap 2B - Fore Bot
+Stroud Nose Cap 2B - Fore Top
+Stroud Nose Cap B - Fore Bot
+Stroud Nose Cap B - Fore Top
+Stroud Nose Cap C - Port Fore
+Stroud Nose Cap C - Stbd Fore
+Stroud Nose Cap D - Port Fore
+Stroud Nose Cap D - Stbd Fore
+Stroud Nose Cap E
+Taiyo Braking Engine
+Taiyo Braking Engine - Port
+Taiyo Braking Engine - Stbd
+Taiyo Cap - Port Aft
+Taiyo Cap - Stbd Aft
+Taiyo Cowling - Aft Bottom
+Taiyo Cowling - Aft Top
+Taiyo Cowling - Fore Bottom
+Taiyo Cowling - Fore Top
+Taiyo End Cap - Port
+Taiyo End Cap - Stbd
+Taiyo Forward Sensors
+Taiyo Mid Cap - Port Bottom
+Taiyo Mid Cap - Port Top
+Taiyo Mid Cap - Stbd Bottom
+Taiyo Mid Cap - Stbd Top
+Taiyo Mid Cap B - Port Bottom
+Taiyo Mid Cap B - Port Top
+Taiyo Mid Cap B - Stbd Bottom
+Taiyo Mid Cap B - Stbd Top
+Taiyo Nose Cap - Port
+Taiyo Nose Cap - Stbd
+Taiyo Side Cap - Port
+Taiyo Side Cap - Stbd
+Taiyo Side Cap B - Port
+Taiyo Side Cap B - Stbd
+Taiyo Slope Cap - Aft
+Taiyo Slope Cap - Fore
+Taiyo Spine A
+Taiyo Spine B

@@ -1,0 +1,220 @@
+L68: Galley, Bed 0 2 5 8 1,350 1
+L69: Bed 0 2 5 10 1,550 1
+L70: Weapon display, Helmet Display, Pack display 0 0 5 8 1,350 1
+L71: 6 0 5 10 1,550 1
+L72: 0 0 5 10 1,550 1
+L73: Bed 0 0 5 8 1,350 1
+L74: 0 0 5 10 1,550 1
+L75: 0 0 5 12 1,800 1
+L76: 0 0 5 12 1,800 1
+L77: 0 0 5 14 1,850 1
+L78: 0 0 5 5 1,050 1
+L79: 1 0 5 8 1,350 1
+L80: 2 0 5 10 1,550 1
+L81: 4 0 5 8 1,350 1
+L82: 2 0 5 10 1,550 1
+L83: 1 0 5 10 1,550 1
+L84: 1 0 5 10 1,550 1
+L85: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L86: Galley 0 2 5 8 1,350 1
+L87: Galley 0 3 5 10 1,550 1
+L88: Galley 0 2 5 10 1,550 1
+L89: Galley 0 3 5 12 1,800 1
+L90: Galley 0 3 5 12 1,800 1
+L91: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L92: 0 0 5 5 1,050 1
+L93: Weapon workbench, Spacesuit workbench, Industrial workbench, Research lab 0 0 5 8 1,350 1
+L94: Galley, Bed 0 2 5 8 1,350 1
+L95: Bed 0 3 5 10 1,550 1
+L96: Weapon display 0 0 5 8 1,350 1
+L97: 6 0 5 10 1,550 1
+L98: 0 0 5 10 1,550 1
+L99: Bed 0 0 5 8 1,350 1
+L100: 0 0 5 10 1,550 1
+L101: 0 0 5 12 1,800 1
+L102: 0 0 5 12 1,800 1
+L103: 0 0 5 14 1,850 1
+L104: 0 0 5 5 1,050 1
+L105: 0 0 5 5 1,050 1
+L106: 0 0 5 5 1,050 1
+L107: 0 0 5 5 1,050 1
+L108: 0 0 5 5 1,050 1
+L109: 1 0 5 8 1,350 1
+L110: 2 0 5 10 1,550 1
+L111: 4 0 5 8 1,350 1
+L112: 1 0 5 10 1,550 1
+L113: 0 0 5 14 1,300 1
+L114: 0 0 5 14 1,300 1
+L115: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L116: Galley, Bed 0 2 5 8 1,350 1
+L117: Galley 0 3 5 12 1,800 1
+L118: Galley 0 3 5 12 1,800 1
+L119: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L120: 0 0 5 5 1,050 1
+L121: 0 0 5 5 1,050 1
+L122: 0 0 5 5 1,050 1
+L123: 0 0 5 5 1,050 1
+L124: 0 0 5 5 1,050 1
+L125: Weapon workbench, Spacesuit workbench, Industrial workbench, Research lab 0 0 5 8 1,350 1
+L126: 0 0 0 4 1,250 1
+L127: Bed, Research lab 0 2 5 8 1,350 1
+L128: Bed 0 2 5 8 1,350 1
+L129: Bed 0 3 5 10 1,550 1
+L130: Weapon display, Helmet Display, Pack display, Mannequin 0 2 5 8 1,350 1
+L131: 6 0 5 10 1,550 1
+L132: 0 0 5 10 1,550 1
+L133: Galley, Bed 0 0 5 8 1,350 1
+L134: 0 0 5 10 1,550 1
+L135: 0 0 5 12 1,800 1
+L136: 0 0 5 14 1,850 1
+L137: 0 0 5 5 1,050 1
+L138: 1 0 5 8 1,350 1
+L139: 4 0 5 8 1,350 1
+L140: TER 0 2 10 16 2,000 1
+L141: TER 0 2 10 16 2,000 1
+L142: TER 0 2 10 10 2,325 1
+L143: TER 0 2 10 20 2,850 1
+L144: 1 0 5 10 1,550 1
+L145: Research lab, Bed 0 2 5 8 1,350 1
+L146: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L147: Galley, Bed 0 2 5 8 1,350 1
+L148: Galley 0 3 5 10 1,550 1
+L149: Galley 0 3 5 12 1,800 1
+L150: Galley 0 3 5 12 1,800 1
+L151: Research lab, Pharmaceutical lab 0 2 5 8 1,350 1
+L152: 0 0 5 5 1,050 1
+L153: Weapon workbench, Spacesuit workbench, Industrial workbench 0 2 5 8 1,350 1
+L154: TER 0 0 45 18 0 1
+L155: TER 0 0 45 18 0 1
+L156: Galley, Bed 0 2 5 8 1,350 1
+L157: Galley, Bed 0 2 5 8 1,350 1
+L158: Bed 0 2 5 10 1,550 1
+L159: Weapon display, Helmet Display, Pack display 0 0 5 8 1,350 1
+L160: 6 0 5 10 1,550 1
+L161: 0 0 5 10 1,550 1
+L162: Bed 0 0 5 8 1,350 1
+L163: 0 0 5 10 1,550 1
+L164: 0 0 5 12 1,800 1
+L165: 0 0 5 12 1,800 1
+L166: 0 0 5 5 1,050 1
+L167: 1 0 5 8 1,350 1
+L168: 2 0 5 10 1,550 1
+L169: 4 0 5 8 1,350 1
+L170: 1 0 5 10 1,550 1
+L171: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L172: Galley, Bed 0 2 5 8 1,350 1
+L173: Galley 0 3 5 10 1,550 1
+L174: Galley 0 3 5 12 1,800 1
+L175: Galley 0 3 5 12 1,800 1
+L176: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L177: 0 0 5 5 1,050 1
+L178: 0 0 5 5 1,050 1
+L179: 0 0 5 5 1,050 1
+L180: 0 0 5 5 1,050 1
+L181: 0 0 5 5 1,050 1
+L182: 0 0 5 5 1,050 1
+L183: 0 0 5 5 1,050 1
+L184: Weapon workbench, Spacesuit workbench, Industrial workbench, Research lab 0 0 5 8 1,350 1
+L185: Galley, Bed 0 2 5 8 1,350 1
+L186: Galley, Bed 0 2 5 8 1,350 1
+L187: Galley, Bed 0 2 5 8 1,350 1
+L188: Galley, Bed 0 2 5 8 1,350 1
+L189: Galley, Bed 0 2 5 8 1,350 1
+L190: Bed 0 3 5 10 1,550 1
+L191: Bed 0 3 5 10 1,550 1
+L192: Bed 0 3 5 10 1,550 1
+L193: Bed 0 3 5 10 1,550 1
+L194: Bed 0 3 5 10 1,550 1
+L195: Weapon display 0 0 5 8 1,350 1
+L196: Weapon display 0 0 5 8 1,350 1
+L197: Weapon display 0 0 5 8 1,350 1
+L198: Weapon display 0 0 5 8 1,350 1
+L199: Weapon display 0 0 5 8 1,350 1
+L200: 6 0 5 10 1,550 1
+L201: 6 0 5 10 1,550 1
+L202: 6 0 5 10 1,550 1
+L203: 6 0 5 10 1,550 1
+L204: 6 0 5 10 1,550 1
+L205: 0 0 5 10 1,550 1
+L206: 0 0 5 10 1,550 1
+L207: 0 0 5 10 1,550 1
+L208: 0 0 5 10 1,550 1
+L209: 0 0 5 10 1,550 1
+L210: Bed 0 0 5 8 1,350 1
+L211: Bed 0 0 5 8 1,350 1
+L212: Bed 0 0 5 8 1,350 1
+L213: Bed 0 0 5 8 1,350 1
+L214: Bed 0 0 5 8 1,350 1
+L215: 0 0 5 10 1,550 1
+L216: 0 0 5 10 1,550 1
+L217: 0 0 5 10 1,550 1
+L218: 0 0 5 10 1,550 1
+L219: 0 0 5 10 1,550 1
+L220: 0 0 5 12 1,800 1
+L221: 0 0 5 12 1,800 1
+L222: 0 0 5 12 1,800 1
+L223: 0 0 5 12 1,800 1
+L224: 0 0 5 12 1,800 1
+L225: 0 0 5 5 1,050 1
+L226: 0 0 5 5 1,050 1
+L227: 0 0 5 5 1,050 1
+L228: 0 0 5 5 1,050 1
+L229: 0 0 5 5 1,050 1
+L230: 0 0 5 5 1,050 1
+L231: 0 0 5 5 1,050 1
+L232: 1 0 5 8 1,350 1
+L233: 1 0 5 8 1,350 1
+L234: 1 0 5 8 1,350 1
+L235: 1 0 5 8 1,350 1
+L236: 1 0 5 8 1,350 1
+L237: 2 0 5 10 1,550 1
+L238: 2 0 5 10 1,550 1
+L239: 2 0 5 10 1,550 1
+L240: 2 0 5 10 1,550 1
+L241: 2 0 5 10 1,550 1
+L242: 4 0 5 8 1,350 1
+L243: 4 0 5 8 1,350 1
+L244: 4 0 5 8 1,350 1
+L245: 4 0 5 8 1,350 1
+L246: 4 0 5 8 1,350 1
+L247: 1 0 5 10 1,550 1
+L248: 1 0 5 10 1,550 1
+L249: 1 0 5 10 1,400 1
+L250: 1 0 5 10 1,550 1
+L251: 1 0 5 10 1,550 1
+L252: 0 0 5 12 1,800 1
+L253: 0 0 5 12 1,800 1
+L254: Galley 0 3 5 12 1,800 1
+L255: Galley 0 3 5 12 1,800 1
+L256: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L257: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L258: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L259: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L260: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L261: Galley, Bed 0 2 5 8 1,350 1
+L262: Galley, Bed 0 2 5 8 1,350 1
+L263: Galley, Bed 0 2 5 8 1,350 1
+L264: Galley, Bed 0 2 5 8 1,350 1
+L265: Galley, Bed 0 2 5 8 1,350 1
+L266: Galley 0 3 5 12 1,800 1
+L267: Galley 0 3 5 12 1,800 1
+L268: Galley 0 3 5 12 1,800 1
+L269: Galley 0 3 5 12 1,800 1
+L270: Galley 0 3 5 12 1,800 1
+L271: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L272: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L273: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L274: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L275: Research lab, Pharmaceutical lab 0 0 5 8 1,350 1
+L276: 0 0 5 5 1,050 1
+L277: 0 0 5 5 1,050 1
+L278: 0 0 5 5 1,050 1
+L279: 0 0 5 5 1,050 1
+L280: 0 0 5 5 1,050 1
+L281: 0 0 5 5 1,050 1
+L282: 0 0 5 5 1,050 1
+L283: Weapon workbench, Spacesuit workbench, Industrial workbench, Research lab 0 0 5 8 1,350 1
+L284: Weapon workbench, Spacesuit workbench, Industrial workbench, Research lab 0 0 5 8 1,350 1
+L285: Weapon workbench, Spacesuit workbench, Industrial workbench, Research lab 0 0 5 8 1,350 1
+L286: Weapon workbench, Spacesuit workbench, Industrial workbench, Research lab 0 0 5 8 1,350 1
+L287: Weapon workbench, Spacesuit workbench, Industrial workbench, Research lab 0 0 5 8 1,350 1
