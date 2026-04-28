@@ -15,6 +15,7 @@ Minha stack principal e Java, entao este projeto nasceu justamente para praticar
 - Calcula uma estimativa simples de producao e lucro para entrepostos.
 - Traz comparador de naves lado a lado com stats e pontuacoes do site.
 - Mostra rankings de naves na home e uma pagina separada com top 50 por contexto.
+- Traz um Ship Builder em pagina separada com auto-build, preset por nave e plano de upgrade.
 - Usa autocomplete na busca de itens e na busca de naves.
 
 ## Por que fiz esse projeto
@@ -56,9 +57,11 @@ Se voce usa VS Code:
 ```text
 .
 |-- index.html
+|-- ship-builder.html
 |-- ship-rankings.html
 |-- styles.css
 |-- script.js
+|-- ship-builder.js
 |-- ship-rankings.js
 |-- README.md
 |-- data/
@@ -67,6 +70,8 @@ Se voce usa VS Code:
 |   |-- recipes.json
 |   |-- vendors.json
 |   |-- ships.json
+|   |-- ship-modules.json
+|   |-- ship-builder-rules.json
 |   |-- ship-rankings.json
 |   |-- ship-acquisition-backlog.json
 |   |-- extractors.json
@@ -74,6 +79,7 @@ Se voce usa VS Code:
 |   `-- profit-simulations.json
 |-- tools/
 |   |-- build-ship-data.ps1
+|   |-- build-ship-modules.ps1
 |   |-- build-ship-acquisition-backlog.ps1
 |   `-- fetch-inara-ship-page.ps1
 `-- lib/
@@ -103,7 +109,14 @@ Hoje o projeto ja tem:
 - foco automatico na area de detalhe/calculadora quando um item valido e pesquisado;
 - catalogo de naves com aquisicao preenchida;
 - backlog de aquisicao de naves zerado;
-- vendors de todas as naves restantes preenchidos no dataset atual.
+- vendors de todas as naves restantes preenchidos no dataset atual;
+- catalogo completo de modulos de nave em JSON;
+- Ship Builder em pagina separada com:
+  - modos manual, preset por nave e upgrade da nave atual;
+  - filtro por classe;
+  - estilos de armamento;
+  - 3 weapon slots;
+  - diagnostico de build, vendors e plano de upgrade.
 
 ## O que foi atualizado mais recentemente
 
@@ -116,7 +129,11 @@ As atualizacoes mais recentes do projeto foram:
 - mudanca do bloco de detalhe do item para a coluna da esquerda;
 - comparador de naves no lugar do catalogo antigo;
 - autocomplete no buscador de itens;
-- melhoria no scroll automatico para so descer quando o nome digitado bate com um item valido.
+- melhoria no scroll automatico para so descer quando o nome digitado bate com um item valido;
+- criacao do `Ship Builder` em pagina separada;
+- catalogacao dos modulos de nave em JSON;
+- primeira versao da logica de compatibilidade funcional;
+- suporte a 3 weapon slots e estilos de loadout no builder.
 
 ## Ideias para evoluir
 
@@ -129,6 +146,8 @@ Algumas ideias que ainda acho legais para continuar estudando:
 - adicionar export simples de comparacoes e rankings em JSON ou CSV;
 - criar um modo "progressao" com sugestoes de naves early, mid e late game;
 - melhorar a calculadora com receita encadeada e custo por insumo;
+- calibrar melhor o Ship Builder para aproximar ainda mais o dano e o comportamento real das naves no jogo;
+- melhorar a recomendacao de loadout com mais contexto de combate, boarding e exploracao;
 - no futuro, testar uma migracao para backend em Java ou Python so como estudo.
 
 ## Observacao
